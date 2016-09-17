@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefine">
+<meta name="description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
+12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js中var, let, const块作用域">
+<meta property="og:title" content="初识js中var, let, const块作用域">
 <meta property="og:url" content="http://yoursite.com/2016/09/17/1/index.html">
-<meta property="og:site_name" content="haizai's Blog">
-<meta property="og:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefine">
-<meta property="og:updated_time" content="2016-09-16T15:13:00.821Z">
+<meta property="og:site_name" content="Haizai's Blog">
+<meta property="og:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
+12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
+<meta property="og:updated_time" content="2016-09-17T04:53:28.317Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js中var, let, const块作用域">
-<meta name="twitter:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefine">
+<meta name="twitter:title" content="初识js中var, let, const块作用域">
+<meta name="twitter:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
+12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
 
 
 
@@ -116,7 +119,7 @@
 
   <link rel="canonical" href="http://yoursite.com/2016/09/17/1/"/>
 
-  <title> js中var, let, const块作用域 | haizai's Blog </title>
+  <title> 初识js中var, let, const块作用域 | Haizai's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,11 +150,11 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">haizai's Blog</span>
+      <span class="site-title">Haizai's Blog</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
-  <p class="site-subtitle">This is a simple subtitle</p>
+  <p class="site-subtitle">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
 </div>
 
 <div class="site-nav-toggle">
@@ -246,7 +249,7 @@
             
             
               
-                js中var, let, const块作用域
+                初识js中var, let, const块作用域
               
             
           </h1>
@@ -258,11 +261,30 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-16T23:18:26+08:00" content="2016-09-16">
+            <time itemprop="dateCreated" datetime="2016-09-17T00:18:26+09:00" content="2016-09-16">
               2016-09-16
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
@@ -293,7 +315,9 @@
       
 
       
-        <p>在ES6之前，<code>var</code>的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字<code>let</code>与<code>const</code>正是改变了这种现状。以下是常见的简单if和for语句的例子。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">false</span>) &#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">1</span></div><div class="line">  <span class="keyword">let</span> b = <span class="number">1</span></div><div class="line">  <span class="keyword">const</span> c = <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1 </span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// undefined </span></div><div class="line"><span class="built_in">console</span>.log(c); <span class="comment">// undefined </span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> d = <span class="number">0</span>; d &lt; <span class="number">5</span>; d++) &#123; &#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e = <span class="number">0</span>; e &lt; <span class="number">5</span>; e++) &#123; &#125;</div><div class="line"><span class="built_in">console</span>.log(d); <span class="comment">// 5 </span></div><div class="line"><span class="built_in">console</span>.log(e); <span class="comment">// undefined </span></div></pre></td></tr></table></figure><br>显然<code>var</code>污染了外层的作用域，即使if为false不执行内部语句。</p>
+        <p>在ES6之前，<code>var</code>的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字<code>let</code>与<code>const</code>正是改变了这种现状。以下是常见的简单if和for语句的例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">false</span>) &#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">1</span></div><div class="line">  <span class="keyword">let</span> b = <span class="number">1</span></div><div class="line">  <span class="keyword">const</span> c = <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1 </span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// undefined </span></div><div class="line"><span class="built_in">console</span>.log(c); <span class="comment">// undefined </span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> d = <span class="number">0</span>; d &lt; <span class="number">5</span>; d++) &#123; &#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e = <span class="number">0</span>; e &lt; <span class="number">5</span>; e++) &#123; &#125;</div><div class="line"><span class="built_in">console</span>.log(d); <span class="comment">// 5 </span></div><div class="line"><span class="built_in">console</span>.log(e); <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
+<p>显然<code>var</code>污染了外层的作用域，即使if为false不执行内部语句。</p>
 
       
     </div>
@@ -346,7 +370,7 @@
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/09/17/1/"
-           data-title="js中var, let, const块作用域" data-url="http://yoursite.com/2016/09/17/1/">
+           data-title="初识js中var, let, const块作用域" data-url="http://yoursite.com/2016/09/17/1/">
       </div>
     
   </div>
@@ -397,11 +421,18 @@
           </div>
 
           
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
 
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
