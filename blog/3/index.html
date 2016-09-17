@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="CSS,SASS,Bootstrap," />
 
 
 
@@ -84,15 +84,19 @@
 
 
 
-<meta name="description" content="人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Haizai">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="可以结合官网起步排版一起学习其中排版在bootstrap/type中，变量在bootstrap/variables中，（变量以//注释的方式显示）
+标题1234567891011121314h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6 &amp;#123;  font-family: $headings-font-family;//inherit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bootstrap的sass源码学习笔记（二）：排版篇">
+<meta property="og:url" content="http://yoursite.com/blog/3/index.html">
 <meta property="og:site_name" content="Haizai">
-<meta property="og:description" content="人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり">
+<meta property="og:description" content="可以结合官网起步排版一起学习其中排版在bootstrap/type中，变量在bootstrap/variables中，（变量以//注释的方式显示）
+标题1234567891011121314h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6 &amp;#123;  font-family: $headings-font-family;//inherit">
+<meta property="og:updated_time" content="2016-09-17T13:01:43.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Haizai">
-<meta name="twitter:description" content="人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり">
+<meta name="twitter:title" content="Bootstrap的sass源码学习笔记（二）：排版篇">
+<meta name="twitter:description" content="可以结合官网起步排版一起学习其中排版在bootstrap/type中，变量在bootstrap/variables中，（变量以//注释的方式显示）
+标题1234567891011121314h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6 &amp;#123;  font-family: $headings-font-family;//inherit">
 
 
 
@@ -113,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/3/"/>
 
-  <title> Haizai </title>
+  <title> Bootstrap的sass源码学习笔记（二）：排版篇 | Haizai </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,9 +140,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,9 +227,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -247,10 +249,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/blog/3/" itemprop="url">
-                  Bootstrap的sass源码学习笔记（二）：排版篇
-                </a>
+                Bootstrap的sass源码学习笔记（二）：排版篇
               
             
           </h1>
@@ -262,7 +261,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T20:31:04+08:00" content="2016-09-17">
+            <time itemprop="dateCreated" datetime="2016-09-17T21:31:04+09:00" content="2016-09-17">
               2016-09-17
             </time>
           </span>
@@ -316,9 +315,7 @@
       
 
       
-        
-          
-            <p>可以结合官网起步<a href="http://v3.bootcss.com/css/#type" target="_blank" rel="external">排版</a>一起学习<br>其中排版在<code>bootstrap/type</code>中，变量在<code>bootstrap/variables</code>中，（变量以//注释的方式显示）</p>
+        <p>可以结合官网起步<a href="http://v3.bootcss.com/css/#type" target="_blank" rel="external">排版</a>一起学习<br>其中排版在<code>bootstrap/type</code>中，变量在<code>bootstrap/variables</code>中，（变量以//注释的方式显示）</p>
 <h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>,</div><div class="line"><span class="selector-class">.h1</span>, <span class="selector-class">.h2</span>, <span class="selector-class">.h3</span>, <span class="selector-class">.h4</span>, <span class="selector-class">.h5</span>, <span class="selector-class">.h6</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="variable">$headings-font-family</span>;<span class="comment">//inherit</span></div><div class="line">  <span class="attribute">font-weight</span>: <span class="variable">$headings-font-weight</span>;<span class="comment">//500</span></div><div class="line">  <span class="attribute">line-height</span>: <span class="variable">$headings-line-height</span>;<span class="comment">//1.1</span></div><div class="line">  <span class="attribute">color</span>: <span class="variable">$headings-color</span>;<span class="comment">//inherit</span></div><div class="line"></div><div class="line">  <span class="selector-tag">small</span>,</div><div class="line">  <span class="selector-class">.small</span> &#123;</div><div class="line">    <span class="attribute">font-weight</span>: normal;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="variable">$headings-small-color</span>;<span class="comment">//$gray-light=&gt;#777</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>可以看出<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>与<code>.h1</code>-<code>.h6</code>的共同样式：font-family与color为继承，font-weight为500，line-height为1.1。<br>他们的子元素<code>&lt;small&gt;</code>或<code>.small</code>：font-weight减小为normal(400)，line-height减小为1，颜色变成固定的gray-light(#777)</p>
 <hr>
@@ -332,296 +329,63 @@
 <h3 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.lead</span> &#123;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="variable">$line-height-computed</span>;<span class="comment">//20px</span></div><div class="line">  <span class="attribute">font-size</span>: floor((<span class="variable">$font-size-base</span> * <span class="number">1.15</span>));<span class="comment">//16px</span></div><div class="line">  <span class="attribute">font-weight</span>: <span class="number">300</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1.4</span>;</div><div class="line"></div><div class="line">  @<span class="keyword">media</span> (min-width: <span class="variable">$screen-sm-min</span>) &#123;<span class="comment">//768px</span></div><div class="line">    <span class="attribute">font-size</span>: (<span class="variable">$font-size-base</span> * <span class="number">1.5</span>);<span class="comment">//21px</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>.lead</code>, 值得注意的是这里出现的<code>@media</code>。<code>font-size</code>在大于768px时为21px, 小于768px为16px</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2/" itemprop="url">
-                  Bootstrap的sass源码学习笔记（一）：body篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T14:19:09+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Bootstrap/" itemprop="url" rel="index">
-                    <span itemprop="name">Bootstrap</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
+            <a href="/tags/CSS/" rel="tag">#CSS</a>
           
-
+            <a href="/tags/SASS/" rel="tag">#SASS</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/Bootstrap/" rel="tag">#Bootstrap</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <blockquote>
-<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a><a href="http://v3.bootcss.com/" target="_blank" rel="external">Bootstrap</a></h3><p>  Bootstrap是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。<br>  为所有开发者、所有应用场景而设计。<br>  Bootstrap 让前端开发更快速、简单。所有开发者都能快速上手、所有设备都可以适配、所有项目都适用。</p>
-<h4 id="预处理脚本"><a href="#预处理脚本" class="headerlink" title="预处理脚本"></a>预处理脚本</h4><p>  虽然可以直接使用 Bootstrap 提供的 CSS 样式表，不要忘记 Bootstrap 的源码是基于最流行的 CSS 预处理脚本 - Less 和 Sass 开发的。你可以采用预编译的 CSS 文件快速开发，也可以从源码定制自己需要的样式。</p>
-<h4 id="一个框架、多种设备"><a href="#一个框架、多种设备" class="headerlink" title="一个框架、多种设备"></a>一个框架、多种设备</h4><p>  你的网站和应用能在 Bootstrap 的帮助下通过同一份代码快速、有效适配手机、平板、PC 设备，这一切都是 CSS 媒体查询（Media Query）的功劳。</p>
-<h4 id="特性齐全"><a href="#特性齐全" class="headerlink" title="特性齐全"></a>特性齐全</h4><p>  Bootstrap 提供了全面、美观的文档。你能在这里找到关于 HTML 元素、HTML 和 CSS 组件、jQuery 插件方面的所有详细文档。</p>
-</blockquote>
-<p>本系列我个人对Bootstrap的sass源码学习笔记，sass源码地址在Bootstrap的<a href="http://v3.bootcss.com/getting-started/" target="_blank" rel="external">起步</a>页面下sass中<code>下载 Sass 项目</code><br>下载完成后进入<code>bootstrap-sass-3.3.5\assets\stylesheets</code>打开<code>_bootstrap.scss</code>。<br>里面是几十行<code>@import &quot;bootstrap/...&quot;;</code>,这构成了整个完整的Bootstrap。</p>
-<hr>
-<h3 id="body篇"><a href="#body篇" class="headerlink" title="body篇"></a>body篇</h3><p>首先建立一个新的HTML页面，引入Bootstrap，打开chrome的开发者工具，可以发现body的css是这样的<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1.42857143</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这在Bootstrap的sass源码中是怎样的呢？<br>在<code>bootstrap/scaffolding</code>下。打开后找到第27行<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: $font-family-base;</div><div class="line">  <span class="attribute">font-size</span>: $font-size-base;</div><div class="line">  <span class="attribute">line-height</span>: $line-height-base;</div><div class="line">  <span class="attribute">color</span>: $text-color;</div><div class="line">  <span class="attribute">background-color</span>: $body-bg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>发现其中每个属性值都是变量，其中变量的文件又在<code>bootstrap/variables</code>下，打开它。</p>
-<ul>
-<li>$font-family-base<br>50行 <code>$font-family-base:        $font-family-sans-serif !default;</code><br>46行 <code>$font-family-sans-serif:  &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif !default;</code></li>
-<li>$font-size-base<br>52行 <code>$font-size-base:          14px !default;</code></li>
-<li>$line-height-base<br>64行 <code>$line-height-base:        1.428571429 !default; // 20/14</code></li>
-<li>$text-color<br>32行 <code>$text-color:            $gray-dark !default;</code><br>13行 <code>$gray-dark:              lighten($gray-base, 20%) !default;   // #333</code><br>11行 <code>$gray-base:              #000 !default;</code></li>
-<li>$body-bg<br>30行 <code>$body-bg:               #fff !default;</code></li>
-</ul>
-<p>当然这很简单很基础，我们通过简单的方式大致了解的bootstrap的sass源码基本的引用流程，将来在自定义的时候可以很轻松的修改variables。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/blog/2/" rel="next" title="Bootstrap的sass源码学习笔记（一）：body篇">
+                <i class="fa fa-chevron-left"></i> Bootstrap的sass源码学习笔记（一）：body篇
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/blog/1/" itemprop="url">
-                  初识js中var, let, const块作用域
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-16T23:18:26+08:00" content="2016-09-16">
-              2016-09-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ES6/" itemprop="url" rel="index">
-                    <span itemprop="name">ES6</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>在ES6之前，<code>var</code>的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字<code>let</code>与<code>const</code>正是改变了这种现状。以下是常见的简单if和for语句的例子。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">false</span>) &#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">1</span></div><div class="line">  <span class="keyword">let</span> b = <span class="number">1</span></div><div class="line">  <span class="keyword">const</span> c = <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1 </span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// undefined </span></div><div class="line"><span class="built_in">console</span>.log(c); <span class="comment">// undefined </span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> d = <span class="number">0</span>; d &lt; <span class="number">5</span>; d++) &#123; &#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e = <span class="number">0</span>; e &lt; <span class="number">5</span>; e++) &#123; &#125;</div><div class="line"><span class="built_in">console</span>.log(d); <span class="comment">// 5 </span></div><div class="line"><span class="built_in">console</span>.log(e); <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>显然<code>var</code>污染了外层的作用域，即使if为false不执行内部语句。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -629,6 +393,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="blog/3/"
+           data-title="Bootstrap的sass源码学习笔记（二）：排版篇" data-url="http://yoursite.com/blog/3/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -648,8 +420,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -699,6 +480,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">1.</span> <span class="nav-text">标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面主体"><span class="nav-number">2.</span> <span class="nav-text">页面主体</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中心内容"><span class="nav-number">2.1.</span> <span class="nav-text">中心内容</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -795,6 +587,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 

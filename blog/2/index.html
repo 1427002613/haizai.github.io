@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion">
+<html class="theme-next mist use-motion">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -88,11 +88,11 @@
 预处理脚本  虽然可以直接使用 Bootstrap 提供的 CSS 样式表，不要忘记 Bootstrap 的源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bootstrap的sass源码学习笔记（一）：body篇">
-<meta property="og:url" content="http://yoursite.com/2016/09/17/2/index.html">
-<meta property="og:site_name" content="Haizai's Blog">
+<meta property="og:url" content="http://yoursite.com/blog/2/index.html">
+<meta property="og:site_name" content="Haizai">
 <meta property="og:description" content="Bootstrap  Bootstrap是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。  为所有开发者、所有应用场景而设计。  Bootstrap 让前端开发更快速、简单。所有开发者都能快速上手、所有设备都可以适配、所有项目都适用。
 预处理脚本  虽然可以直接使用 Bootstrap 提供的 CSS 样式表，不要忘记 Bootstrap 的源码">
-<meta property="og:updated_time" content="2016-09-17T06:11:40.485Z">
+<meta property="og:updated_time" content="2016-09-17T11:32:00.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bootstrap的sass源码学习笔记（一）：body篇">
 <meta name="twitter:description" content="Bootstrap  Bootstrap是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。  为所有开发者、所有应用场景而设计。  Bootstrap 让前端开发更快速、简单。所有开发者都能快速上手、所有设备都可以适配、所有项目都适用。
@@ -103,7 +103,7 @@
 <script type="text/javascript" id="hexo.configuration">
   var NexT = window.NexT || {};
   var CONFIG = {
-    scheme: 'Muse',
+    scheme: 'Mist',
     sidebar: {"position":"left","display":"post"},
     fancybox: true,
     motion: true,
@@ -117,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/09/17/2/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/2/"/>
 
-  <title> Bootstrap的sass源码学习笔记（一）：body篇 | Haizai's Blog </title>
+  <title> Bootstrap的sass源码学习笔记（一）：body篇 | Haizai </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -150,7 +150,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Haizai's Blog</span>
+      <span class="site-title">Haizai</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -291,8 +291,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/17/2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/17/2/" itemprop="commentsCount"></span>
+                <a href="/blog/2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -322,6 +322,7 @@
 <h4 id="特性齐全"><a href="#特性齐全" class="headerlink" title="特性齐全"></a>特性齐全</h4><p>  Bootstrap 提供了全面、美观的文档。你能在这里找到关于 HTML 元素、HTML 和 CSS 组件、jQuery 插件方面的所有详细文档。</p>
 </blockquote>
 <p>本系列我个人对Bootstrap的sass源码学习笔记，sass源码地址在Bootstrap的<a href="http://v3.bootcss.com/getting-started/" target="_blank" rel="external">起步</a>页面下sass中<code>下载 Sass 项目</code><br>下载完成后进入<code>bootstrap-sass-3.3.5\assets\stylesheets</code>打开<code>_bootstrap.scss</code>。<br>里面是几十行<code>@import &quot;bootstrap/...&quot;;</code>,这构成了整个完整的Bootstrap。</p>
+<hr>
 <h3 id="body篇"><a href="#body篇" class="headerlink" title="body篇"></a>body篇</h3><p>首先建立一个新的HTML页面，引入Bootstrap，打开chrome的开发者工具，可以发现body的css是这样的<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1.42857143</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这在Bootstrap的sass源码中是怎样的呢？<br>在<code>bootstrap/scaffolding</code>下。打开后找到第27行<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: $font-family-base;</div><div class="line">  <span class="attribute">font-size</span>: $font-size-base;</div><div class="line">  <span class="attribute">line-height</span>: $line-height-base;</div><div class="line">  <span class="attribute">color</span>: $text-color;</div><div class="line">  <span class="attribute">background-color</span>: $body-bg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>发现其中每个属性值都是变量，其中变量的文件又在<code>bootstrap/variables</code>下，打开它。</p>
@@ -368,13 +369,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/17/1/" rel="next" title="初识js中var, let, const块作用域">
+              <a href="/blog/1/" rel="next" title="初识js中var, let, const块作用域">
                 <i class="fa fa-chevron-left"></i> 初识js中var, let, const块作用域
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/3/" rel="prev" title="Bootstrap的sass源码学习笔记（二）：排版篇">
+                Bootstrap的sass源码学习笔记（二）：排版篇 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -400,8 +405,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/17/2/"
-           data-title="Bootstrap的sass源码学习笔记（一）：body篇" data-url="http://yoursite.com/2016/09/17/2/">
+      <div class="ds-thread" data-thread-key="blog/2/"
+           data-title="Bootstrap的sass源码学习笔记（一）：body篇" data-url="http://yoursite.com/blog/2/">
       </div>
     
   </div>
@@ -441,12 +446,12 @@
                src="/uploads/avatar.jpg"
                alt="Haizai" />
           <p class="site-author-name" itemprop="name">Haizai</p>
-          <p class="site-description motion-element" itemprop="description">This is a simple description</p>
+          <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -525,7 +530,7 @@
 <div class="theme-info">
   主题 -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Mist
   </a>
 </div>
 
