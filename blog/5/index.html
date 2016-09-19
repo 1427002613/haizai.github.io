@@ -1,0 +1,643 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="js," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="获得属性描述符Object.getOwnPropertyDescriptor(obj, prop)获取某个obj的prop属性的描述符123var obj = &amp;#123;a: 10&amp;#125;Object.getOwnPropertyDescriptor(obj, &apos;a&apos;)//&amp;#123;value: 10, writable: true, enumerable: true, configura">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读「你不知道的js」之object描述符">
+<meta property="og:url" content="http://yoursite.com/blog/5/index.html">
+<meta property="og:site_name" content="Haizai">
+<meta property="og:description" content="获得属性描述符Object.getOwnPropertyDescriptor(obj, prop)获取某个obj的prop属性的描述符123var obj = &amp;#123;a: 10&amp;#125;Object.getOwnPropertyDescriptor(obj, &apos;a&apos;)//&amp;#123;value: 10, writable: true, enumerable: true, configura">
+<meta property="og:updated_time" content="2016-09-19T12:53:57.869Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读「你不知道的js」之object描述符">
+<meta name="twitter:description" content="获得属性描述符Object.getOwnPropertyDescriptor(obj, prop)获取某个obj的prop属性的描述符123var obj = &amp;#123;a: 10&amp;#125;Object.getOwnPropertyDescriptor(obj, &apos;a&apos;)//&amp;#123;value: 10, writable: true, enumerable: true, configura">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/5/"/>
+
+  <title> 读「你不知道的js」之object描述符 | Haizai </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Haizai</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                读「你不知道的js」之object描述符
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-19T21:35:35+09:00" content="2016-09-19">
+              2016-09-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/「你不知道的js」/" itemprop="url" rel="index">
+                    <span itemprop="name">「你不知道的js」</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="获得属性描述符"><a href="#获得属性描述符" class="headerlink" title="获得属性描述符"></a>获得属性描述符</h3><p><code>Object.getOwnPropertyDescriptor(obj, prop)</code><br>获取某个obj的prop属性的描述符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'a'</span>)</div><div class="line"><span class="comment">//&#123;value: 10, writable: true, enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure></p>
+<p>所以默认下writable,enumerable,configurable均为true</p>
+<hr>
+<h3 id="设置属性描述符"><a href="#设置属性描述符" class="headerlink" title="设置属性描述符"></a>设置属性描述符</h3><p><code>Object.defineProperty(obj, prop, descriptor)</code><br>新建或修改某个obj的propp属性的描述符descriptor<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'b'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">true</span>, </div><div class="line">  enumerable:  <span class="literal">true</span>, </div><div class="line">  configurable:  <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h3><p>writable决定属性值是否可修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)</div><div class="line">obj.a = <span class="number">11</span></div><div class="line"><span class="built_in">console</span>.log(obj.a) <span class="comment">//10</span></div></pre></td></tr></table></figure></p>
+<p>如果在严格模式下还会抛出一个TypeError错误</p>
+<hr>
+<h3 id="configurable"><a href="#configurable" class="headerlink" title="configurable"></a>configurable</h3><p>configurable决定属性描述符是否可修改，这是不可逆的<br>例外: 可以将writable从true改成false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;configurable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)<span class="comment">// 成功修改，例外</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;enumerable: <span class="literal">false</span>&#125;)<span class="comment">// TypeError</span></div></pre></td></tr></table></figure></p>
+<p>除此之外configurable:false，会禁止delete这个属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;configurable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">delete</span> obj.a</div><div class="line"><span class="built_in">console</span>.log(obj.a) <span class="comment">// 10</span></div></pre></td></tr></table></figure></p>
+<h3 id="enumerable"><a href="#enumerable" class="headerlink" title="enumerable"></a>enumerable</h3><p>enumerable决定属性是否可枚举<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>, b: <span class="number">20</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;enumerable:<span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i, obj[i])</div><div class="line">&#125;</div><div class="line"><span class="comment">// 'b' 20</span></div></pre></td></tr></table></figure></p>
+<p><code>Object.prototype.propertyIsEnumerable(prop)</code>返回此prop是否可枚举（即返回其enumerable）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 接上</span></div><div class="line">obj.propertyIsEnumerable(<span class="string">'a'</span>) <span class="comment">// false</span></div><div class="line">obj.propertyIsEnumerable(<span class="string">'b'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p><code>Object.keys(obj)</code>返回此obj自身的可枚举属性名组成的数组<br><code>Object.getOwnPropertyNames(obj)</code>返回此obj自身的可枚举与不可枚举属性名组成的数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.keys(obj) <span class="comment">// ["b"]</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyNames(obj) <span class="comment">// ["a", "b"]</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="不变性"><a href="#不变性" class="headerlink" title="不变性"></a>不变性</h3><h4 id="常量属性"><a href="#常量属性" class="headerlink" title="常量属性"></a>常量属性</h4><p>不可修改，定义，删除的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">false</span>, </div><div class="line">  configurable:  <span class="literal">false</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="禁止扩展"><a href="#禁止扩展" class="headerlink" title="禁止扩展"></a>禁止扩展</h4><p><code>Object.preventExtensions(obj)</code> 禁止添加新属性<br><code>Object.isExtensible(obj)</code> 返回是否可扩展<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.isExtensible(obj) <span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.preventExtensions(obj)</div><div class="line"><span class="built_in">Object</span>.isExtensible(obj) <span class="comment">//false</span></div><div class="line">obj.b = <span class="number">2</span> <span class="comment">// 严格模式会TypeError</span></div><div class="line"><span class="built_in">console</span>.log(obj.b) <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
+<h4 id="密封"><a href="#密封" class="headerlink" title="密封"></a>密封</h4><p><code>Object.seal(obj)</code> 调用Object.preventExtensions(obj)并使所有属性configurable:false<br><code>Object.isSealed(obj)</code> 返回是否密封</p>
+<h4 id="冻结"><a href="#冻结" class="headerlink" title="冻结"></a>冻结</h4><p><code>Object.freeze(obj)</code>调用Object.seal(obj)并使所有属性writable:false<br><code>Object.isFrozen(obj)</code> 返回是否冻结</p>
+<hr>
+<h3 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h3><p>当设置get或set时，会忽略value和writable<br>有以下两种方式设置get或set，其中第二种默认enumerable: false, configurable: false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="number">2</span> &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj,<span class="string">'b'</span>,&#123;</div><div class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a*<span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">obj.a <span class="comment">// 2</span></div><div class="line">obj.b <span class="comment">// 4</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'a'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: true, configurable: true&#125;</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'b'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: false, configurable: false&#125;</span></div></pre></td></tr></table></figure></p>
+<p>一般来说get 和 set 同时出现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="keyword">this</span>._a &#125;,</div><div class="line">  set a(val)&#123; <span class="keyword">this</span>._a = val * <span class="number">2</span>&#125;</div><div class="line">&#125;</div><div class="line">obj.a = <span class="number">10</span></div><div class="line">obj.a <span class="comment">// 20</span></div><div class="line">obj._a <span class="comment">// 20</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/js/" rel="tag">#js</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/demo-1/" rel="next" title="demo——原生javascript实现树形组件">
+                <i class="fa fa-chevron-left"></i> demo——原生javascript实现树形组件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="blog/5/"
+           data-title="读「你不知道的js」之object描述符" data-url="http://yoursite.com/blog/5/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Haizai" />
+          <p class="site-author-name" itemprop="name">Haizai</p>
+          <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#获得属性描述符"><span class="nav-number">1.</span> <span class="nav-text">获得属性描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置属性描述符"><span class="nav-number">2.</span> <span class="nav-text">设置属性描述符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#writable"><span class="nav-number">3.</span> <span class="nav-text">writable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#configurable"><span class="nav-number">4.</span> <span class="nav-text">configurable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#enumerable"><span class="nav-number">5.</span> <span class="nav-text">enumerable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不变性"><span class="nav-number">6.</span> <span class="nav-text">不变性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常量属性"><span class="nav-number">6.1.</span> <span class="nav-text">常量属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#禁止扩展"><span class="nav-number">6.2.</span> <span class="nav-text">禁止扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#密封"><span class="nav-number">6.3.</span> <span class="nav-text">密封</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冻结"><span class="nav-number">6.4.</span> <span class="nav-text">冻结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get和set"><span class="nav-number">7.</span> <span class="nav-text">get和set</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haizai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haizai-github"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

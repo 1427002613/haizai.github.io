@@ -248,6 +248,146 @@
             
               
                 
+                <a class="post-title-link" href="/blog/5/" itemprop="url">
+                  读「你不知道的js」之object描述符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-19T20:35:35+08:00" content="2016-09-19">
+              2016-09-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/「你不知道的js」/" itemprop="url" rel="index">
+                    <span itemprop="name">「你不知道的js」</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/5/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="获得属性描述符"><a href="#获得属性描述符" class="headerlink" title="获得属性描述符"></a>获得属性描述符</h3><p><code>Object.getOwnPropertyDescriptor(obj, prop)</code><br>获取某个obj的prop属性的描述符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'a'</span>)</div><div class="line"><span class="comment">//&#123;value: 10, writable: true, enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure></p>
+<p>所以默认下writable,enumerable,configurable均为true</p>
+<hr>
+<h3 id="设置属性描述符"><a href="#设置属性描述符" class="headerlink" title="设置属性描述符"></a>设置属性描述符</h3><p><code>Object.defineProperty(obj, prop, descriptor)</code><br>新建或修改某个obj的propp属性的描述符descriptor<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'b'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">true</span>, </div><div class="line">  enumerable:  <span class="literal">true</span>, </div><div class="line">  configurable:  <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h3><p>writable决定属性值是否可修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)</div><div class="line">obj.a = <span class="number">11</span></div><div class="line"><span class="built_in">console</span>.log(obj.a) <span class="comment">//10</span></div></pre></td></tr></table></figure></p>
+<p>如果在严格模式下还会抛出一个TypeError错误</p>
+<hr>
+<h3 id="configurable"><a href="#configurable" class="headerlink" title="configurable"></a>configurable</h3><p>configurable决定属性描述符是否可修改，这是不可逆的<br>例外: 可以将writable从true改成false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;configurable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)<span class="comment">// 成功修改，例外</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;enumerable: <span class="literal">false</span>&#125;)<span class="comment">// TypeError</span></div></pre></td></tr></table></figure></p>
+<p>除此之外configurable:false，会禁止delete这个属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;configurable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">delete</span> obj.a</div><div class="line"><span class="built_in">console</span>.log(obj.a) <span class="comment">// 10</span></div></pre></td></tr></table></figure></p>
+<h3 id="enumerable"><a href="#enumerable" class="headerlink" title="enumerable"></a>enumerable</h3><p>enumerable决定属性是否可枚举<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>, b: <span class="number">20</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;enumerable:<span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i, obj[i])</div><div class="line">&#125;</div><div class="line"><span class="comment">// 'b' 20</span></div></pre></td></tr></table></figure></p>
+<p><code>Object.prototype.propertyIsEnumerable(prop)</code>返回此prop是否可枚举（即返回其enumerable）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 接上</span></div><div class="line">obj.propertyIsEnumerable(<span class="string">'a'</span>) <span class="comment">// false</span></div><div class="line">obj.propertyIsEnumerable(<span class="string">'b'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p><code>Object.keys(obj)</code>返回此obj自身的可枚举属性名组成的数组<br><code>Object.getOwnPropertyNames(obj)</code>返回此obj自身的可枚举与不可枚举属性名组成的数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.keys(obj) <span class="comment">// ["b"]</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyNames(obj) <span class="comment">// ["a", "b"]</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="不变性"><a href="#不变性" class="headerlink" title="不变性"></a>不变性</h3><h4 id="常量属性"><a href="#常量属性" class="headerlink" title="常量属性"></a>常量属性</h4><p>不可修改，定义，删除的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">false</span>, </div><div class="line">  configurable:  <span class="literal">false</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<h4 id="禁止扩展"><a href="#禁止扩展" class="headerlink" title="禁止扩展"></a>禁止扩展</h4><p><code>Object.preventExtensions(obj)</code> 禁止添加新属性<br><code>Object.isExtensible(obj)</code> 返回是否可扩展<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.isExtensible(obj) <span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.preventExtensions(obj)</div><div class="line"><span class="built_in">Object</span>.isExtensible(obj) <span class="comment">//false</span></div><div class="line">obj.b = <span class="number">2</span> <span class="comment">// 严格模式会TypeError</span></div><div class="line"><span class="built_in">console</span>.log(obj.b) <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
+<h4 id="密封"><a href="#密封" class="headerlink" title="密封"></a>密封</h4><p><code>Object.seal(obj)</code> 调用Object.preventExtensions(obj)并使所有属性configurable:false<br><code>Object.isSealed(obj)</code> 返回是否密封</p>
+<h4 id="冻结"><a href="#冻结" class="headerlink" title="冻结"></a>冻结</h4><p><code>Object.freeze(obj)</code>调用Object.seal(obj)并使所有属性writable:false<br><code>Object.isFrozen(obj)</code> 返回是否冻结</p>
+<hr>
+<h3 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h3><p>当设置get或set时，会忽略value和writable<br>有以下两种方式设置get或set，其中第二种默认enumerable: false, configurable: false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="number">2</span> &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj,<span class="string">'b'</span>,&#123;</div><div class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a*<span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">obj.a <span class="comment">// 2</span></div><div class="line">obj.b <span class="comment">// 4</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'a'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: true, configurable: true&#125;</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'b'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: false, configurable: false&#125;</span></div></pre></td></tr></table></figure></p>
+<p>一般来说get 和 set 同时出现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="keyword">this</span>._a &#125;,</div><div class="line">  set a(val)&#123; <span class="keyword">this</span>._a = val * <span class="number">2</span>&#125;</div><div class="line">&#125;</div><div class="line">obj.a = <span class="number">10</span></div><div class="line">obj.a <span class="comment">// 20</span></div><div class="line">obj._a <span class="comment">// 20</span></div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/demo-1/" itemprop="url">
                   demo——原生javascript实现树形组件
                 </a>
@@ -960,7 +1100,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
