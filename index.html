@@ -327,7 +327,8 @@
 <ol>
 <li>原生html,css,javascript实现，没有使用其他库或框架。</li>
 <li>使用了javascript的构造函数模式及原型模式，所有的节点都是<code>new Tree(node)</code>。</li>
-<li>用了点简单的css动画</li>
+<li>搜索时，将搜索到的值加红，如果那个节点是隐藏的，展开直到根。</li>
+<li>用了点简单的css动画。</li>
 </ol>
 <ul>
 <li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
@@ -337,7 +338,7 @@
 <li>第一次用prototype，写起来很爽！对js和css的理解更深了。</li>
 <li>click事件的如果放在Tree.prototype里，new Tree时渲染有诡异的问题。</li>
 <li>搜索值时用这种形式：外包裹<code>innerHTML.replace(str,&#39;&lt;span style=&quot;...&quot;&gt;&#39;+str+&#39;&lt;/span&gt;&#39;)</code>，重置时<code>outerHTML=innerHTML</code>，经常会出现bug，而且绑定在上面的click事件会消失/(ㄒoㄒ)/~~</li>
-<li>在如此混杂的js添加css动画很晕，隐藏和删除的动画难以绑定</li>
+<li>在如此混杂的js添加css动画很晕，隐藏和删除的动画难以绑定。</li>
 <li>用原生js操纵DOM真的很不方便（自从用了Vue以后），耦合非常高，代码不易维护（现在回头来看都快晕了）。</li>
 </ol>
 
