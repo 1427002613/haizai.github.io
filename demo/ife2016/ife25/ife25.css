@@ -1,7 +1,3 @@
-*{
-	font-family: simhei;
-}
-
 #top{
 	width: 400px;
 	margin:10px auto;
@@ -13,6 +9,7 @@
 	border: 2px solid #C4D5D7;
 	padding: 0 0 2px 5px;
 	background:rgba(188,244,244,.1);
+	font-family: simhei;
 }
 .son{
 	margin: 10px 0 10px 20px;
