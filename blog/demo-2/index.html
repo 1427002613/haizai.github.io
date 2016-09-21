@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript,ES6," />
+  <meta name="keywords" content="demo,jQuery," />
 
 
 
@@ -84,19 +84,40 @@
 
 
 
-<meta name="description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
-12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
+<meta name="description" content="demo地址：jQuery实现日历UI
+源码：github源码
+要求：百度ife2016任务41
+特点：
+
+
+jQuery实现，没有使用现成库或框架。
+使用了javascript的构造函数模式及原型模式，只用了function Calendar(),Calendar.prototype={},new Calendar(),没有暴露其他变量。
+上个月最后几天和下个月前几天计算得到，所以每月5行或6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初识js中var, let, const块作用域">
-<meta property="og:url" content="http://yoursite.com/blog/1/index.html">
+<meta property="og:title" content="demo——jQuery实现日历UI">
+<meta property="og:url" content="http://yoursite.com/blog/demo-2/index.html">
 <meta property="og:site_name" content="Haizai">
-<meta property="og:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
-12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
-<meta property="og:updated_time" content="2016-09-20T04:21:13.915Z">
+<meta property="og:description" content="demo地址：jQuery实现日历UI
+源码：github源码
+要求：百度ife2016任务41
+特点：
+
+
+jQuery实现，没有使用现成库或框架。
+使用了javascript的构造函数模式及原型模式，只用了function Calendar(),Calendar.prototype={},new Calendar(),没有暴露其他变量。
+上个月最后几天和下个月前几天计算得到，所以每月5行或6">
+<meta property="og:updated_time" content="2016-09-21T10:21:10.555Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识js中var, let, const块作用域">
-<meta name="twitter:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
-12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
+<meta name="twitter:title" content="demo——jQuery实现日历UI">
+<meta name="twitter:description" content="demo地址：jQuery实现日历UI
+源码：github源码
+要求：百度ife2016任务41
+特点：
+
+
+jQuery实现，没有使用现成库或框架。
+使用了javascript的构造函数模式及原型模式，只用了function Calendar(),Calendar.prototype={},new Calendar(),没有暴露其他变量。
+上个月最后几天和下个月前几天计算得到，所以每月5行或6">
 
 
 
@@ -117,9 +138,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/blog/1/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/demo-2/"/>
 
-  <title> 初识js中var, let, const块作用域 | Haizai </title>
+  <title> demo——jQuery实现日历UI | Haizai </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -249,7 +270,7 @@
             
             
               
-                初识js中var, let, const块作用域
+                demo——jQuery实现日历UI
               
             
           </h1>
@@ -261,8 +282,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T00:18:26+09:00" content="2016-09-16">
-              2016-09-16
+            <time itemprop="dateCreated" datetime="2016-09-21T20:01:19+09:00" content="2016-09-21">
+              2016-09-21
             </time>
           </span>
 
@@ -275,8 +296,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ES6/" itemprop="url" rel="index">
-                    <span itemprop="name">ES6</span>
+                  <a href="/categories/demo/" itemprop="url" rel="index">
+                    <span itemprop="name">demo</span>
                   </a>
                 </span>
 
@@ -291,8 +312,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/1/" itemprop="commentsCount"></span>
+                <a href="/blog/demo-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/demo-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -315,9 +336,27 @@
       
 
       
-        <p>在ES6之前，<code>var</code>的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字<code>let</code>与<code>const</code>正是改变了这种现状。以下是常见的简单if和for语句的例子。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">false</span>) &#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">1</span></div><div class="line">  <span class="keyword">let</span> b = <span class="number">1</span></div><div class="line">  <span class="keyword">const</span> c = <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1 </span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// undefined </span></div><div class="line"><span class="built_in">console</span>.log(c); <span class="comment">// undefined </span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> d = <span class="number">0</span>; d &lt; <span class="number">5</span>; d++) &#123; &#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e = <span class="number">0</span>; e &lt; <span class="number">5</span>; e++) &#123; &#125;</div><div class="line"><span class="built_in">console</span>.log(d); <span class="comment">// 5 </span></div><div class="line"><span class="built_in">console</span>.log(e); <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>显然<code>var</code>污染了外层的作用域，即使if为false不执行内部语句。</p>
+        <ul>
+<li><h3 id="demo地址：jQuery实现日历UI"><a href="#demo地址：jQuery实现日历UI" class="headerlink" title="demo地址：jQuery实现日历UI"></a>demo地址：<a href="/demo/ife2016/ife41/ife41.html">jQuery实现日历UI</a></h3></li>
+<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/haizai.github.io/tree/master/demo/ife2016/ife41" target="_blank" rel="external">github源码</a></h4></li>
+<li><h4 id="要求：百度ife2016任务41"><a href="#要求：百度ife2016任务41" class="headerlink" title="要求：百度ife2016任务41"></a>要求：<a href="http://ife.baidu.com/task/detail?taskId=41" target="_blank" rel="external">百度ife2016任务41</a></h4></li>
+<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
+</ul>
+<ol>
+<li>jQuery实现，没有使用现成库或框架。</li>
+<li>使用了javascript的构造函数模式及原型模式，只用了<code>function Calendar()</code>,<code>Calendar.prototype={}</code>,<code>new Calendar()</code>,没有暴露其他变量。</li>
+<li>上个月最后几天和下个月前几天计算得到，所以每月5行或6行不固定。</li>
+<li>点击某天则active某天，上个月最后几天或下个月前几天，则先翻到那个月，再active。</li>
+</ol>
+<ul>
+<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
+</ul>
+<ol>
+<li>第一次用jQuery完整的写一个组件，问题还是很多啦~~</li>
+<li>整个流程：先init(),init最后执行render(),render最后绑定click()事件,click中lastMouth()和nextMouth()时再绑定render()。</li>
+<li>计算日期过程调试非常多才成功，具体实现是这样：根据上个月最后一天的周几确定上个月还有几天，根据这个最后一天确定这个月，根据这个月最后一天的周几确定下个月初有几天，最后把这三部分合在在一起，每次render()时执行。</li>
+<li>循环绑定耦合度高，不易维护。越发感觉到MVVM的好~</li>
+</ol>
 
       
     </div>
@@ -340,9 +379,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/javascript/" rel="tag">#javascript</a>
+            <a href="/tags/demo/" rel="tag">#demo</a>
           
-            <a href="/tags/ES6/" rel="tag">#ES6</a>
+            <a href="/tags/jQuery/" rel="tag">#jQuery</a>
           
         </div>
       
@@ -351,13 +390,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/blog/6/" rel="next" title="读「你不知道的javascript」之prototype屏蔽">
+                <i class="fa fa-chevron-left"></i> 读「你不知道的javascript」之prototype屏蔽
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2/" rel="prev" title="Bootstrap的sass源码学习笔记（一）：body篇">
-                Bootstrap的sass源码学习笔记（一）：body篇 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -383,8 +422,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="blog/1/"
-           data-title="初识js中var, let, const块作用域" data-url="http://yoursite.com/blog/1/">
+      <div class="ds-thread" data-thread-key="blog/demo-2/"
+           data-title="demo——jQuery实现日历UI" data-url="http://yoursite.com/blog/demo-2/">
       </div>
     
   </div>
@@ -475,7 +514,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址：jQuery实现日历UI"><span class="nav-number">1.</span> <span class="nav-text">demo地址：jQuery实现日历UI</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#源码：github源码"><span class="nav-number">1.1.</span> <span class="nav-text">源码：github源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#要求：百度ife2016任务41"><span class="nav-number">1.2.</span> <span class="nav-text">要求：百度ife2016任务41</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点："><span class="nav-number">1.3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#感想与总结："><span class="nav-number">1.4.</span> <span class="nav-text">感想与总结：</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
