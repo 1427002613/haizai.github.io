@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>todos-demo</title>
+	<link rel="stylesheet" href="../../css/bootstrap.min.css">
+	<style>
+		.text-del{
+			text-decoration: line-through;
+			color: #bbb;
+		}
+		.color-light{
+			color:#999
+		}
+		.border-selected{
+			color: #c94a9a;
+		}
+		.todo-transition{
+			transition: all .2s
+		}
+		.todo-enter,.todo-leave{
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" id="app">
+		<h1 class="text-center">todos</h1>
+		<div class="row">
+			<div class="col-sm-offset-2 col-sm-8">
+				<div class="input-group form-group">
+					<span class="input-group-addon" style="cursor:pointer" @click="allClick()">
+						<span class="glyphicon glyphicon-chevron-down" :class="{'color-light':checkedCount===todos.length}"></span>
+					</span>
+					<input type="text" class="form-control" placeholder="输入todo" v-model="newTodo" @keydown.enter="createTodo()">
+				</div>
+				<div class="list-group">
+					<div class="list-group-item" v-for="todo in todos | status status" @mouseenter="showGlyphicon(todo)" @mouseleave="hideGlyphicon(todo)" transition="todo">
+						<input type="checkbox" :value="todo.content" v-model='todo.isChecked'>&nbsp;&nbsp;
+						<span v-text="todo.content" :class="{'text-del':todo.isChecked}"></span>
+						<span v-show="todo.isMouseenter" @click="removeTodo(todo)" class="glyphicon glyphicon-remove pull-right" style="line-height:inherit;cursor:pointer"></span>
+					</div>
+					<div v-show="todos.length" transition="todo" class="list-group-item">
+						<div class="row">
+							<div class="col-sm-4">
+								<span class="glyphicon glyphicon-remove" style="cursor:pointer" @click="removeClicked()"></span>&nbsp;
+								<span>{{checkedCount}} 项被选中</span>
+							</div>
+							<div class="pull-right">
+								<span>显示：</span>
+								<span :class="{'border-selected':status==='全部'}" style="cursor:pointer" @click="showAll()">全部</span>&nbsp;	
+								<span :class="{'border-selected':status==='被选中'}" style="cursor:pointer" @click="showClicked()">被选中的</span>&nbsp;	
+								<span :class="{'border-selected':status==='未选中'}" style="cursor:pointer" @click="showUnClicked()">未选中的</span>&nbsp;
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="../../js/vue.min.js"></script>
+	<script src="todos.js"></script>
+</body>
+</html>
