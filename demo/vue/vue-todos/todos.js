@@ -79,7 +79,7 @@ new Vue({
 			this.status = '未选中'			
 		},
 		removeClicked: function () {
-			this.todos = this.todos.filter( function (todo) { todo.isChecked === false })
+			this.todos = this.todos.filter( function (todo) { return todo.isChecked === false })
 		}
 	}
 })
