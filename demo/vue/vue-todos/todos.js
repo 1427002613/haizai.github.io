@@ -3,7 +3,7 @@ new Vue({
 	data: {
 		newTodo: '',
 		todos: JSON.parse( window.localStorage.getItem('vue-todos-haizai') ) || [],
-		status: '全部'
+    status: '全部'
 	},
 	//观测todos，存入
 	watch: {

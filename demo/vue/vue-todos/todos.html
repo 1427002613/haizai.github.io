@@ -33,7 +33,7 @@
 					<span class="input-group-addon" style="cursor:pointer" @click="allClick()">
 						<span class="glyphicon glyphicon-chevron-down" :class="{'color-light':checkedCount===todos.length}"></span>
 					</span>
-					<input type="text" class="form-control" placeholder="输入todo" v-model="newTodo" @keydown.enter="createTodo()">
+					<input type="text" class="form-control" placeholder="输入todo,按Enter确认" v-model="newTodo" @keydown.enter="createTodo()">
 				</div>
 				<div class="list-group">
 					<div class="list-group-item" v-for="todo in todos | status status" @mouseenter="showGlyphicon(todo)" @mouseleave="hideGlyphicon(todo)" transition="todo">
