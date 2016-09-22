@@ -248,6 +248,272 @@
             
               
                 
+                <a class="post-title-link" href="/blog/8/" itemprop="url">
+                  理解原型继承中__proto__与prototype的关系
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-22T12:48:56+08:00" content="2016-09-22">
+              2016-09-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/8/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/8/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">&#125;</div><div class="line">Foo.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'say: '</span> + <span class="keyword">this</span>.name</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">'foo-name'</span>)</div><div class="line"></div><div class="line">foo.__proto__ == Foo.prototype <span class="comment">// true</span></div><div class="line">foo.__proto__.__proto__ == <span class="built_in">Object</span>.prototype <span class="comment">//true</span></div><div class="line"></div><div class="line">foo.sayName() <span class="comment">//"say: foo-name" 来自Foo.prototype</span></div><div class="line">foo.toString() <span class="comment">//"[object Object]" 来自Object.prototype</span></div></pre></td></tr></table></figure>
+<ol>
+<li>当设定Foo.prototype时，<code>Foo.prototype.__proto__</code> -&gt; <code>Object.prototype</code>。</li>
+<li>当设定foo = new Foo()时，<code>foo.__proto__</code> -&gt; <code>Foo.prototype</code>。</li>
+<li>所以<code>foo.__proto__.__proto__</code> -&gt; <code>Foo.prototype.__proto__</code> -&gt; <code>Object.prototype</code>。</li>
+</ol>
+<hr>
+<p>但是<strong>原型继承</strong>时会发出什么呢？<br>下面两种实现<strong>原型继承</strong>：</p>
+<ol>
+<li><code>Object.create(proto)</code> 创建一个拥有指定原型proto的对象</li>
+<li><code>Object.setPrototypeOf(obj, proto)</code> 将一个指定的对象的原型proto设置为另一个对象obj</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//接上面的代码</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Bar</span>(<span class="params">name, label</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">  <span class="keyword">this</span>.label = label</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//将Bar.prototype.__proto__ 指向 Foo.prototype</span></div><div class="line">Bar.prototype = <span class="built_in">Object</span>.create( Foo.prototype ) <span class="comment">// ES5写法</span></div><div class="line"><span class="built_in">Object</span>.setPrototypeOf( Bar.prototype, Foo.prototype ) <span class="comment">//ES6写法</span></div><div class="line"></div><div class="line">Bar.prototype.sayLabel = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'say: '</span> + <span class="keyword">this</span>.label</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> Bar(<span class="string">'bar-name'</span>, <span class="string">'bar-label'</span>) </div><div class="line"></div><div class="line">bar.__proto__ == Bar.prototype <span class="comment">//true</span></div><div class="line">bar.__proto__.__proto__  == Foo.prototype <span class="comment">//true</span></div><div class="line">bar.__proto__.__proto__.__proto__ == <span class="built_in">Object</span>.prototype <span class="comment">//true</span></div><div class="line"></div><div class="line">bar.sayLabel() <span class="comment">//"say: bar-label" 来自Bar.prototype</span></div><div class="line">bar.sayName() <span class="comment">//"say: bar-name" 来自Foo.prototype</span></div><div class="line">bar.toString() <span class="comment">//"[object Object]" 来自Object.prototype</span></div></pre></td></tr></table></figure>
+<ol>
+<li>当设定<strong>原型继承</strong>时，<code>Bar.prototype.__proto__</code> -&gt; <code>Foo.prototype</code>。</li>
+<li>当设定bar = new Bar()时，<code>bar.__proto__</code> -&gt; <code>Bar.prototype</code>。</li>
+<li>所以<code>bar.__proto__.__proto__</code> -&gt; <code>Bar.prototype.__proto__</code> -&gt; <code>Foo.prototype</code>。</li>
+<li>所以<code>bar.__proto__.__proto__.__proto__</code><br>-&gt; <code>Bar.prototype.__proto__.__proto__</code><br>-&gt; <code>Foo.prototype.__proto__</code><br>-&gt; <code>Object.prototype</code>。</li>
+</ol>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/7/" itemprop="url">
+                  读「你不知道的javascript」之构造函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-22T11:14:00+08:00" content="2016-09-22">
+              2016-09-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/「你不知道的javascript」/" itemprop="url" rel="index">
+                    <span itemprop="name">「你不知道的javascript」</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/7/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/7/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><code>Object.getPrototypeOf(obj)</code>返回指定obj的[[Prototype]]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo()</div><div class="line"><span class="built_in">Object</span>.getPrototypeOf(foo) === Foo.prototype <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<hr>
+<p><code>Object.prototype.constructor</code> 返回一个指向创建了该对象原型的函数引用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> foo1 = <span class="keyword">new</span> Foo()</div><div class="line">foo1.constructor == Foo <span class="comment">//true</span></div><div class="line"></div><div class="line">Foo.prototype = &#123;&#125;</div><div class="line"><span class="keyword">var</span> foo2 = <span class="keyword">new</span> Foo()</div><div class="line">foo2.constructor == Foo <span class="comment">//false</span></div><div class="line">foo2.constructor == <span class="built_in">Object</span> <span class="comment">//true</span></div><div class="line"></div><div class="line">Foo.prototype.constructor = Foo</div><div class="line"><span class="keyword">var</span> foo3 = <span class="keyword">new</span> Foo()</div><div class="line">foo2.constructor == Foo <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>当Foo.prototype被指定时，Foo.prototype没有.constructor属性，<br>foo.constructor继续委托至Object.prototype.constructor。<br>当然你可以自己指定一个Foo.prototype.constructor，这样foo.constructor就指向这个Foo了</p>
+<hr>
+<h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">&#125;</div><div class="line">Foo.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'say: '</span> + <span class="keyword">this</span>.name</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">'foo-name'</span>)</div><div class="line">foo <span class="comment">// Foo &#123;name: "foo-name"&#125;</span></div><div class="line">foo.name <span class="comment">// 'foo-name'</span></div><div class="line">foo.__proto__ <span class="comment">// Object &#123;sayName: function()&#125;</span></div><div class="line">foo.sayName <span class="comment">// "say: foo-name"</span></div><div class="line"></div><div class="line">foo.__proto__ == Foo.prototype <span class="comment">//true</span></div><div class="line">foo.__proto__.__proto__ == <span class="built_in">Object</span>.prototype <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>一个new Foo() 的<code>[[Prototype]]</code>即<code>__proto__</code>指向 Foo.prototype !</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/demo-3/" itemprop="url">
                   demo——vue入门todos
                 </a>
@@ -338,6 +604,7 @@
 <li>localStorage储存时需要<code>JSON.stringify()</code>，localStorage读取时需要<code>JSON.parse()</code>。</li>
 <li>vue用起来真心好顺畅，再也不用操纵DOM，MVVM时代~~</li>
 </ol>
+<hr>
 
           
         
@@ -478,6 +745,7 @@
 <li>计算日期过程调试非常多才成功，具体实现是这样：根据上个月最后一天的周几确定上个月还有几天，根据这个最后一天确定这个月，根据这个月最后一天的周几确定下个月初有几天，最后把这三部分合在在一起，每次render()时执行。</li>
 <li>循环绑定耦合度高，不易维护。越发感觉到MVVM的好~</li>
 </ol>
+<hr>
 
           
         
@@ -606,8 +874,10 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// 10</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>原型链上层的setter属性，赋值赋值时调用这个setter，不屏蔽</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;</div><div class="line">  set: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>._a = value * <span class="number">2</span></div><div class="line">  &#125;,</div><div class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>._a) </div><div class="line">      <span class="keyword">return</span> <span class="string">'get:'</span> + <span class="keyword">this</span>._a</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// "get:40"</span></div></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;</div><div class="line">  set: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>._a = value * <span class="number">2</span></div><div class="line">  &#125;,</div><div class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>._a) </div><div class="line">      <span class="keyword">return</span> <span class="string">'get:'</span> + <span class="keyword">this</span>._a</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// "get:40"</span></div></pre></td></tr></table></figure>
+</li>
 </ol>
+<hr>
 
           
         
@@ -749,6 +1019,7 @@
 <hr>
 <h3 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h3><p>当设置get或set时，会忽略value和writable<br>有以下两种方式设置get或set，其中第二种默认enumerable: false, configurable: false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="number">2</span> &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj,<span class="string">'b'</span>,&#123;</div><div class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a*<span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">obj.a <span class="comment">// 2</span></div><div class="line">obj.b <span class="comment">// 4</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'a'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: true, configurable: true&#125;</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'b'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: false, configurable: false&#125;</span></div></pre></td></tr></table></figure></p>
 <p>一般来说get 和 set 同时出现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="keyword">this</span>._a &#125;,</div><div class="line">  set a(val)&#123; <span class="keyword">this</span>._a = val * <span class="number">2</span>&#125;</div><div class="line">&#125;</div><div class="line">obj.a = <span class="number">10</span></div><div class="line">obj.a <span class="comment">// 20</span></div><div class="line">obj._a <span class="comment">// 20</span></div></pre></td></tr></table></figure></p>
+<hr>
 
           
         
@@ -891,6 +1162,7 @@
 <li>在如此混杂的js添加css动画很晕，隐藏和删除的动画难以绑定。</li>
 <li>用原生js操纵DOM真的很不方便（自从用了Vue以后），耦合非常高，代码不易维护（现在回头来看都快晕了）。</li>
 </ol>
+<hr>
 
           
         
@@ -1049,6 +1321,7 @@
 <li>隐式绑定 <code>obj.foo()</code></li>
 <li>默认绑定 <code>foo()</code></li>
 </ol>
+<hr>
 
           
         
@@ -1181,6 +1454,7 @@
 <p><code>&lt;p&gt;</code>的<code>margin-bottom</code>设为10px，而<code>font-family;font-size;line-height;color;</code>均继承于<a href="/blog/2">body</a>。</p>
 <h3 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.lead</span> &#123;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="variable">$line-height-computed</span>;<span class="comment">//20px</span></div><div class="line">  <span class="attribute">font-size</span>: floor((<span class="variable">$font-size-base</span> * <span class="number">1.15</span>));<span class="comment">//16px</span></div><div class="line">  <span class="attribute">font-weight</span>: <span class="number">300</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1.4</span>;</div><div class="line"></div><div class="line">  @<span class="keyword">media</span> (min-width: <span class="variable">$screen-sm-min</span>) &#123;<span class="comment">//768px</span></div><div class="line">    <span class="attribute">font-size</span>: (<span class="variable">$font-size-base</span> * <span class="number">1.5</span>);<span class="comment">//21px</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>.lead</code>, 值得注意的是这里出现的<code>@media</code>。<code>font-size</code>在大于768px时为21px, 小于768px为16px</p>
+<hr>
 
           
         
@@ -1319,128 +1593,7 @@
 <li>$body-bg<br>30行 <code>$body-bg:               #fff !default;</code></li>
 </ul>
 <p>当然这很简单很基础，我们通过简单的方式大致了解的bootstrap的sass源码基本的引用流程，将来在自定义的时候可以很轻松的修改variables。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/1/" itemprop="url">
-                  初识js中var, let, const块作用域
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-16T23:18:26+08:00" content="2016-09-16">
-              2016-09-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ES6/" itemprop="url" rel="index">
-                    <span itemprop="name">ES6</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在ES6之前，<code>var</code>的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字<code>let</code>与<code>const</code>正是改变了这种现状。以下是常见的简单if和for语句的例子。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">false</span>) &#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">1</span></div><div class="line">  <span class="keyword">let</span> b = <span class="number">1</span></div><div class="line">  <span class="keyword">const</span> c = <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1 </span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// undefined </span></div><div class="line"><span class="built_in">console</span>.log(c); <span class="comment">// undefined </span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> d = <span class="number">0</span>; d &lt; <span class="number">5</span>; d++) &#123; &#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e = <span class="number">0</span>; e &lt; <span class="number">5</span>; e++) &#123; &#125;</div><div class="line"><span class="built_in">console</span>.log(d); <span class="comment">// 5 </span></div><div class="line"><span class="built_in">console</span>.log(e); <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>显然<code>var</code>污染了外层的作用域，即使if为false不执行内部语句。</p>
+<hr>
 
           
         
@@ -1472,6 +1625,10 @@
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1510,7 +1667,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

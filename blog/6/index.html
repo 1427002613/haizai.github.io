@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://yoursite.com/blog/6/index.html">
 <meta property="og:site_name" content="Haizai">
 <meta property="og:description" content="Object.create(proto, [ propertiesObject ])可以创建一个指定原型proto，和新的键和值prototype.isPrototypeOf(obj) 返回prototype是否为obj的原型链上obj.hasOwnProperty(prop) 返回obj是否含有指定的自身属性。123456789var obj1 = &amp;#123;b: &apos;str&apos;&amp;#125;var">
-<meta property="og:updated_time" content="2016-09-20T04:20:40.981Z">
+<meta property="og:updated_time" content="2016-09-22T04:35:43.584Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读「你不知道的javascript」之prototype屏蔽">
 <meta name="twitter:description" content="Object.create(proto, [ propertiesObject ])可以创建一个指定原型proto，和新的键和值prototype.isPrototypeOf(obj) 返回prototype是否为obj的原型链上obj.hasOwnProperty(prop) 返回obj是否含有指定的自身属性。123456789var obj1 = &amp;#123;b: &apos;str&apos;&amp;#125;var">
@@ -321,8 +321,10 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// 10</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>原型链上层的setter属性，赋值赋值时调用这个setter，不屏蔽</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;</div><div class="line">  set: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>._a = value * <span class="number">2</span></div><div class="line">  &#125;,</div><div class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>._a) </div><div class="line">      <span class="keyword">return</span> <span class="string">'get:'</span> + <span class="keyword">this</span>._a</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// "get:40"</span></div></pre></td></tr></table></figure></li>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;</div><div class="line">  set: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>._a = value * <span class="number">2</span></div><div class="line">  &#125;,</div><div class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>._a) </div><div class="line">      <span class="keyword">return</span> <span class="string">'get:'</span> + <span class="keyword">this</span>._a</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// "get:40"</span></div></pre></td></tr></table></figure>
+</li>
 </ol>
+<hr>
 
       
     </div>
@@ -436,7 +438,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

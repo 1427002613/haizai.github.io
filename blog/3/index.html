@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Haizai">
 <meta property="og:description" content="可以结合官网起步排版一起学习其中排版在bootstrap/type中，变量在bootstrap/variables中，（变量以//注释的方式显示）
 标题1234567891011121314h1, h2, h3, h4, h5, h6,.h1, .h2, .h3, .h4, .h5, .h6 &amp;#123;  font-family: $headings-font-family;//inherit">
-<meta property="og:updated_time" content="2016-09-18T08:02:11.945Z">
+<meta property="og:updated_time" content="2016-09-22T04:36:25.896Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bootstrap的sass源码学习笔记（二）：排版篇（上）">
 <meta name="twitter:description" content="可以结合官网起步排版一起学习其中排版在bootstrap/type中，变量在bootstrap/variables中，（变量以//注释的方式显示）
@@ -328,6 +328,7 @@
 <p><code>&lt;p&gt;</code>的<code>margin-bottom</code>设为10px，而<code>font-family;font-size;line-height;color;</code>均继承于<a href="/blog/2">body</a>。</p>
 <h3 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.lead</span> &#123;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="variable">$line-height-computed</span>;<span class="comment">//20px</span></div><div class="line">  <span class="attribute">font-size</span>: floor((<span class="variable">$font-size-base</span> * <span class="number">1.15</span>));<span class="comment">//16px</span></div><div class="line">  <span class="attribute">font-weight</span>: <span class="number">300</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1.4</span>;</div><div class="line"></div><div class="line">  @<span class="keyword">media</span> (min-width: <span class="variable">$screen-sm-min</span>) &#123;<span class="comment">//768px</span></div><div class="line">    <span class="attribute">font-size</span>: (<span class="variable">$font-size-base</span> * <span class="number">1.5</span>);<span class="comment">//21px</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p><code>.lead</code>, 值得注意的是这里出现的<code>@media</code>。<code>font-size</code>在大于768px时为21px, 小于768px为16px</p>
+<hr>
 
       
     </div>
@@ -445,7 +446,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
