@@ -16,7 +16,7 @@ new Vue({
   },
   computed: {
     checkedCount: function () {
-      let count = 0
+      var count = 0
       this.todos.forEach( function(todo) {
         if( todo.isChecked === true ) count++
       })
