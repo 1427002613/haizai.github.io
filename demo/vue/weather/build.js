@@ -50,7 +50,7 @@ var appVue = new Vue({
             $.ajax({
               //获得ip对应的城市名
               type: 'GET',
-              url: 'http://apis.baidu.com/showapi_open_bus/ip/ip',
+              url: 'https://apis.baidu.com/showapi_open_bus/ip/ip', // 必须使用https协议
               data: {ip:returnCitySN.cip},
               headers: {apikey: 'ace4c062b938e16663ff786b61323c75'},
               success: function(msg) {
