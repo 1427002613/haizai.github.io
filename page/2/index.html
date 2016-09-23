@@ -248,6 +248,145 @@
             
               
                 
+                <a class="post-title-link" href="/blog/2/" itemprop="url">
+                  Bootstrap的sass源码学习笔记（一）：body篇
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-17T14:19:09+08:00" content="2016-09-17">
+              2016-09-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Bootstrap/" itemprop="url" rel="index">
+                    <span itemprop="name">Bootstrap</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a><a href="http://v3.bootcss.com/" target="_blank" rel="external">Bootstrap</a></h3><p>  Bootstrap是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。<br>  为所有开发者、所有应用场景而设计。<br>  Bootstrap 让前端开发更快速、简单。所有开发者都能快速上手、所有设备都可以适配、所有项目都适用。</p>
+<h4 id="预处理脚本"><a href="#预处理脚本" class="headerlink" title="预处理脚本"></a>预处理脚本</h4><p>  虽然可以直接使用 Bootstrap 提供的 CSS 样式表，不要忘记 Bootstrap 的源码是基于最流行的 CSS 预处理脚本 - Less 和 Sass 开发的。你可以采用预编译的 CSS 文件快速开发，也可以从源码定制自己需要的样式。</p>
+<h4 id="一个框架、多种设备"><a href="#一个框架、多种设备" class="headerlink" title="一个框架、多种设备"></a>一个框架、多种设备</h4><p>  你的网站和应用能在 Bootstrap 的帮助下通过同一份代码快速、有效适配手机、平板、PC 设备，这一切都是 CSS 媒体查询（Media Query）的功劳。</p>
+<h4 id="特性齐全"><a href="#特性齐全" class="headerlink" title="特性齐全"></a>特性齐全</h4><p>  Bootstrap 提供了全面、美观的文档。你能在这里找到关于 HTML 元素、HTML 和 CSS 组件、jQuery 插件方面的所有详细文档。</p>
+</blockquote>
+<p>本系列我个人对Bootstrap的sass源码学习笔记，sass源码地址在Bootstrap的<a href="http://v3.bootcss.com/getting-started/" target="_blank" rel="external">起步</a>页面下sass中<code>下载 Sass 项目</code><br>下载完成后进入<code>bootstrap-sass-3.3.5\assets\stylesheets</code>打开<code>_bootstrap.scss</code>。<br>里面是几十行<code>@import &quot;bootstrap/...&quot;;</code>,这构成了整个完整的Bootstrap。</p>
+<hr>
+<h3 id="body篇"><a href="#body篇" class="headerlink" title="body篇"></a>body篇</h3><p>首先建立一个新的HTML页面，引入Bootstrap，打开chrome的开发者工具，可以发现body的css是这样的<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1.42857143</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这在Bootstrap的sass源码中是怎样的呢？<br>在<code>bootstrap/scaffolding</code>下。打开后找到第27行<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: $font-family-base;</div><div class="line">  <span class="attribute">font-size</span>: $font-size-base;</div><div class="line">  <span class="attribute">line-height</span>: $line-height-base;</div><div class="line">  <span class="attribute">color</span>: $text-color;</div><div class="line">  <span class="attribute">background-color</span>: $body-bg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>发现其中每个属性值都是变量，其中变量的文件又在<code>bootstrap/variables</code>下，打开它。</p>
+<ul>
+<li>$font-family-base<br>50行 <code>$font-family-base:        $font-family-sans-serif !default;</code><br>46行 <code>$font-family-sans-serif:  &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif !default;</code></li>
+<li>$font-size-base<br>52行 <code>$font-size-base:          14px !default;</code></li>
+<li>$line-height-base<br>64行 <code>$line-height-base:        1.428571429 !default; // 20/14</code></li>
+<li>$text-color<br>32行 <code>$text-color:            $gray-dark !default;</code><br>13行 <code>$gray-dark:              lighten($gray-base, 20%) !default;   // #333</code><br>11行 <code>$gray-base:              #000 !default;</code></li>
+<li>$body-bg<br>30行 <code>$body-bg:               #fff !default;</code></li>
+</ul>
+<p>当然这很简单很基础，我们通过简单的方式大致了解的bootstrap的sass源码基本的引用流程，将来在自定义的时候可以很轻松的修改variables。</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/1/" itemprop="url">
                   初识js中var, let, const块作用域
                 </a>
@@ -395,7 +534,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

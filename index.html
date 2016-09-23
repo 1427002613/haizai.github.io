@@ -248,6 +248,161 @@
             
               
                 
+                <a class="post-title-link" href="/blog/demo-4/" itemprop="url">
+                  demo——vue+jQueryAjax实现天气预报
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-23T15:44:36+08:00" content="2016-09-23">
+              2016-09-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/demo/" itemprop="url" rel="index">
+                    <span itemprop="name">demo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/demo-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/demo-4/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><h3 id="demo地址：vue-jQueryAjax实现天气预报"><a href="#demo地址：vue-jQueryAjax实现天气预报" class="headerlink" title="demo地址：vue+jQueryAjax实现天气预报"></a>demo地址：<a href="/demo/vue/weather/weather.html">vue+jQueryAjax实现天气预报</a></h3></li>
+<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/haizai.github.io/tree/master/demo/vue/weather" target="_blank" rel="external">github源码</a></h4></li>
+<li><h4 id="依赖：vue，jQuery，和风天气API"><a href="#依赖：vue，jQuery，和风天气API" class="headerlink" title="依赖：vue，jQuery，和风天气API"></a>依赖：<a href="https://vuejs.org.cn/" target="_blank" rel="external">vue</a>，<a href="http://jquery.com/" target="_blank" rel="external">jQuery</a>，<a href="http://www.heweather.com/documents/api" target="_blank" rel="external">和风天气API</a></h4></li>
+<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
+</ul>
+<ol>
+<li>vue + jQuery的ajax实现简单的天气预报。</li>
+<li>初始化时发送ajax获得本机ip的城市，再发送ajax返回天气预报。</li>
+<li>城市下方的<strong>「点击切换」</strong>点击以后，可以输入国内其他城市名切换城市发送ajax。</li>
+<li><strong>「点击切换」</strong>输入内容以后出现浮出框供选择。</li>
+<li>css过渡虽然看似很简单，实际上发送ajax和css过渡异步进行，css过渡显示和ajax返回不堵塞。</li>
+<li>写了一点响应式，使用flex布局，IE10+。</li>
+</ol>
+<ul>
+<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
+</ul>
+<ol>
+<li>第一次用jQuery的ajax，稍微了解了一定的ajax。</li>
+<li>vue和ajax结合，途中也遇到了很多坑，最后用vue的created和transition解决了。</li>
+<li>一共用3个ajax，流程是这样的：<ol>
+<li>初次打开时直接发送ajax返回本机ip。</li>
+<li>ip为参数发送ajax返回所在城市名。</li>
+<li>城市名为参数发送ajax返回天气预报。</li>
+<li>切换城市后，再回到第3步。</li>
+</ol>
+</li>
+<li>ajax的第4步和css过渡异步进行，过程是这样：<ol>
+<li>切换城市时同时发送ajax和css过渡隐藏。</li>
+<li>若ajax先返回，返回值赋值给newData。当css过渡隐藏结束时将newData赋给data，再css过渡显示。</li>
+<li>当css过渡隐藏先结束，则什么都不干/(ㄒoㄒ)/~~，待到ajax返回时，返回值直接赋值给data，再css过渡显示。</li>
+<li>这样以来无论过渡时间设置为多久，都不会出现BUG（别问我怎么知道了，调试了好久~~~）</li>
+</ol>
+</li>
+</ol>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/8/" itemprop="url">
                   理解原型继承中__proto__与prototype的关系
                 </a>
@@ -1484,145 +1639,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2/" itemprop="url">
-                  Bootstrap的sass源码学习笔记（一）：body篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T14:19:09+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Bootstrap/" itemprop="url" rel="index">
-                    <span itemprop="name">Bootstrap</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a><a href="http://v3.bootcss.com/" target="_blank" rel="external">Bootstrap</a></h3><p>  Bootstrap是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。<br>  为所有开发者、所有应用场景而设计。<br>  Bootstrap 让前端开发更快速、简单。所有开发者都能快速上手、所有设备都可以适配、所有项目都适用。</p>
-<h4 id="预处理脚本"><a href="#预处理脚本" class="headerlink" title="预处理脚本"></a>预处理脚本</h4><p>  虽然可以直接使用 Bootstrap 提供的 CSS 样式表，不要忘记 Bootstrap 的源码是基于最流行的 CSS 预处理脚本 - Less 和 Sass 开发的。你可以采用预编译的 CSS 文件快速开发，也可以从源码定制自己需要的样式。</p>
-<h4 id="一个框架、多种设备"><a href="#一个框架、多种设备" class="headerlink" title="一个框架、多种设备"></a>一个框架、多种设备</h4><p>  你的网站和应用能在 Bootstrap 的帮助下通过同一份代码快速、有效适配手机、平板、PC 设备，这一切都是 CSS 媒体查询（Media Query）的功劳。</p>
-<h4 id="特性齐全"><a href="#特性齐全" class="headerlink" title="特性齐全"></a>特性齐全</h4><p>  Bootstrap 提供了全面、美观的文档。你能在这里找到关于 HTML 元素、HTML 和 CSS 组件、jQuery 插件方面的所有详细文档。</p>
-</blockquote>
-<p>本系列我个人对Bootstrap的sass源码学习笔记，sass源码地址在Bootstrap的<a href="http://v3.bootcss.com/getting-started/" target="_blank" rel="external">起步</a>页面下sass中<code>下载 Sass 项目</code><br>下载完成后进入<code>bootstrap-sass-3.3.5\assets\stylesheets</code>打开<code>_bootstrap.scss</code>。<br>里面是几十行<code>@import &quot;bootstrap/...&quot;;</code>,这构成了整个完整的Bootstrap。</p>
-<hr>
-<h3 id="body篇"><a href="#body篇" class="headerlink" title="body篇"></a>body篇</h3><p>首先建立一个新的HTML页面，引入Bootstrap，打开chrome的开发者工具，可以发现body的css是这样的<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1.42857143</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这在Bootstrap的sass源码中是怎样的呢？<br>在<code>bootstrap/scaffolding</code>下。打开后找到第27行<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: $font-family-base;</div><div class="line">  <span class="attribute">font-size</span>: $font-size-base;</div><div class="line">  <span class="attribute">line-height</span>: $line-height-base;</div><div class="line">  <span class="attribute">color</span>: $text-color;</div><div class="line">  <span class="attribute">background-color</span>: $body-bg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>发现其中每个属性值都是变量，其中变量的文件又在<code>bootstrap/variables</code>下，打开它。</p>
-<ul>
-<li>$font-family-base<br>50行 <code>$font-family-base:        $font-family-sans-serif !default;</code><br>46行 <code>$font-family-sans-serif:  &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif !default;</code></li>
-<li>$font-size-base<br>52行 <code>$font-size-base:          14px !default;</code></li>
-<li>$line-height-base<br>64行 <code>$line-height-base:        1.428571429 !default; // 20/14</code></li>
-<li>$text-color<br>32行 <code>$text-color:            $gray-dark !default;</code><br>13行 <code>$gray-dark:              lighten($gray-base, 20%) !default;   // #333</code><br>11行 <code>$gray-base:              #000 !default;</code></li>
-<li>$body-bg<br>30行 <code>$body-bg:               #fff !default;</code></li>
-</ul>
-<p>当然这很简单很基础，我们通过简单的方式大致了解的bootstrap的sass源码基本的引用流程，将来在自定义的时候可以很轻松的修改variables。</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1668,7 +1684,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
