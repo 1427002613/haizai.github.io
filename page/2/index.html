@@ -248,6 +248,139 @@
             
               
                 
+                <a class="post-title-link" href="/blog/3/" itemprop="url">
+                  Bootstrap的sass源码学习笔记（二）：排版篇（上）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-17T20:31:04+08:00" content="2016-09-17">
+              2016-09-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Bootstrap/" itemprop="url" rel="index">
+                    <span itemprop="name">Bootstrap</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/3/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>可以结合官网起步<a href="http://v3.bootcss.com/css/#type" target="_blank" rel="external">排版</a>一起学习<br>其中排版在<code>bootstrap/type</code>中，变量在<code>bootstrap/variables</code>中，（变量以//注释的方式显示）</p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>,</div><div class="line"><span class="selector-class">.h1</span>, <span class="selector-class">.h2</span>, <span class="selector-class">.h3</span>, <span class="selector-class">.h4</span>, <span class="selector-class">.h5</span>, <span class="selector-class">.h6</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="variable">$headings-font-family</span>;<span class="comment">//inherit</span></div><div class="line">  <span class="attribute">font-weight</span>: <span class="variable">$headings-font-weight</span>;<span class="comment">//500</span></div><div class="line">  <span class="attribute">line-height</span>: <span class="variable">$headings-line-height</span>;<span class="comment">//1.1</span></div><div class="line">  <span class="attribute">color</span>: <span class="variable">$headings-color</span>;<span class="comment">//inherit</span></div><div class="line"></div><div class="line">  <span class="selector-tag">small</span>,</div><div class="line">  <span class="selector-class">.small</span> &#123;</div><div class="line">    <span class="attribute">font-weight</span>: normal;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="variable">$headings-small-color</span>;<span class="comment">//$gray-light=&gt;#777</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>可以看出<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>与<code>.h1</code>-<code>.h6</code>的共同样式：font-family与color为继承，font-weight为500，line-height为1.1。<br>他们的子元素<code>&lt;small&gt;</code>或<code>.small</code>：font-weight减小为normal(400)，line-height减小为1，颜色变成固定的gray-light(#777)</p>
+<hr>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span>, <span class="selector-class">.h1</span>,</div><div class="line"><span class="selector-tag">h2</span>, <span class="selector-class">.h2</span>,</div><div class="line"><span class="selector-tag">h3</span>, <span class="selector-class">.h3</span> &#123;</div><div class="line">  <span class="attribute">margin-top</span>: <span class="variable">$line-height-computed</span>;<span class="comment">//~20px</span></div><div class="line">  <span class="attribute">margin-bottom</span>: (<span class="variable">$line-height-computed</span> / <span class="number">2</span>);<span class="comment">//~10px</span></div><div class="line"></div><div class="line">  <span class="selector-tag">small</span>,</div><div class="line">  <span class="selector-class">.small</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">65%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">h4</span>, <span class="selector-class">.h4</span>,</div><div class="line"><span class="selector-tag">h5</span>, <span class="selector-class">.h5</span>,</div><div class="line"><span class="selector-tag">h6</span>, <span class="selector-class">.h6</span> &#123;</div><div class="line">  <span class="attribute">margin-top</span>: (<span class="variable">$line-height-computed</span> / <span class="number">2</span>);<span class="comment">//~10px</span></div><div class="line">  <span class="attribute">margin-bottom</span>: (<span class="variable">$line-height-computed</span> / <span class="number">2</span>);<span class="comment">//~10px</span></div><div class="line"></div><div class="line">  <span class="selector-tag">small</span>,</div><div class="line">  <span class="selector-class">.small</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">75%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">small</span>,</div><div class="line"><span class="selector-class">.small</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>: floor((<span class="number">100%</span> * <span class="variable">$font-size-small</span> / <span class="variable">$font-size-base</span>));<span class="comment">//85%</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>其中$line-height-computed // floor(($font-size-base * $line-height-base)) // floor(14px * 1.428571429) // 20px<br>可以看出前3个<code>margin-top</code>为20px，后3个<code>margin-top</code>为10px。而margin-bottom均为10px。<br>前3个的small的<code>font-size</code>为自身的65%, 前3个的small的<code>font-size</code>为自身的75%。<br>不在h下的small的<code>font-size</code>为父级的85%</p>
+<hr>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span>, <span class="selector-class">.h1</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h1</span>; &#125;<span class="comment">//floor(($font-size-base * 2.6))//36px</span></div><div class="line"><span class="selector-tag">h2</span>, <span class="selector-class">.h2</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h2</span>; &#125;<span class="comment">//floor(($font-size-base * 2.15))//30px</span></div><div class="line"><span class="selector-tag">h3</span>, <span class="selector-class">.h3</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h3</span>; &#125;<span class="comment">//ceil(($font-size-base * 1.7))//24px</span></div><div class="line"><span class="selector-tag">h4</span>, <span class="selector-class">.h4</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h4</span>; &#125;<span class="comment">//ceil(($font-size-base * 1.25))//18px</span></div><div class="line"><span class="selector-tag">h5</span>, <span class="selector-class">.h5</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h5</span>; &#125;<span class="comment">//$font-size-base//14px</span></div><div class="line"><span class="selector-tag">h6</span>, <span class="selector-class">.h6</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h6</span>; &#125;<span class="comment">//ceil(($font-size-base * 0.85))//12px</span></div></pre></td></tr></table></figure>
+<p>这是每个h的font-size，其中<code>h5</code>是基础的14px</p>
+<h2 id="页面主体"><a href="#页面主体" class="headerlink" title="页面主体"></a>页面主体</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> (<span class="variable">$line-height-computed</span> / <span class="number">2</span>);<span class="comment">//~10px</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>&lt;p&gt;</code>的<code>margin-bottom</code>设为10px，而<code>font-family;font-size;line-height;color;</code>均继承于<a href="/blog/2">body</a>。</p>
+<h3 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.lead</span> &#123;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="variable">$line-height-computed</span>;<span class="comment">//20px</span></div><div class="line">  <span class="attribute">font-size</span>: floor((<span class="variable">$font-size-base</span> * <span class="number">1.15</span>));<span class="comment">//16px</span></div><div class="line">  <span class="attribute">font-weight</span>: <span class="number">300</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1.4</span>;</div><div class="line"></div><div class="line">  @<span class="keyword">media</span> (min-width: <span class="variable">$screen-sm-min</span>) &#123;<span class="comment">//768px</span></div><div class="line">    <span class="attribute">font-size</span>: (<span class="variable">$font-size-base</span> * <span class="number">1.5</span>);<span class="comment">//21px</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><code>.lead</code>, 值得注意的是这里出现的<code>@media</code>。<code>font-size</code>在大于768px时为21px, 小于768px为16px</p>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/2/" itemprop="url">
                   Bootstrap的sass源码学习笔记（一）：body篇
                 </a>
@@ -534,7 +667,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
