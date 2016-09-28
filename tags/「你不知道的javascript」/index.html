@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript,ES6," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,19 +84,15 @@
 
 
 
-<meta name="description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
-12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
-<meta property="og:type" content="article">
-<meta property="og:title" content="初识js中var, let, const块作用域">
-<meta property="og:url" content="http://yoursite.com/blog/1/index.html">
+<meta name="description" content="人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Haizai">
+<meta property="og:url" content="http://yoursite.com/tags/「你不知道的javascript」/index.html">
 <meta property="og:site_name" content="Haizai">
-<meta property="og:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
-12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
-<meta property="og:updated_time" content="2016-09-22T04:37:47.252Z">
+<meta property="og:description" content="人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识js中var, let, const块作用域">
-<meta name="twitter:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
-12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
+<meta name="twitter:title" content="Haizai">
+<meta name="twitter:description" content="人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり">
 
 
 
@@ -117,9 +113,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/blog/1/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/「你不知道的javascript」/"/>
 
-  <title> 初识js中var, let, const块作用域 | Haizai </title>
+  <title> 标签: 「你不知道的javascript」 | Haizai </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -140,7 +136,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left  ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -228,153 +224,130 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                初识js中var, let, const块作用域
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T00:18:26+09:00" content="2016-09-16">
-              2016-09-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/javascript/" itemprop="url" rel="index">
-                    <span itemprop="name">javascript</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/1/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <p>在ES6之前，<code>var</code>的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字<code>let</code>与<code>const</code>正是改变了这种现状。以下是常见的简单if和for语句的例子。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">false</span>) &#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">1</span></div><div class="line">  <span class="keyword">let</span> b = <span class="number">1</span></div><div class="line">  <span class="keyword">const</span> c = <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1 </span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// undefined </span></div><div class="line"><span class="built_in">console</span>.log(c); <span class="comment">// undefined </span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> d = <span class="number">0</span>; d &lt; <span class="number">5</span>; d++) &#123; &#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e = <span class="number">0</span>; e &lt; <span class="number">5</span>; e++) &#123; &#125;</div><div class="line"><span class="built_in">console</span>.log(d); <span class="comment">// 5 </span></div><div class="line"><span class="built_in">console</span>.log(e); <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>显然<code>var</code>污染了外层的作用域，即使if为false不执行内部语句。</p>
-<hr>
-
-      
+  <div id="posts" class="posts-collapse">
+    <div class="collection-title">
+      <h2 >
+        「你不知道的javascript」
+        <small>标签</small>
+      </h2>
     </div>
 
-    <div>
+    
       
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
         
-
-      
-    </div>
-
-    <div>
-      
+            <a class="post-title-link" href="/blog/7/" itemprop="url">
+              
+                <span itemprop="name">读「你不知道的javascript」之构造函数</span>
+              
+            </a>
         
+      </h1>
 
-      
-    </div>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-09-22T11:14:00+08:00"
+              content="2016-09-22" >
+          09-22
+        </time>
+      </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/javascript/" rel="tag">#javascript</a>
-          
-            <a href="/tags/ES6/" rel="tag">#ES6</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/2/" rel="prev" title="Bootstrap的sass源码学习笔记（一）：body篇">
-                Bootstrap的sass源码学习笔记（一）：body篇 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
+    
       
-    </div>
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/blog/6/" itemprop="url">
+              
+                <span itemprop="name">读「你不知道的javascript」之prototype屏蔽</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-09-20T12:43:54+08:00"
+              content="2016-09-20" >
+          09-20
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/blog/5/" itemprop="url">
+              
+                <span itemprop="name">读「你不知道的javascript」之object描述符</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-09-19T20:35:35+08:00"
+              content="2016-09-19" >
+          09-19
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      <h1 class="post-title">
+        
+            <a class="post-title-link" href="/blog/4/" itemprop="url">
+              
+                <span itemprop="name">读「你不知道的javascript」之this绑定</span>
+              
+            </a>
+        
+      </h1>
+
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2016-09-18T17:03:34+08:00"
+              content="2016-09-18" >
+          09-18
+        </time>
+      </div>
+
+    </header>
+  </article>
+
+
+    
   </div>
+
+  
 
 
           </div>
@@ -382,14 +355,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="blog/1/"
-           data-title="初识js中var, let, const块作用域" data-url="http://yoursite.com/blog/1/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -409,17 +374,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -469,17 +425,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -576,10 +521,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
-
-
 
   
 

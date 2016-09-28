@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="javascript,ES6," />
+  <meta name="keywords" content="javascript,「javascript设计模式」," />
 
 
 
@@ -84,19 +84,16 @@
 
 
 
-<meta name="description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
-12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
+<meta name="description" content="构造器Constructor模式12345678910111213function Person(name, age) &amp;#123;  this.name = name  this.age = age  this.sayDetail = function() &amp;#123;    return this.name + &apos; is &apos; + this.age + &apos; years old.&apos;  &amp;#125;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="初识js中var, let, const块作用域">
-<meta property="og:url" content="http://yoursite.com/blog/1/index.html">
+<meta property="og:title" content="「javascript设计模式」之构造器模式与模块模式">
+<meta property="og:url" content="http://yoursite.com/blog/10/index.html">
 <meta property="og:site_name" content="Haizai">
-<meta property="og:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
-12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
-<meta property="og:updated_time" content="2016-09-22T04:37:47.252Z">
+<meta property="og:description" content="构造器Constructor模式12345678910111213function Person(name, age) &amp;#123;  this.name = name  this.age = age  this.sayDetail = function() &amp;#123;    return this.name + &apos; is &apos; + this.age + &apos; years old.&apos;  &amp;#125;">
+<meta property="og:updated_time" content="2016-09-27T04:24:11.054Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="初识js中var, let, const块作用域">
-<meta name="twitter:description" content="在ES6之前，var的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字let与const正是改变了这种现状。以下是常见的简单if和for语句的例子。
-12345678910111213if (false) &amp;#123;  var a = 1  let b = 1  const c = 1&amp;#125;console.log(a); // 1 console.log(b); // undefin">
+<meta name="twitter:title" content="「javascript设计模式」之构造器模式与模块模式">
+<meta name="twitter:description" content="构造器Constructor模式12345678910111213function Person(name, age) &amp;#123;  this.name = name  this.age = age  this.sayDetail = function() &amp;#123;    return this.name + &apos; is &apos; + this.age + &apos; years old.&apos;  &amp;#125;">
 
 
 
@@ -117,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/blog/1/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/10/"/>
 
-  <title> 初识js中var, let, const块作用域 | Haizai </title>
+  <title> 「javascript设计模式」之构造器模式与模块模式 | Haizai </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -249,7 +246,7 @@
             
             
               
-                初识js中var, let, const块作用域
+                「javascript设计模式」之构造器模式与模块模式
               
             
           </h1>
@@ -261,8 +258,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T00:18:26+09:00" content="2016-09-16">
-              2016-09-16
+            <time itemprop="dateCreated" datetime="2016-09-27T12:14:00+09:00" content="2016-09-27">
+              2016-09-27
             </time>
           </span>
 
@@ -291,8 +288,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/blog/1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/1/" itemprop="commentsCount"></span>
+                <a href="/blog/10/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/10/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -315,10 +312,13 @@
       
 
       
-        <p>在ES6之前，<code>var</code>的块作用域似乎非常奇怪，与直观认识不同，而ES6新关键字<code>let</code>与<code>const</code>正是改变了这种现状。以下是常见的简单if和for语句的例子。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="literal">false</span>) &#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">1</span></div><div class="line">  <span class="keyword">let</span> b = <span class="number">1</span></div><div class="line">  <span class="keyword">const</span> c = <span class="number">1</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">// 1 </span></div><div class="line"><span class="built_in">console</span>.log(b); <span class="comment">// undefined </span></div><div class="line"><span class="built_in">console</span>.log(c); <span class="comment">// undefined </span></div><div class="line"></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> d = <span class="number">0</span>; d &lt; <span class="number">5</span>; d++) &#123; &#125;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e = <span class="number">0</span>; e &lt; <span class="number">5</span>; e++) &#123; &#125;</div><div class="line"><span class="built_in">console</span>.log(d); <span class="comment">// 5 </span></div><div class="line"><span class="built_in">console</span>.log(e); <span class="comment">// undefined</span></div></pre></td></tr></table></figure>
-<p>显然<code>var</code>污染了外层的作用域，即使if为false不执行内部语句。</p>
+        <p>构造器Constructor模式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">  <span class="keyword">this</span>.age = age</div><div class="line">  <span class="keyword">this</span>.sayDetail = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">' is '</span> + <span class="keyword">this</span>.age + <span class="string">' years old.'</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Person(<span class="string">'Joy'</span>, <span class="number">12</span>)</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Person(<span class="string">'Wang'</span>, <span class="number">14</span>)</div><div class="line"></div><div class="line">a.sayDetail() <span class="comment">//"Joy is 12 years old."</span></div><div class="line">b.sayDetail() <span class="comment">//"Wang is 14 years old."</span></div></pre></td></tr></table></figure></p>
 <hr>
+<p>带原型的构造器<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, age</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">  <span class="keyword">this</span>.age  = age</div><div class="line">&#125;</div><div class="line">Person.prototype.sayDetail = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">' is '</span> + <span class="keyword">this</span>.age + <span class="string">' years old.'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> Person(<span class="string">'Joy'</span>, <span class="number">12</span>)</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> Person(<span class="string">'Wang'</span>, <span class="number">14</span>)</div><div class="line"></div><div class="line">a.sayDetail() <span class="comment">//"Joy is 12 years old."</span></div><div class="line">b.sayDetail() <span class="comment">//"Wang is 14 years old."</span></div></pre></td></tr></table></figure></p>
+<hr>
+<p>模块模式，简单的实例<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">module</span> = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> count = <span class="number">0</span></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    increment: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> ++count</div><div class="line">    &#125;,</div><div class="line">    reset: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> count = <span class="number">0</span></div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="built_in">module</span>.increment() <span class="comment">//1</span></div><div class="line"><span class="built_in">module</span>.increment() <span class="comment">//2</span></div><div class="line"><span class="built_in">module</span>.reset() <span class="comment">//0</span></div><div class="line"><span class="built_in">module</span>.increment() <span class="comment">//1</span></div></pre></td></tr></table></figure></p>
+<hr>
+<p>简单的购物车的例子<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> <span class="built_in">module</span> = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> items = []</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    addItem: <span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">      items.push(item)</div><div class="line">    &#125;,</div><div class="line">    getItemCount: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> items.length</div><div class="line">    &#125;,</div><div class="line">    getTotal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> total = <span class="number">0</span></div><div class="line">      items.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">item</span>) </span>&#123;</div><div class="line">        total += item.price</div><div class="line">      &#125;)</div><div class="line">      <span class="keyword">return</span> total</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="built_in">module</span>.addItem( &#123;name: <span class="string">'name1'</span>, price: <span class="number">20</span>&#125; )</div><div class="line"><span class="built_in">module</span>.addItem( &#123;name: <span class="string">'name2'</span>, price: <span class="number">12</span>&#125; )</div><div class="line"><span class="built_in">module</span>.addItem( &#123;name: <span class="string">'name3'</span>, price: <span class="number">35</span>&#125; )</div><div class="line"></div><div class="line"><span class="built_in">module</span>.getItemCount() <span class="comment">//3</span></div><div class="line"><span class="built_in">module</span>.getTotal() <span class="comment">//67</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -343,7 +343,7 @@
           
             <a href="/tags/javascript/" rel="tag">#javascript</a>
           
-            <a href="/tags/ES6/" rel="tag">#ES6</a>
+            <a href="/tags/「javascript设计模式」/" rel="tag">#「javascript设计模式」</a>
           
         </div>
       
@@ -352,12 +352,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/blog/9/" rel="next" title="判断类型的强大方法：Object.prototype.toString.call()">
+                <i class="fa fa-chevron-left"></i> 判断类型的强大方法：Object.prototype.toString.call()
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/2/" rel="prev" title="Bootstrap的sass源码学习笔记（一）：body篇">
-                Bootstrap的sass源码学习笔记（一）：body篇 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/demo-5/" rel="prev" title="demo——vuex简单实践todos">
+                demo——vuex简单实践todos <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -384,8 +388,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="blog/1/"
-           data-title="初识js中var, let, const块作用域" data-url="http://yoursite.com/blog/1/">
+      <div class="ds-thread" data-thread-key="blog/10/"
+           data-title="「javascript设计模式」之构造器模式与模块模式" data-url="http://yoursite.com/blog/10/">
       </div>
     
   </div>
