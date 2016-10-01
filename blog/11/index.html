@@ -1,0 +1,645 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript,设计模式," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="「javascript设计模式与开发实践」
+策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。简单实例
+123456789101112131415161718192021222324252627282930313233var levelS = function ()&amp;#123;&amp;#125;levelS.prototype.calculate = function(sala">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript设计模式学习笔记——策略模式">
+<meta property="og:url" content="http://yoursite.com/blog/11/index.html">
+<meta property="og:site_name" content="Haizai">
+<meta property="og:description" content="「javascript设计模式与开发实践」
+策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。简单实例
+123456789101112131415161718192021222324252627282930313233var levelS = function ()&amp;#123;&amp;#125;levelS.prototype.calculate = function(sala">
+<meta property="og:updated_time" content="2016-10-01T06:24:57.331Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript设计模式学习笔记——策略模式">
+<meta name="twitter:description" content="「javascript设计模式与开发实践」
+策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。简单实例
+123456789101112131415161718192021222324252627282930313233var levelS = function ()&amp;#123;&amp;#125;levelS.prototype.calculate = function(sala">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/blog/11/"/>
+
+  <title> javascript设计模式学习笔记——策略模式 | Haizai </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Haizai</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript设计模式学习笔记——策略模式
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-30T18:52:04+09:00" content="2016-09-30">
+              2016-09-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/11/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/11/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>「javascript设计模式与开发实践」</p>
+<h4 id="策略模式：-定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。"><a href="#策略模式：-定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。" class="headerlink" title="策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。"></a>策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。</h4><p>简单实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> levelS = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelS.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">4</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> levelA = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelA.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">3</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> levelB = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelB.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">2</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Bonus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.salary = <span class="literal">null</span></div><div class="line">  <span class="keyword">this</span>.strategy = <span class="literal">null</span></div><div class="line">&#125;</div><div class="line">Bonus.prototype = &#123;</div><div class="line">  setSalary: <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.salary = salary</div><div class="line">  &#125;,</div><div class="line">  setStrategy: <span class="function"><span class="keyword">function</span>(<span class="params">strategy</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.strategy = strategy</div><div class="line">  &#125;,</div><div class="line">  getBonus: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.strategy.calculate(<span class="keyword">this</span>.salary)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> bonus = <span class="keyword">new</span> Bonus()</div><div class="line">bonus.setSalary(<span class="number">2000</span>)</div><div class="line">bonus.setStrategy(<span class="keyword">new</span> levelA())</div><div class="line">bonus.getBonus() <span class="comment">//6000</span></div></pre></td></tr></table></figure>
+<p>javascript简化版</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> strategy = &#123;</div><div class="line">  S: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> salary * <span class="number">4</span></div><div class="line">  &#125;,</div><div class="line">  A: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> salary * <span class="number">3</span></div><div class="line">  &#125;,</div><div class="line">  B: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> salary * <span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> calculateBonus = <span class="function"><span class="keyword">function</span>(<span class="params">level, salary</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> strategy[level](salary)</div><div class="line">&#125;</div><div class="line"></div><div class="line">calculateBonus(<span class="string">'A'</span>,<span class="number">2000</span>) <span class="comment">//6000</span></div><div class="line">calculateBonus(<span class="string">'S'</span>,<span class="number">3000</span>) <span class="comment">//12000</span></div></pre></td></tr></table></figure>
+<hr>
+<p>一个简单表单验证</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">  输入用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"userName"</span>&gt;</span></div><div class="line">  请输入密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span></div><div class="line">  请输入手机号：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"phoneNum"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'form'</span>)</div><div class="line">form.onsubmit= <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (form.userName.value === <span class="string">''</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'用户名不能为空'</span>)</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (form.password.value.length &lt; <span class="number">6</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'密码不能少于6位'</span>)</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (!<span class="regexp">/^1[358][0-9]&#123;9&#125;$/</span>.test(form.phoneNum)) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'手机号格式不正确'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>策略模式重构</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">  输入用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"userName"</span>&gt;</span></div><div class="line">  请输入密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span></div><div class="line">  请输入手机号：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"phoneNum"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'form'</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> Validator = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.cache = []</div><div class="line">&#125;</div><div class="line">Validator.prototype.add = <span class="function"><span class="keyword">function</span> (<span class="params">dom, rule, errorMsg</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> arr = rule.split(<span class="string">":"</span>)</div><div class="line">  <span class="keyword">this</span>.cache.push(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> strategy = arr.shift()</div><div class="line">    arr.unshift(dom.value)</div><div class="line">    arr.push(errorMsg)</div><div class="line">    <span class="keyword">return</span> strategies[strategy].apply(dom, arr)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line">Validator.prototype.start = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, fn; fn = <span class="keyword">this</span>.cache[i++];) &#123;</div><div class="line">    <span class="keyword">var</span> msg = fn()</div><div class="line">    <span class="keyword">if</span> (msg) <span class="keyword">return</span> msg</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> strategies = &#123;</div><div class="line">  isNonEmpty: <span class="function"><span class="keyword">function</span> (<span class="params">val, errorMsg</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (val === <span class="string">''</span>) &#123;</div><div class="line">      <span class="keyword">return</span> errorMsg</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  minLength: <span class="function"><span class="keyword">function</span> (<span class="params">val, length, errorMsg</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (val.length &lt; length) &#123;</div><div class="line">      <span class="keyword">return</span> errorMsg</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  isMobile: <span class="function"><span class="keyword">function</span> (<span class="params">val, errorMsg</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="regexp">/^1[358][0-9]&#123;9&#125;$/</span>.test(val)) &#123;</div><div class="line">      <span class="keyword">return</span> errorMsg</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> validataFunc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> validator = <span class="keyword">new</span> Validator()</div><div class="line">  validator.add(form.userName, <span class="string">'isNonEmpty'</span>, <span class="string">'用户名不能为空'</span>)</div><div class="line">  validator.add(form.password, <span class="string">'minLength:6'</span>, <span class="string">'密码长度不能小于6位'</span>)</div><div class="line">  validator.add(form.phoneNum, <span class="string">'isMobile'</span>, <span class="string">'手机号格式不正确'</span>)</div><div class="line">  <span class="keyword">var</span> errorMsg = validator.start()</div><div class="line">  <span class="keyword">return</span> errorMsg</div><div class="line">&#125;</div><div class="line"></div><div class="line">form.onsubmit = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> errorMsg = validataFunc()</div><div class="line">  <span class="keyword">if</span> (errorMsg) &#123;</div><div class="line">    <span class="built_in">console</span>.log(errorMsg);</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>修改add方法接受一个数组，判定不同的规则</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//其他同上</span></div><div class="line">Validator.prototype.add = <span class="function"><span class="keyword">function</span> (<span class="params">dom, rules</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, rule; rule = rules[i++]; ) &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span> (<span class="params">rule</span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> arr = rule.strategy.split(<span class="string">":"</span>)</div><div class="line">      <span class="keyword">var</span> errorMsg = rule.errorMsg</div><div class="line">      self.cache.push(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> strategy = arr.shift()</div><div class="line">        arr.unshift(dom.value)</div><div class="line">        arr.push(errorMsg)</div><div class="line">        <span class="keyword">return</span> strategies[strategy].apply(dom, arr)</div><div class="line">      &#125;)</div><div class="line">    &#125;(rule))</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> validataFunc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> validator = <span class="keyword">new</span> Validator()</div><div class="line">  validator.add(form.userName, [&#123;</div><div class="line">    strategy:<span class="string">'isNonEmpty'</span>, </div><div class="line">    errorMsg:<span class="string">'用户名不能为空'</span></div><div class="line">  &#125;,&#123;</div><div class="line">    strategy:<span class="string">'minLength: 8'</span>, </div><div class="line">    errorMsg:<span class="string">'用户名长度不能小于8位'</span></div><div class="line">  &#125;])</div><div class="line">  validator.add(form.password, [&#123;</div><div class="line">    strategy:<span class="string">'minLength:6'</span>, </div><div class="line">    errorMsg:<span class="string">'密码长度不能小于6位'</span></div><div class="line">  &#125;])</div><div class="line">  validator.add(form.phoneNum, [&#123;</div><div class="line">    strategy:<span class="string">'isMobile'</span>,</div><div class="line">    errorMsg: <span class="string">'手机号格式不正确'</span></div><div class="line">  &#125;])</div><div class="line">  <span class="keyword">var</span> errorMsg = validator.start()</div><div class="line">  <span class="keyword">return</span> errorMsg</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+            <a href="/tags/设计模式/" rel="tag">#设计模式</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/10/" rel="next" title="javascript设计模式学习笔记——单例模式">
+                <i class="fa fa-chevron-left"></i> javascript设计模式学习笔记——单例模式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/12/" rel="prev" title="javascript设计模式学习笔记——代理模式">
+                javascript设计模式学习笔记——代理模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="blog/11/"
+           data-title="javascript设计模式学习笔记——策略模式" data-url="http://yoursite.com/blog/11/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="Haizai" />
+          <p class="site-author-name" itemprop="name">Haizai</p>
+          <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#策略模式：-定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。"><span class="nav-number">1.</span> <span class="nav-text">策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Haizai</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"haizai-github"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

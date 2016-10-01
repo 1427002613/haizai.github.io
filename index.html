@@ -248,6 +248,263 @@
             
               
                 
+                <a class="post-title-link" href="/blog/12/" itemprop="url">
+                  javascript设计模式学习笔记——代理模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-01T12:12:41+08:00" content="2016-10-01">
+              2016-10-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/12/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/12/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="代理模式-为一个对象提供一个代用品或占位符，以便控制对它的访问"><a href="#代理模式-为一个对象提供一个代用品或占位符，以便控制对它的访问" class="headerlink" title="代理模式 为一个对象提供一个代用品或占位符，以便控制对它的访问"></a>代理模式 为一个对象提供一个代用品或占位符，以便控制对它的访问</h4><p>虚拟代理实现图片预加载</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myImage = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>)</div><div class="line">  <span class="built_in">document</span>.body.appendChild(img)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    setSrc: <span class="function"><span class="keyword">function</span> (<span class="params">src</span>) </span>&#123;</div><div class="line">      img.src = src</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="keyword">var</span> proxyImage = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image()</div><div class="line">  img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    myImage.setSrc(<span class="keyword">this</span>.src)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">src</span>) </span>&#123;</div><div class="line">    <span class="comment">//预加载的占位图</span></div><div class="line">    myImage.setSrc(<span class="string">'file:// /E:/computer/image/png/mini-icons/1084294.png'</span>)</div><div class="line">    img.src = src</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line">proxyImage(<span class="string">'http://cdn.duitang.com/uploads/item/201203/10/20120310141838_nZxB5.thumb.600_0.jpeg'</span>)</div></pre></td></tr></table></figure>
+<hr>
+<p>代理模式合并请求，缓存代理</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"1"</span>&gt;</span>1</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"2"</span>&gt;</span>2</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"3"</span>&gt;</span>3</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"4"</span>&gt;</span>4</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"5"</span>&gt;</span>5</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"6"</span>&gt;</span>6</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"7"</span>&gt;</span>7</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"8"</span>&gt;</span>8</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"9"</span>&gt;</span>9</div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'log:'</span>,x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> proxy = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> cache = [], timer</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">id</span>) </span>&#123;</div><div class="line">    cache.push(id)</div><div class="line">    <span class="keyword">if</span> (timer) <span class="keyword">return</span></div><div class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      log(cache.toString())</div><div class="line">      clearTimeout(timer)</div><div class="line">      timer = <span class="literal">null</span></div><div class="line">      cache = []</div><div class="line">    &#125;, <span class="number">2000</span>)</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="keyword">var</span> checkboxs = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'input'</span>)</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, c; c = checkboxs[i++];) &#123;</div><div class="line">  c.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.checked) &#123;</div><div class="line">      proxy(<span class="keyword">this</span>.id);</div><div class="line">    &#125; </div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>缓存代理，计算</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mult = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result = <span class="number">1</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, arg; arg = <span class="built_in">arguments</span>[i++];) &#123;</div><div class="line">    result *= arg</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> proxyMult = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> cache = &#123;&#125;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.join.call(<span class="built_in">arguments</span>, <span class="string">','</span>)</div><div class="line">    <span class="comment">//若有缓存，则直接返回缓存值</span></div><div class="line">    <span class="keyword">if</span> (args <span class="keyword">in</span> cache) &#123;</div><div class="line">      <span class="keyword">return</span> cache[args]</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> cache[args] = mult.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</div><div class="line">  &#125;</div><div class="line">&#125;())</div></pre></td></tr></table></figure>
+<p>代理缓存工厂</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> mult = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result = <span class="number">1</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, arg; arg = <span class="built_in">arguments</span>[i++];) &#123;</div><div class="line">    result *= arg</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> plus = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result = <span class="number">0</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, arg; arg = <span class="built_in">arguments</span>[i++];) &#123;</div><div class="line">    result += arg</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> result</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> createProxyFactory = <span class="function"><span class="keyword">function</span> (<span class="params">fn</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> cache = &#123;&#125;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.join.call(<span class="built_in">arguments</span>, <span class="string">','</span>)</div><div class="line">    <span class="keyword">if</span> (args <span class="keyword">in</span> cache) &#123;</div><div class="line">      <span class="keyword">return</span> cache[args]</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> cache[args] = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> proxyMult = createProxyFactory(mult)</div><div class="line"><span class="keyword">var</span> proxyPlus = createProxyFactory(plus)</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/11/" itemprop="url">
+                  javascript设计模式学习笔记——策略模式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-30T17:52:04+08:00" content="2016-09-30">
+              2016-09-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/11/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/11/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>「javascript设计模式与开发实践」</p>
+<h4 id="策略模式：-定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。"><a href="#策略模式：-定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。" class="headerlink" title="策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。"></a>策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。</h4><p>简单实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> levelS = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelS.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">4</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> levelA = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelA.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">3</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> levelB = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelB.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">2</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Bonus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.salary = <span class="literal">null</span></div><div class="line">  <span class="keyword">this</span>.strategy = <span class="literal">null</span></div><div class="line">&#125;</div><div class="line">Bonus.prototype = &#123;</div><div class="line">  setSalary: <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.salary = salary</div><div class="line">  &#125;,</div><div class="line">  setStrategy: <span class="function"><span class="keyword">function</span>(<span class="params">strategy</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.strategy = strategy</div><div class="line">  &#125;,</div><div class="line">  getBonus: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.strategy.calculate(<span class="keyword">this</span>.salary)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> bonus = <span class="keyword">new</span> Bonus()</div><div class="line">bonus.setSalary(<span class="number">2000</span>)</div><div class="line">bonus.setStrategy(<span class="keyword">new</span> levelA())</div><div class="line">bonus.getBonus() <span class="comment">//6000</span></div></pre></td></tr></table></figure>
+<p>javascript简化版</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> strategy = &#123;</div><div class="line">  S: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> salary * <span class="number">4</span></div><div class="line">  &#125;,</div><div class="line">  A: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> salary * <span class="number">3</span></div><div class="line">  &#125;,</div><div class="line">  B: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> salary * <span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> calculateBonus = <span class="function"><span class="keyword">function</span>(<span class="params">level, salary</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> strategy[level](salary)</div><div class="line">&#125;</div><div class="line"></div><div class="line">calculateBonus(<span class="string">'A'</span>,<span class="number">2000</span>) <span class="comment">//6000</span></div><div class="line">calculateBonus(<span class="string">'S'</span>,<span class="number">3000</span>) <span class="comment">//12000</span></div></pre></td></tr></table></figure>
+<hr>
+<p>一个简单表单验证</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">  输入用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"userName"</span>&gt;</span></div><div class="line">  请输入密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span></div><div class="line">  请输入手机号：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"phoneNum"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'form'</span>)</div><div class="line">form.onsubmit= <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (form.userName.value === <span class="string">''</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'用户名不能为空'</span>)</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (form.password.value.length &lt; <span class="number">6</span>) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'密码不能少于6位'</span>)</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (!<span class="regexp">/^1[358][0-9]&#123;9&#125;$/</span>.test(form.phoneNum)) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'手机号格式不正确'</span>);</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>策略模式重构</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"form"</span>&gt;</span></div><div class="line">  输入用户名：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"userName"</span>&gt;</span></div><div class="line">  请输入密码：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span></div><div class="line">  请输入手机号：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"phoneNum"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'form'</span>)</div><div class="line"></div><div class="line"><span class="keyword">var</span> Validator = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.cache = []</div><div class="line">&#125;</div><div class="line">Validator.prototype.add = <span class="function"><span class="keyword">function</span> (<span class="params">dom, rule, errorMsg</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> arr = rule.split(<span class="string">":"</span>)</div><div class="line">  <span class="keyword">this</span>.cache.push(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> strategy = arr.shift()</div><div class="line">    arr.unshift(dom.value)</div><div class="line">    arr.push(errorMsg)</div><div class="line">    <span class="keyword">return</span> strategies[strategy].apply(dom, arr)</div><div class="line">  &#125;)</div><div class="line">&#125;</div><div class="line">Validator.prototype.start = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, fn; fn = <span class="keyword">this</span>.cache[i++];) &#123;</div><div class="line">    <span class="keyword">var</span> msg = fn()</div><div class="line">    <span class="keyword">if</span> (msg) <span class="keyword">return</span> msg</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> strategies = &#123;</div><div class="line">  isNonEmpty: <span class="function"><span class="keyword">function</span> (<span class="params">val, errorMsg</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (val === <span class="string">''</span>) &#123;</div><div class="line">      <span class="keyword">return</span> errorMsg</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  minLength: <span class="function"><span class="keyword">function</span> (<span class="params">val, length, errorMsg</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (val.length &lt; length) &#123;</div><div class="line">      <span class="keyword">return</span> errorMsg</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  isMobile: <span class="function"><span class="keyword">function</span> (<span class="params">val, errorMsg</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!<span class="regexp">/^1[358][0-9]&#123;9&#125;$/</span>.test(val)) &#123;</div><div class="line">      <span class="keyword">return</span> errorMsg</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> validataFunc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> validator = <span class="keyword">new</span> Validator()</div><div class="line">  validator.add(form.userName, <span class="string">'isNonEmpty'</span>, <span class="string">'用户名不能为空'</span>)</div><div class="line">  validator.add(form.password, <span class="string">'minLength:6'</span>, <span class="string">'密码长度不能小于6位'</span>)</div><div class="line">  validator.add(form.phoneNum, <span class="string">'isMobile'</span>, <span class="string">'手机号格式不正确'</span>)</div><div class="line">  <span class="keyword">var</span> errorMsg = validator.start()</div><div class="line">  <span class="keyword">return</span> errorMsg</div><div class="line">&#125;</div><div class="line"></div><div class="line">form.onsubmit = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> errorMsg = validataFunc()</div><div class="line">  <span class="keyword">if</span> (errorMsg) &#123;</div><div class="line">    <span class="built_in">console</span>.log(errorMsg);</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>修改add方法接受一个数组，判定不同的规则</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//其他同上</span></div><div class="line">Validator.prototype.add = <span class="function"><span class="keyword">function</span> (<span class="params">dom, rules</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span></div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, rule; rule = rules[i++]; ) &#123;</div><div class="line">    (<span class="function"><span class="keyword">function</span> (<span class="params">rule</span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> arr = rule.strategy.split(<span class="string">":"</span>)</div><div class="line">      <span class="keyword">var</span> errorMsg = rule.errorMsg</div><div class="line">      self.cache.push(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> strategy = arr.shift()</div><div class="line">        arr.unshift(dom.value)</div><div class="line">        arr.push(errorMsg)</div><div class="line">        <span class="keyword">return</span> strategies[strategy].apply(dom, arr)</div><div class="line">      &#125;)</div><div class="line">    &#125;(rule))</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> validataFunc = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> validator = <span class="keyword">new</span> Validator()</div><div class="line">  validator.add(form.userName, [&#123;</div><div class="line">    strategy:<span class="string">'isNonEmpty'</span>, </div><div class="line">    errorMsg:<span class="string">'用户名不能为空'</span></div><div class="line">  &#125;,&#123;</div><div class="line">    strategy:<span class="string">'minLength: 8'</span>, </div><div class="line">    errorMsg:<span class="string">'用户名长度不能小于8位'</span></div><div class="line">  &#125;])</div><div class="line">  validator.add(form.password, [&#123;</div><div class="line">    strategy:<span class="string">'minLength:6'</span>, </div><div class="line">    errorMsg:<span class="string">'密码长度不能小于6位'</span></div><div class="line">  &#125;])</div><div class="line">  validator.add(form.phoneNum, [&#123;</div><div class="line">    strategy:<span class="string">'isMobile'</span>,</div><div class="line">    errorMsg: <span class="string">'手机号格式不正确'</span></div><div class="line">  &#125;])</div><div class="line">  <span class="keyword">var</span> errorMsg = validator.start()</div><div class="line">  <span class="keyword">return</span> errorMsg</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/10/" itemprop="url">
                   javascript设计模式学习笔记——单例模式
                 </a>
@@ -318,17 +575,24 @@
       
         
           
-            <h4 id="单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。"><a href="#单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。" class="headerlink" title="单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。"></a>单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。</h4><p>简单实现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Sobj = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name </div><div class="line">&#125;</div><div class="line">Sobj.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</div><div class="line">&#125;;</div><div class="line">Sobj.getInstance = (<span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> instance = <span class="literal">null</span></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!instance) &#123;</div><div class="line">      instance = <span class="keyword">new</span> Sobj(name)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"><span class="keyword">var</span> a = Sobj.getInstance(<span class="string">'s1'</span>)</div><div class="line"><span class="keyword">var</span> b = Sobj.getInstance(<span class="string">'s2'</span>)</div><div class="line"></div><div class="line">a === b <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+            <p>「javascript设计模式与开发实践」</p>
+<h4 id="单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。"><a href="#单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。" class="headerlink" title="单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。"></a>单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。</h4><p>简单实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Sobj = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name </div><div class="line">&#125;</div><div class="line">Sobj.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</div><div class="line">&#125;;</div><div class="line">Sobj.getInstance = (<span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> instance = <span class="literal">null</span></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!instance) &#123;</div><div class="line">      instance = <span class="keyword">new</span> Sobj(name)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"><span class="keyword">var</span> a = Sobj.getInstance(<span class="string">'s1'</span>)</div><div class="line"><span class="keyword">var</span> b = Sobj.getInstance(<span class="string">'s2'</span>)</div><div class="line"></div><div class="line">a === b <span class="comment">// true</span></div></pre></td></tr></table></figure>
 <hr>
-<p>透明的单例模式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> CreateDiv = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> instance</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">CreateDiv</span>(<span class="params">html</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (instance) &#123;</div><div class="line">      <span class="keyword">return</span> instance</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.html = html </div><div class="line">    <span class="keyword">this</span>.init()</div><div class="line">    <span class="keyword">return</span> instance = <span class="keyword">this</span></div><div class="line">  &#125;</div><div class="line">  CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">    div.innerHTML = <span class="keyword">this</span>.html</div><div class="line">    <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">  &#125;;</div><div class="line">  <span class="keyword">return</span> CreateDiv</div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> CreateDiv(<span class="string">'div1'</span>)</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> CreateDiv(<span class="string">'div2'</span>)</div><div class="line"></div><div class="line">a === b <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>透明的单例模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> CreateDiv = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> instance</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">CreateDiv</span>(<span class="params">html</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (instance) &#123;</div><div class="line">      <span class="keyword">return</span> instance</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.html = html </div><div class="line">    <span class="keyword">this</span>.init()</div><div class="line">    <span class="keyword">return</span> instance = <span class="keyword">this</span></div><div class="line">  &#125;</div><div class="line">  CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">    div.innerHTML = <span class="keyword">this</span>.html</div><div class="line">    <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">  &#125;;</div><div class="line">  <span class="keyword">return</span> CreateDiv</div><div class="line">&#125;)()</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> CreateDiv(<span class="string">'div1'</span>)</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> CreateDiv(<span class="string">'div2'</span>)</div><div class="line"></div><div class="line">a === b <span class="comment">//true</span></div></pre></td></tr></table></figure>
 <hr>
-<p>代理实现单例模式<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> CreateDiv = <span class="function"><span class="keyword">function</span> (<span class="params">html</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.html = html</div><div class="line">  <span class="keyword">this</span>.init()</div><div class="line">&#125;</div><div class="line">CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">  div.innerHTML = <span class="keyword">this</span>.html</div><div class="line">  <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">&#125;; </div><div class="line"></div><div class="line"><span class="keyword">var</span> ProxySingletonCreateDiv = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> instance</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!instance) &#123;</div><div class="line">      instance = <span class="keyword">new</span> CreateDiv(html)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> ProxySingletonCreateDiv (<span class="string">'div1'</span>)</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> ProxySingletonCreateDiv (<span class="string">'div2'</span>)</div><div class="line"></div><div class="line">a === b <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>代理实现单例模式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> CreateDiv = <span class="function"><span class="keyword">function</span> (<span class="params">html</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.html = html</div><div class="line">  <span class="keyword">this</span>.init()</div><div class="line">&#125;</div><div class="line">CreateDiv.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">  div.innerHTML = <span class="keyword">this</span>.html</div><div class="line">  <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">&#125;; </div><div class="line"></div><div class="line"><span class="keyword">var</span> ProxySingletonCreateDiv = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> instance</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">html</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!instance) &#123;</div><div class="line">      instance = <span class="keyword">new</span> CreateDiv(html)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> ProxySingletonCreateDiv (<span class="string">'div1'</span>)</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> ProxySingletonCreateDiv (<span class="string">'div2'</span>)</div><div class="line"></div><div class="line">a === b <span class="comment">//true</span></div></pre></td></tr></table></figure>
 <hr>
-<h4 id="惰性单例"><a href="#惰性单例" class="headerlink" title="惰性单例"></a>惰性单例</h4><p>1.开始隐藏，当用户点击登时开始显示。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loginBtn"</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">var</span> loginLayer = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">    div.innerHTML = <span class="string">'我是登入框'</span></div><div class="line">    div.style.display = <span class="string">'none'</span></div><div class="line">    <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">    <span class="keyword">return</span> div</div><div class="line">  &#125;())</div><div class="line"></div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'loginBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    loginLayer.style.display = <span class="string">'block'</span></div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>2.点击按钮时才开始创建, 惰性但非单例<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loginBtn"</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> createLoginLayer = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">  div.innerHTML = <span class="string">'我是登入框'</span></div><div class="line">  div.style.display = <span class="string">'none'</span></div><div class="line">  <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">  <span class="keyword">return</span> div</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'loginBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> loginLayer = createLoginLayer()</div><div class="line">  loginLayer.style.display = <span class="string">'block'</span></div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>3.用一个变量控制是否已经创建过登录浮窗<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loginBtn"</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> createLoginLayer = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> div</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(!div) &#123;</div><div class="line">      div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">      div.innerHTML = <span class="string">'我是登入框'</span></div><div class="line">      div.style.display = <span class="string">'none'</span></div><div class="line">      <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> div</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'loginBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> loginLayer = createLoginLayer()</div><div class="line">  loginLayer.style.display = <span class="string">'block'</span></div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>4.用getSingle()控制单例模式<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loginBtn"</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"iframeBtn"</span>&gt;</span>iframe<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> result || (result = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>))</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> createSingleLoginLayer = getSingle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">  div.innerHTML = <span class="string">'我是登入框'</span></div><div class="line">  div.style.display = <span class="string">'none'</span></div><div class="line">  <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">  <span class="keyword">return</span> div</div><div class="line">&#125;)</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'loginBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> loginLayer = createSingleLoginLayer()</div><div class="line">  loginLayer.style.display = <span class="string">'block'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> createSingleIframe = getSingle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>)</div><div class="line">  iframe.src = <span class="string">'http://baidu.com'</span></div><div class="line">  div.style.display = <span class="string">'none'</span></div><div class="line">  <span class="built_in">document</span>.body.appendChild(iframe)</div><div class="line">  <span class="keyword">return</span> iframe</div><div class="line">&#125;)</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'iframeBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> loginLayer = createSingleIframe()</div><div class="line">  loginLayer.style.display = <span class="string">'block'</span></div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
-
+<h4 id="惰性单例"><a href="#惰性单例" class="headerlink" title="惰性单例"></a>惰性单例</h4><p>1.开始隐藏，当用户点击登时开始显示。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loginBtn"</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="keyword">var</span> loginLayer = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">    div.innerHTML = <span class="string">'我是登入框'</span></div><div class="line">    div.style.display = <span class="string">'none'</span></div><div class="line">    <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">    <span class="keyword">return</span> div</div><div class="line">  &#125;())</div><div class="line"></div><div class="line">  <span class="built_in">document</span>.getElementById(<span class="string">'loginBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    loginLayer.style.display = <span class="string">'block'</span></div><div class="line">  &#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>2.点击按钮时才开始创建, 惰性但非单例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loginBtn"</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> createLoginLayer = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">  div.innerHTML = <span class="string">'我是登入框'</span></div><div class="line">  div.style.display = <span class="string">'none'</span></div><div class="line">  <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">  <span class="keyword">return</span> div</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'loginBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> loginLayer = createLoginLayer()</div><div class="line">  loginLayer.style.display = <span class="string">'block'</span></div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>3.用一个变量控制是否已经创建过登录浮窗</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loginBtn"</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> createLoginLayer = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> div</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(!div) &#123;</div><div class="line">      div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">      div.innerHTML = <span class="string">'我是登入框'</span></div><div class="line">      div.style.display = <span class="string">'none'</span></div><div class="line">      <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> div</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'loginBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> loginLayer = createLoginLayer()</div><div class="line">  loginLayer.style.display = <span class="string">'block'</span></div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>4.用getSingle()控制单例模式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"loginBtn"</span>&gt;</span>登入<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"iframeBtn"</span>&gt;</span>iframe<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="keyword">var</span> getSingle = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> result</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> result || (result = fn.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>))</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> createSingleLoginLayer = getSingle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>)</div><div class="line">  div.innerHTML = <span class="string">'我是登入框'</span></div><div class="line">  div.style.display = <span class="string">'none'</span></div><div class="line">  <span class="built_in">document</span>.body.appendChild(div)</div><div class="line">  <span class="keyword">return</span> div</div><div class="line">&#125;)</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'loginBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> loginLayer = createSingleLoginLayer()</div><div class="line">  loginLayer.style.display = <span class="string">'block'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> createSingleIframe = getSingle(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> iframe = <span class="built_in">document</span>.createElement(<span class="string">'iframe'</span>)</div><div class="line">  iframe.src = <span class="string">'http://baidu.com'</span></div><div class="line">  div.style.display = <span class="string">'none'</span></div><div class="line">  <span class="built_in">document</span>.body.appendChild(iframe)</div><div class="line">  <span class="keyword">return</span> iframe</div><div class="line">&#125;)</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">'iframeBtn'</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> loginLayer = createSingleIframe()</div><div class="line">  loginLayer.style.display = <span class="string">'block'</span></div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
           
         
       
@@ -1348,280 +1612,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/6/" itemprop="url">
-                  读「你不知道的javascript」之prototype屏蔽
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-20T12:43:54+08:00" content="2016-09-20">
-              2016-09-20
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/「你不知道的javascript」/" itemprop="url" rel="index">
-                    <span itemprop="name">「你不知道的javascript」</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/6/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/6/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><code>Object.create(proto, [ propertiesObject ])</code>可以创建一个指定原型proto，和新的键和值<br><code>prototype.isPrototypeOf(obj)</code> 返回prototype是否为obj的原型链上<br><code>obj.hasOwnProperty(prop)</code> 返回obj是否含有指定的自身属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;b: <span class="string">'str'</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1, &#123;</div><div class="line">  a: &#123;value: <span class="number">10</span>&#125;</div><div class="line">&#125;)</div><div class="line">obj2 <span class="comment">// Object &#123;a: 10&#125;</span></div><div class="line">obj2.__proto__ <span class="comment">// Object &#123;b: "str"&#125;</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'a'</span>) <span class="comment">// true</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'b'</span>) <span class="comment">// false</span></div><div class="line">obj1.isPrototypeOf(obj2) <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
-<h3 id="属性设置和屏蔽"><a href="#属性设置和屏蔽" class="headerlink" title="属性设置和屏蔽"></a>属性设置和屏蔽</h3><ol>
-<li><p>原型链上层的普通属性，屏蔽</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// 20</span></div><div class="line">obj2.__proto__.a <span class="comment">// 10</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>原型链上层的只读属性，赋值被忽略（严格模式抛出错误），不屏蔽</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// 10</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>原型链上层的setter属性，赋值赋值时调用这个setter，不屏蔽</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;</div><div class="line">  set: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>._a = value * <span class="number">2</span></div><div class="line">  &#125;,</div><div class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>._a) </div><div class="line">      <span class="keyword">return</span> <span class="string">'get:'</span> + <span class="keyword">this</span>._a</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// "get:40"</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/5/" itemprop="url">
-                  读「你不知道的javascript」之object描述符
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T20:35:35+08:00" content="2016-09-19">
-              2016-09-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/「你不知道的javascript」/" itemprop="url" rel="index">
-                    <span itemprop="name">「你不知道的javascript」</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/5/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/5/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="获得属性描述符"><a href="#获得属性描述符" class="headerlink" title="获得属性描述符"></a>获得属性描述符</h3><p><code>Object.getOwnPropertyDescriptor(obj, prop)</code><br>获取某个obj的prop属性的描述符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'a'</span>)</div><div class="line"><span class="comment">//&#123;value: 10, writable: true, enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure></p>
-<p>所以默认下writable,enumerable,configurable均为true</p>
-<hr>
-<h3 id="设置属性描述符"><a href="#设置属性描述符" class="headerlink" title="设置属性描述符"></a>设置属性描述符</h3><p><code>Object.defineProperty(obj, prop, descriptor)</code><br>新建或修改某个obj的propp属性的描述符descriptor<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'b'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">true</span>, </div><div class="line">  enumerable:  <span class="literal">true</span>, </div><div class="line">  configurable:  <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h3><p>writable决定属性值是否可修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)</div><div class="line">obj.a = <span class="number">11</span></div><div class="line"><span class="built_in">console</span>.log(obj.a) <span class="comment">//10</span></div></pre></td></tr></table></figure></p>
-<p>如果在严格模式下还会抛出一个TypeError错误</p>
-<hr>
-<h3 id="configurable"><a href="#configurable" class="headerlink" title="configurable"></a>configurable</h3><p>configurable决定属性描述符是否可修改，这是不可逆的<br>例外: 可以将writable从true改成false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;configurable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)<span class="comment">// 成功修改，例外</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;enumerable: <span class="literal">false</span>&#125;)<span class="comment">// TypeError</span></div></pre></td></tr></table></figure></p>
-<p>除此之外configurable:false，会禁止delete这个属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;configurable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">delete</span> obj.a</div><div class="line"><span class="built_in">console</span>.log(obj.a) <span class="comment">// 10</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="enumerable"><a href="#enumerable" class="headerlink" title="enumerable"></a>enumerable</h3><p>enumerable决定属性是否可枚举<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>, b: <span class="number">20</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;enumerable:<span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i, obj[i])</div><div class="line">&#125;</div><div class="line"><span class="comment">// 'b' 20</span></div></pre></td></tr></table></figure></p>
-<p><code>Object.prototype.propertyIsEnumerable(prop)</code>返回此prop是否可枚举（即返回其enumerable）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 接上</span></div><div class="line">obj.propertyIsEnumerable(<span class="string">'a'</span>) <span class="comment">// false</span></div><div class="line">obj.propertyIsEnumerable(<span class="string">'b'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<p><code>Object.keys(obj)</code>返回此obj自身的可枚举属性名组成的数组<br><code>Object.getOwnPropertyNames(obj)</code>返回此obj自身的可枚举与不可枚举属性名组成的数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.keys(obj) <span class="comment">// ["b"]</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyNames(obj) <span class="comment">// ["a", "b"]</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="不变性"><a href="#不变性" class="headerlink" title="不变性"></a>不变性</h3><h4 id="常量属性"><a href="#常量属性" class="headerlink" title="常量属性"></a>常量属性</h4><p>不可修改，定义，删除的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">false</span>, </div><div class="line">  configurable:  <span class="literal">false</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<h4 id="禁止扩展"><a href="#禁止扩展" class="headerlink" title="禁止扩展"></a>禁止扩展</h4><p><code>Object.preventExtensions(obj)</code> 禁止添加新属性<br><code>Object.isExtensible(obj)</code> 返回是否可扩展<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.isExtensible(obj) <span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.preventExtensions(obj)</div><div class="line"><span class="built_in">Object</span>.isExtensible(obj) <span class="comment">//false</span></div><div class="line">obj.b = <span class="number">2</span> <span class="comment">// 严格模式会TypeError</span></div><div class="line"><span class="built_in">console</span>.log(obj.b) <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
-<h4 id="密封"><a href="#密封" class="headerlink" title="密封"></a>密封</h4><p><code>Object.seal(obj)</code> 调用Object.preventExtensions(obj)并使所有属性configurable:false<br><code>Object.isSealed(obj)</code> 返回是否密封</p>
-<h4 id="冻结"><a href="#冻结" class="headerlink" title="冻结"></a>冻结</h4><p><code>Object.freeze(obj)</code>调用Object.seal(obj)并使所有属性writable:false<br><code>Object.isFrozen(obj)</code> 返回是否冻结</p>
-<hr>
-<h3 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h3><p>当设置get或set时，会忽略value和writable<br>有以下两种方式设置get或set，其中第二种默认enumerable: false, configurable: false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="number">2</span> &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj,<span class="string">'b'</span>,&#123;</div><div class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a*<span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">obj.a <span class="comment">// 2</span></div><div class="line">obj.b <span class="comment">// 4</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'a'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: true, configurable: true&#125;</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'b'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: false, configurable: false&#125;</span></div></pre></td></tr></table></figure></p>
-<p>一般来说get 和 set 同时出现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="keyword">this</span>._a &#125;,</div><div class="line">  set a(val)&#123; <span class="keyword">this</span>._a = val * <span class="number">2</span>&#125;</div><div class="line">&#125;</div><div class="line">obj.a = <span class="number">10</span></div><div class="line">obj.a <span class="comment">// 20</span></div><div class="line">obj._a <span class="comment">// 20</span></div></pre></td></tr></table></figure></p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1667,7 +1657,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
