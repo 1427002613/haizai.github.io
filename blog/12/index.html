@@ -84,22 +84,19 @@
 
 
 
-<meta name="description" content="「javascript设计模式与开发实践」
-代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
-12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.app">
+<meta name="description" content="代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
+12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.appendChild(img)  return">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript设计模式学习笔记——代理模式">
+<meta property="og:title" content="「javascript设计模式与开发实践」学习笔记——代理模式">
 <meta property="og:url" content="http://yoursite.com/blog/12/index.html">
 <meta property="og:site_name" content="Haizai Naive">
-<meta property="og:description" content="「javascript设计模式与开发实践」
-代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
-12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.app">
-<meta property="og:updated_time" content="2016-10-02T04:59:38.344Z">
+<meta property="og:description" content="代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
+12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.appendChild(img)  return">
+<meta property="og:updated_time" content="2016-10-02T06:18:32.019Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript设计模式学习笔记——代理模式">
-<meta name="twitter:description" content="「javascript设计模式与开发实践」
-代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
-12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.app">
+<meta name="twitter:title" content="「javascript设计模式与开发实践」学习笔记——代理模式">
+<meta name="twitter:description" content="代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
+12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.appendChild(img)  return">
 
 
 
@@ -122,7 +119,7 @@
 
   <link rel="canonical" href="http://yoursite.com/blog/12/"/>
 
-  <title> javascript设计模式学习笔记——代理模式 | Haizai Naive </title>
+  <title> 「javascript设计模式与开发实践」学习笔记——代理模式 | Haizai Naive </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +279,7 @@
             
             
               
-                javascript设计模式学习笔记——代理模式
+                「javascript设计模式与开发实践」学习笔记——代理模式
               
             
           </h1>
@@ -341,8 +338,7 @@
       
 
       
-        <p>「javascript设计模式与开发实践」</p>
-<h4 id="代理模式：-为一个对象提供一个代用品或占位符，以便控制对它的访问"><a href="#代理模式：-为一个对象提供一个代用品或占位符，以便控制对它的访问" class="headerlink" title="代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问"></a>代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问</h4><p>虚拟代理实现图片预加载</p>
+        <h4 id="代理模式：-为一个对象提供一个代用品或占位符，以便控制对它的访问"><a href="#代理模式：-为一个对象提供一个代用品或占位符，以便控制对它的访问" class="headerlink" title="代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问"></a>代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问</h4><p>虚拟代理实现图片预加载</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myImage = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>)</div><div class="line">  <span class="built_in">document</span>.body.appendChild(img)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    setSrc: <span class="function"><span class="keyword">function</span> (<span class="params">src</span>) </span>&#123;</div><div class="line">      img.src = src</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="keyword">var</span> proxyImage = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image()</div><div class="line">  img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    myImage.setSrc(<span class="keyword">this</span>.src)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">src</span>) </span>&#123;</div><div class="line">    <span class="comment">//预加载的占位图</span></div><div class="line">    myImage.setSrc(<span class="string">'file:// /E:/computer/image/png/mini-icons/1084294.png'</span>)</div><div class="line">    img.src = src</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line">proxyImage(<span class="string">'http://cdn.duitang.com/uploads/item/201203/10/20120310141838_nZxB5.thumb.600_0.jpeg'</span>)</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <hr>
@@ -384,8 +380,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/11/" rel="next" title="javascript设计模式学习笔记——策略模式">
-                <i class="fa fa-chevron-left"></i> javascript设计模式学习笔记——策略模式
+              <a href="/blog/11/" rel="next" title="「javascript设计模式与开发实践」学习笔记——策略模式">
+                <i class="fa fa-chevron-left"></i> 「javascript设计模式与开发实践」学习笔记——策略模式
               </a>
             
           </div>

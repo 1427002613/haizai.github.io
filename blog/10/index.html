@@ -84,22 +84,19 @@
 
 
 
-<meta name="description" content="「javascript设计模式与开发实践」
-单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。简单实现
-12345678910111213141516171819var Sobj = function (name) &amp;#123;  this.name = name &amp;#125;Sobj.prototype.getName = function()&amp;#123;  console.lo">
+<meta name="description" content="单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。简单实现
+12345678910111213141516171819var Sobj = function (name) &amp;#123;  this.name = name &amp;#125;Sobj.prototype.getName = function()&amp;#123;  console.log(this.name)&amp;#125;;Sob">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javascript设计模式学习笔记——单例模式">
+<meta property="og:title" content="「javascript设计模式与开发实践」学习笔记——单例模式">
 <meta property="og:url" content="http://yoursite.com/blog/10/index.html">
 <meta property="og:site_name" content="Haizai Naive">
-<meta property="og:description" content="「javascript设计模式与开发实践」
-单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。简单实现
-12345678910111213141516171819var Sobj = function (name) &amp;#123;  this.name = name &amp;#125;Sobj.prototype.getName = function()&amp;#123;  console.lo">
-<meta property="og:updated_time" content="2016-10-02T05:00:40.267Z">
+<meta property="og:description" content="单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。简单实现
+12345678910111213141516171819var Sobj = function (name) &amp;#123;  this.name = name &amp;#125;Sobj.prototype.getName = function()&amp;#123;  console.log(this.name)&amp;#125;;Sob">
+<meta property="og:updated_time" content="2016-10-02T06:18:37.472Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javascript设计模式学习笔记——单例模式">
-<meta name="twitter:description" content="「javascript设计模式与开发实践」
-单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。简单实现
-12345678910111213141516171819var Sobj = function (name) &amp;#123;  this.name = name &amp;#125;Sobj.prototype.getName = function()&amp;#123;  console.lo">
+<meta name="twitter:title" content="「javascript设计模式与开发实践」学习笔记——单例模式">
+<meta name="twitter:description" content="单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。简单实现
+12345678910111213141516171819var Sobj = function (name) &amp;#123;  this.name = name &amp;#125;Sobj.prototype.getName = function()&amp;#123;  console.log(this.name)&amp;#125;;Sob">
 
 
 
@@ -122,7 +119,7 @@
 
   <link rel="canonical" href="http://yoursite.com/blog/10/"/>
 
-  <title> javascript设计模式学习笔记——单例模式 | Haizai Naive </title>
+  <title> 「javascript设计模式与开发实践」学习笔记——单例模式 | Haizai Naive </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -282,7 +279,7 @@
             
             
               
-                javascript设计模式学习笔记——单例模式
+                「javascript设计模式与开发实践」学习笔记——单例模式
               
             
           </h1>
@@ -341,8 +338,7 @@
       
 
       
-        <p>「javascript设计模式与开发实践」</p>
-<h4 id="单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。"><a href="#单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。" class="headerlink" title="单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。"></a>单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。</h4><p>简单实现</p>
+        <h4 id="单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。"><a href="#单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。" class="headerlink" title="单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。"></a>单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。</h4><p>简单实现</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Sobj = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name </div><div class="line">&#125;</div><div class="line">Sobj.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</div><div class="line">&#125;;</div><div class="line">Sobj.getInstance = (<span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> instance = <span class="literal">null</span></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!instance) &#123;</div><div class="line">      instance = <span class="keyword">new</span> Sobj(name)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"><span class="keyword">var</span> a = Sobj.getInstance(<span class="string">'s1'</span>)</div><div class="line"><span class="keyword">var</span> b = Sobj.getInstance(<span class="string">'s2'</span>)</div><div class="line"></div><div class="line">a === b <span class="comment">// true</span></div></pre></td></tr></table></figure>
 <a id="more"></a>
 <hr>
@@ -400,8 +396,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/11/" rel="prev" title="javascript设计模式学习笔记——策略模式">
-                javascript设计模式学习笔记——策略模式 <i class="fa fa-chevron-right"></i>
+              <a href="/blog/11/" rel="prev" title="「javascript设计模式与开发实践」学习笔记——策略模式">
+                「javascript设计模式与开发实践」学习笔记——策略模式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
