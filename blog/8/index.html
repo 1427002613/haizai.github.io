@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="12345678910111213function Foo(name) &amp;#123;  this.name = name&amp;#125;Foo.prototype.sayName = function() &amp;#123;  return &apos;say: &apos; + this.name&amp;#125;var foo = new Foo(&apos;foo-name&apos;)foo.__proto__ == Foo.prototype">
+<meta name="description" content="__proto__ 和 prototype 究竟有什么关系呢？ 看代码！
+12345678910111213function Foo(name) &amp;#123;  this.name = name&amp;#125;Foo.prototype.sayName = function() &amp;#123;  return &apos;say: &apos; + this.name&amp;#125;var foo = new Foo(&apos;foo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解原型继承中__proto__与prototype的关系">
 <meta property="og:url" content="http://yoursite.com/blog/8/index.html">
-<meta property="og:site_name" content="Haizai">
-<meta property="og:description" content="12345678910111213function Foo(name) &amp;#123;  this.name = name&amp;#125;Foo.prototype.sayName = function() &amp;#123;  return &apos;say: &apos; + this.name&amp;#125;var foo = new Foo(&apos;foo-name&apos;)foo.__proto__ == Foo.prototype">
-<meta property="og:updated_time" content="2016-09-23T02:58:39.304Z">
+<meta property="og:site_name" content="Haizai Console">
+<meta property="og:description" content="__proto__ 和 prototype 究竟有什么关系呢？ 看代码！
+12345678910111213function Foo(name) &amp;#123;  this.name = name&amp;#125;Foo.prototype.sayName = function() &amp;#123;  return &apos;say: &apos; + this.name&amp;#125;var foo = new Foo(&apos;foo">
+<meta property="og:updated_time" content="2016-10-02T05:02:53.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解原型继承中__proto__与prototype的关系">
-<meta name="twitter:description" content="12345678910111213function Foo(name) &amp;#123;  this.name = name&amp;#125;Foo.prototype.sayName = function() &amp;#123;  return &apos;say: &apos; + this.name&amp;#125;var foo = new Foo(&apos;foo-name&apos;)foo.__proto__ == Foo.prototype">
+<meta name="twitter:description" content="__proto__ 和 prototype 究竟有什么关系呢？ 看代码！
+12345678910111213function Foo(name) &amp;#123;  this.name = name&amp;#125;Foo.prototype.sayName = function() &amp;#123;  return &apos;say: &apos; + this.name&amp;#125;var foo = new Foo(&apos;foo">
 
 
 
@@ -116,7 +119,7 @@
 
   <link rel="canonical" href="http://yoursite.com/blog/8/"/>
 
-  <title> 理解原型继承中__proto__与prototype的关系 | Haizai </title>
+  <title> 理解原型继承中__proto__与prototype的关系 | Haizai Console </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +150,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Haizai</span>
+      <span class="site-title">Haizai Console</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -179,12 +182,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+        <li class="menu-item menu-item-demo">
+          <a href="/categories/demo/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
             
-            分类
+            demo
           </a>
         </li>
       
@@ -199,12 +202,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -312,12 +335,14 @@
       
 
       
-        <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">&#125;</div><div class="line">Foo.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'say: '</span> + <span class="keyword">this</span>.name</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">'foo-name'</span>)</div><div class="line"></div><div class="line">foo.__proto__ == Foo.prototype <span class="comment">// true</span></div><div class="line">foo.__proto__.__proto__ == <span class="built_in">Object</span>.prototype <span class="comment">//true</span></div><div class="line"></div><div class="line">foo.sayName() <span class="comment">//"say: foo-name" 来自Foo.prototype</span></div><div class="line">foo.toString() <span class="comment">//"[object Object]" 来自Object.prototype</span></div></pre></td></tr></table></figure>
+        <p><code>__proto__</code> 和 <code>prototype</code> 究竟有什么关系呢？ 看代码！</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">&#125;</div><div class="line">Foo.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'say: '</span> + <span class="keyword">this</span>.name</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">'foo-name'</span>)</div><div class="line"></div><div class="line">foo.__proto__ == Foo.prototype <span class="comment">// true</span></div><div class="line">foo.__proto__.__proto__ == <span class="built_in">Object</span>.prototype <span class="comment">//true</span></div><div class="line"></div><div class="line">foo.sayName() <span class="comment">//"say: foo-name" 来自Foo.prototype</span></div><div class="line">foo.toString() <span class="comment">//"[object Object]" 来自Object.prototype</span></div></pre></td></tr></table></figure>
 <ol>
 <li>当设定Foo.prototype时，<code>Foo.prototype.__proto__</code> -&gt; <code>Object.prototype</code>。</li>
 <li>当设定foo = new Foo()时，<code>foo.__proto__</code> -&gt; <code>Foo.prototype</code>。</li>
 <li>所以<code>foo.__proto__.__proto__</code> -&gt; <code>Foo.prototype.__proto__</code> -&gt; <code>Object.prototype</code>。</li>
 </ol>
+<a id="more"></a>
 <hr>
 <p>但是<strong>原型继承</strong>时会发出什么呢？<br>下面三种实现<strong>原型继承</strong>：</p>
 <ol>
@@ -438,7 +463,7 @@
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
+               src="/img/avatar.jpg"
                alt="Haizai" />
           <p class="site-author-name" itemprop="name">Haizai</p>
           <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
@@ -446,7 +471,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -454,7 +479,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -463,7 +488,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -474,6 +499,17 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/haizai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -519,11 +555,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
 </div>
 
 <div class="theme-info">
-  主题 -
+  theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

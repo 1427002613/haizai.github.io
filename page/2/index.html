@@ -86,12 +86,12 @@
 
 <meta name="description" content="人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Haizai">
+<meta property="og:title" content="Haizai Console">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Haizai">
+<meta property="og:site_name" content="Haizai Console">
 <meta property="og:description" content="人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Haizai">
+<meta name="twitter:title" content="Haizai Console">
 <meta name="twitter:description" content="人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり">
 
 
@@ -115,7 +115,7 @@
 
   <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
-  <title> Haizai </title>
+  <title> Haizai Console </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -148,7 +148,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Haizai</span>
+      <span class="site-title">Haizai Console</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -180,12 +180,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+        <li class="menu-item menu-item-demo">
+          <a href="/categories/demo/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
             
-            分类
+            demo
           </a>
         </li>
       
@@ -200,12 +200,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -317,22 +337,15 @@
 
       
         
-          
-            <p><code>Object.create(proto, [ propertiesObject ])</code>可以创建一个指定原型proto，和新的键和值<br><code>prototype.isPrototypeOf(obj)</code> 返回prototype是否为obj的原型链上<br><code>obj.hasOwnProperty(prop)</code> 返回obj是否含有指定的自身属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;b: <span class="string">'str'</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1, &#123;</div><div class="line">  a: &#123;value: <span class="number">10</span>&#125;</div><div class="line">&#125;)</div><div class="line">obj2 <span class="comment">// Object &#123;a: 10&#125;</span></div><div class="line">obj2.__proto__ <span class="comment">// Object &#123;b: "str"&#125;</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'a'</span>) <span class="comment">// true</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'b'</span>) <span class="comment">// false</span></div><div class="line">obj1.isPrototypeOf(obj2) <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+          <p><code>Object.create(proto, [ propertiesObject ])</code>可以创建一个指定原型proto，和新的键和值<br><code>prototype.isPrototypeOf(obj)</code> 返回prototype是否为obj的原型链上<br><code>obj.hasOwnProperty(prop)</code> 返回obj是否含有指定的自身属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;b: <span class="string">'str'</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1, &#123;</div><div class="line">  a: &#123;value: <span class="number">10</span>&#125;</div><div class="line">&#125;)</div><div class="line">obj2 <span class="comment">// Object &#123;a: 10&#125;</span></div><div class="line">obj2.__proto__ <span class="comment">// Object &#123;b: "str"&#125;</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'a'</span>) <span class="comment">// true</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'b'</span>) <span class="comment">// false</span></div><div class="line">obj1.isPrototypeOf(obj2) <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
 <h3 id="属性设置和屏蔽"><a href="#属性设置和屏蔽" class="headerlink" title="属性设置和屏蔽"></a>属性设置和屏蔽</h3><ol>
-<li><p>原型链上层的普通属性，屏蔽</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// 20</span></div><div class="line">obj2.__proto__.a <span class="comment">// 10</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>原型链上层的只读属性，赋值被忽略（严格模式抛出错误），不屏蔽</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// 10</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>原型链上层的setter属性，赋值赋值时调用这个setter，不屏蔽</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;</div><div class="line">  set: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>._a = value * <span class="number">2</span></div><div class="line">  &#125;,</div><div class="line">  get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">this</span>._a) </div><div class="line">      <span class="keyword">return</span> <span class="string">'get:'</span> + <span class="keyword">this</span>._a</div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// "get:40"</span></div></pre></td></tr></table></figure>
-</li>
+<li>原型链上层的普通属性，屏蔽</li>
 </ol>
-<hr>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -449,32 +462,17 @@
 
       
         
-          
-            <h3 id="获得属性描述符"><a href="#获得属性描述符" class="headerlink" title="获得属性描述符"></a>获得属性描述符</h3><p><code>Object.getOwnPropertyDescriptor(obj, prop)</code><br>获取某个obj的prop属性的描述符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'a'</span>)</div><div class="line"><span class="comment">//&#123;value: 10, writable: true, enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure></p>
+          <h3 id="获得属性描述符"><a href="#获得属性描述符" class="headerlink" title="获得属性描述符"></a>获得属性描述符</h3><p><code>Object.getOwnPropertyDescriptor(obj, prop)</code><br>获取某个obj的prop属性的描述符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'a'</span>)</div><div class="line"><span class="comment">//&#123;value: 10, writable: true, enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure></p>
 <p>所以默认下writable,enumerable,configurable均为true</p>
 <hr>
 <h3 id="设置属性描述符"><a href="#设置属性描述符" class="headerlink" title="设置属性描述符"></a>设置属性描述符</h3><p><code>Object.defineProperty(obj, prop, descriptor)</code><br>新建或修改某个obj的propp属性的描述符descriptor<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'b'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">true</span>, </div><div class="line">  enumerable:  <span class="literal">true</span>, </div><div class="line">  configurable:  <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <hr>
-<h3 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h3><p>writable决定属性值是否可修改<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)</div><div class="line">obj.a = <span class="number">11</span></div><div class="line"><span class="built_in">console</span>.log(obj.a) <span class="comment">//10</span></div></pre></td></tr></table></figure></p>
-<p>如果在严格模式下还会抛出一个TypeError错误</p>
-<hr>
-<h3 id="configurable"><a href="#configurable" class="headerlink" title="configurable"></a>configurable</h3><p>configurable决定属性描述符是否可修改，这是不可逆的<br>例外: 可以将writable从true改成false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;configurable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)<span class="comment">// 成功修改，例外</span></div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;enumerable: <span class="literal">false</span>&#125;)<span class="comment">// TypeError</span></div></pre></td></tr></table></figure></p>
-<p>除此之外configurable:false，会禁止delete这个属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;configurable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">delete</span> obj.a</div><div class="line"><span class="built_in">console</span>.log(obj.a) <span class="comment">// 10</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="enumerable"><a href="#enumerable" class="headerlink" title="enumerable"></a>enumerable</h3><p>enumerable决定属性是否可枚举<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>, b: <span class="number">20</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;enumerable:<span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</div><div class="line">  <span class="built_in">console</span>.log(i, obj[i])</div><div class="line">&#125;</div><div class="line"><span class="comment">// 'b' 20</span></div></pre></td></tr></table></figure></p>
-<p><code>Object.prototype.propertyIsEnumerable(prop)</code>返回此prop是否可枚举（即返回其enumerable）<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 接上</span></div><div class="line">obj.propertyIsEnumerable(<span class="string">'a'</span>) <span class="comment">// false</span></div><div class="line">obj.propertyIsEnumerable(<span class="string">'b'</span>) <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
-<p><code>Object.keys(obj)</code>返回此obj自身的可枚举属性名组成的数组<br><code>Object.getOwnPropertyNames(obj)</code>返回此obj自身的可枚举与不可枚举属性名组成的数组<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.keys(obj) <span class="comment">// ["b"]</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyNames(obj) <span class="comment">// ["a", "b"]</span></div></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="不变性"><a href="#不变性" class="headerlink" title="不变性"></a>不变性</h3><h4 id="常量属性"><a href="#常量属性" class="headerlink" title="常量属性"></a>常量属性</h4><p>不可修改，定义，删除的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'a'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">false</span>, </div><div class="line">  configurable:  <span class="literal">false</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<h4 id="禁止扩展"><a href="#禁止扩展" class="headerlink" title="禁止扩展"></a>禁止扩展</h4><p><code>Object.preventExtensions(obj)</code> 禁止添加新属性<br><code>Object.isExtensible(obj)</code> 返回是否可扩展<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.isExtensible(obj) <span class="comment">// true</span></div><div class="line"><span class="built_in">Object</span>.preventExtensions(obj)</div><div class="line"><span class="built_in">Object</span>.isExtensible(obj) <span class="comment">//false</span></div><div class="line">obj.b = <span class="number">2</span> <span class="comment">// 严格模式会TypeError</span></div><div class="line"><span class="built_in">console</span>.log(obj.b) <span class="comment">// undefined</span></div></pre></td></tr></table></figure></p>
-<h4 id="密封"><a href="#密封" class="headerlink" title="密封"></a>密封</h4><p><code>Object.seal(obj)</code> 调用Object.preventExtensions(obj)并使所有属性configurable:false<br><code>Object.isSealed(obj)</code> 返回是否密封</p>
-<h4 id="冻结"><a href="#冻结" class="headerlink" title="冻结"></a>冻结</h4><p><code>Object.freeze(obj)</code>调用Object.seal(obj)并使所有属性writable:false<br><code>Object.isFrozen(obj)</code> 返回是否冻结</p>
-<hr>
-<h3 id="get和set"><a href="#get和set" class="headerlink" title="get和set"></a>get和set</h3><p>当设置get或set时，会忽略value和writable<br>有以下两种方式设置get或set，其中第二种默认enumerable: false, configurable: false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="number">2</span> &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj,<span class="string">'b'</span>,&#123;</div><div class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a*<span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;)</div><div class="line">obj.a <span class="comment">// 2</span></div><div class="line">obj.b <span class="comment">// 4</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'a'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: true, configurable: true&#125;</span></div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj,<span class="string">'b'</span>) </div><div class="line"><span class="comment">// &#123;set: undefined, enumerable: false, configurable: false&#125;</span></div></pre></td></tr></table></figure></p>
-<p>一般来说get 和 set 同时出现<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  get a()&#123; <span class="keyword">return</span> <span class="keyword">this</span>._a &#125;,</div><div class="line">  set a(val)&#123; <span class="keyword">this</span>._a = val * <span class="number">2</span>&#125;</div><div class="line">&#125;</div><div class="line">obj.a = <span class="number">10</span></div><div class="line">obj.a <span class="comment">// 20</span></div><div class="line">obj._a <span class="comment">// 20</span></div></pre></td></tr></table></figure></p>
-<hr>
-
-          
+<h3 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h3><p>writable决定属性值是否可修改</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -734,321 +732,15 @@
 
       
         
-          
-            <h2 id="绑定规则"><a href="#绑定规则" class="headerlink" title="绑定规则"></a>绑定规则</h2><h3 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">2</span></div><div class="line">foo() <span class="comment">//2</span></div></pre></td></tr></table></figure>
-<p>foo( )调用时，应用了<code>this</code>的默认绑定，<code>this</code>指向全局对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">2</span></div><div class="line">foo() <span class="comment">//TypeError: Cannot read property 'a' of undefined</span></div></pre></td></tr></table></figure></p>
+          <h2 id="绑定规则"><a href="#绑定规则" class="headerlink" title="绑定规则"></a>绑定规则</h2><h3 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">2</span></div><div class="line">foo() <span class="comment">//2</span></div></pre></td></tr></table></figure>
+<p>foo( )调用时，应用了<code>this</code>的默认绑定，<code>this</code>指向全局对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">2</span></div><div class="line">foo() <span class="comment">//TypeError: Cannot read property 'a' of undefined</span></div></pre></td></tr></table></figure>
 <p>严格模式下，不能将全局对象用于默认绑定。</p>
-<hr>
-<h3 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  a: <span class="number">2</span>,</div><div class="line">  foo: foo</div><div class="line">&#125;</div><div class="line">obj.foo() <span class="comment">//2</span></div></pre></td></tr></table></figure>
-<p>隐式绑定会把函数调用的<code>this</code>绑定到这个上下文对象。这里调用foo( )时<code>this</code>绑定到obj，this.a即obj.a。</p>
-<h4 id="隐式丢失"><a href="#隐式丢失" class="headerlink" title="隐式丢失"></a>隐式丢失</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  a: <span class="number">2</span>,</div><div class="line">  foo: foo</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> bar = obj.foo</div><div class="line"><span class="keyword">var</span> a = <span class="string">"global a"</span></div><div class="line">bar() <span class="comment">//"global a"</span></div></pre></td></tr></table></figure>
-<p>虽然bar是obj.foo的引用，但是bar引用的foo函数本身，bar( )不带任何修饰，为默认绑定<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  a: <span class="number">2</span>,</div><div class="line">  foo: foo</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">doFoo</span>(<span class="params">cb</span>) </span>&#123;</div><div class="line">  cb()</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="string">"global a"</span></div><div class="line">doFoo(obj.foo) <span class="comment">//"global a"</span></div></pre></td></tr></table></figure></p>
-<p>使用回调函数时，也会进行隐式赋值</p>
-<hr>
-<h3 id="显式绑定"><a href="#显式绑定" class="headerlink" title="显式绑定"></a>显式绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  a: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span></div><div class="line"><span class="title">foo</span>.<span class="title">call</span>(<span class="params">obj</span>) // 2</div><div class="line"><span class="title">foo</span>.<span class="title">apply</span>(<span class="params">obj</span>) // 2</div></pre></td></tr></table></figure>
-<p>使用Function.property的<code>call()</code>和<code>apply()</code>方法显式绑定<code>this</code></p>
-<h4 id="硬绑定"><a href="#硬绑定" class="headerlink" title="硬绑定"></a>硬绑定</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  a: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  foo.call(obj)</div><div class="line">&#125;</div><div class="line">bar() <span class="comment">//2</span></div><div class="line"><span class="comment">//硬绑定不能改变它的this</span></div><div class="line">bar.call(<span class="built_in">window</span>) <span class="comment">//2</span></div></pre></td></tr></table></figure>
-<p>bar()内部调用foo.call(obj)，将foo的this强制绑定到obj上，无论怎样调用bar，均会在obj上调用foo。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">st</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a,st)</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.a + st</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  a: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> foo.apply(obj,<span class="built_in">arguments</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = bar(<span class="number">12</span>) <span class="comment">//2 12</span></div><div class="line"><span class="built_in">console</span>.log(b) <span class="comment">//14</span></div></pre></td></tr></table></figure></p>
-<p>应用场景：创建包裹函数bar，接受参数12，并调用foo，返回。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">st</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a,st)</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.a + st</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  a: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params">fn,o</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fn.apply(o,<span class="built_in">arguments</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = bind(foo,obj)(<span class="number">12</span>) <span class="comment">//2 12</span></div><div class="line"><span class="built_in">console</span>.log(b) <span class="comment">//14</span></div></pre></td></tr></table></figure></p>
-<p>创建可以重复使用的辅助函数bind</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">st</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a,st)</div><div class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.a + st</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  a: <span class="number">2</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = foo.bind(obj)(<span class="number">12</span>)<span class="comment">//2 12</span></div><div class="line"><span class="built_in">console</span>.log(b) <span class="comment">//14</span></div></pre></td></tr></table></figure>
-<p>ES5内置的Function.property.bind()方法方便使用</p>
-<hr>
-<h3 id="new绑定"><a href="#new绑定" class="headerlink" title="new绑定"></a>new绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>)</span>&#123;</div><div class="line">  <span class="keyword">this</span>.a = a</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> foo(<span class="number">2</span>)</div><div class="line"><span class="built_in">console</span>.log(bar.a) <span class="comment">//2</span></div></pre></td></tr></table></figure>
-<p>使用<code>new</code>来调用foo()时，会构造一个新对象并把它绑定到foo()中this上。</p>
-<hr>
-<h2 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h2><h3 id="隐式绑定和显式绑定"><a href="#隐式绑定和显式绑定" class="headerlink" title="隐式绑定和显式绑定"></a>隐式绑定和显式绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">  a: <span class="number">2</span>,</div><div class="line">  foo:foo</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj2 = &#123;</div><div class="line">  a: <span class="number">3</span></div><div class="line">&#125;</div><div class="line">obj1.foo() <span class="comment">//2 隐式绑定</span></div><div class="line">obj1.foo.call(obj2) <span class="comment">//3 显式绑定</span></div></pre></td></tr></table></figure>
-<p>显式绑定优先级高于隐式绑定</p>
-<hr>
-<h3 id="隐式绑定和new绑定"><a href="#隐式绑定和new绑定" class="headerlink" title="隐式绑定和new绑定"></a>隐式绑定和new绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.a = a</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">  foo: foo</div><div class="line">&#125;</div><div class="line">obj1.foo(<span class="number">2</span>) <span class="comment">// 隐式绑定</span></div><div class="line"><span class="built_in">console</span>.log(obj1.a) <span class="comment">//2 </span></div><div class="line"></div><div class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> obj1.foo(<span class="number">4</span>) <span class="comment">// new绑定</span></div><div class="line"><span class="built_in">console</span>.log(obj1.a) <span class="comment">//2</span></div><div class="line"><span class="built_in">console</span>.log(bar.a) <span class="comment">//4</span></div></pre></td></tr></table></figure>
-<p>new绑定优先级高于隐式绑定</p>
-<hr>
-<h3 id="new绑定和显式绑定"><a href="#new绑定和显式绑定" class="headerlink" title="new绑定和显式绑定"></a>new绑定和显式绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.a = a</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj1 = &#123;&#125;</div><div class="line"><span class="keyword">var</span> bar1 = foo.bind(obj1) <span class="comment">//Function.property.bind()硬绑定</span></div><div class="line">bar1(<span class="number">2</span>)</div><div class="line"><span class="built_in">console</span>.log(obj1.a) <span class="comment">//2</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> baz1 = <span class="keyword">new</span> bar1(<span class="number">3</span>) <span class="comment">// new绑定</span></div><div class="line"><span class="built_in">console</span>.log(obj1.a) <span class="comment">//2</span></div><div class="line"><span class="built_in">console</span>.log(baz1.a) <span class="comment">//3</span></div></pre></td></tr></table></figure>
-<p>new绑定优先级高于Function.property.bind()硬绑定<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.a = a</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params">fn,o</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> fn.apply(o,<span class="built_in">arguments</span>)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj2 = &#123;&#125;</div><div class="line"><span class="keyword">var</span> bar2 = bind(foo,obj2) <span class="comment">// 构造函数bind()的硬绑定</span></div><div class="line">bar2(<span class="number">4</span>)</div><div class="line"><span class="built_in">console</span>.log(obj2.a) <span class="comment">//4</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> baz2 = <span class="keyword">new</span> bar2(<span class="number">5</span>) <span class="comment">// new绑定</span></div><div class="line"><span class="built_in">console</span>.log(obj2.a) <span class="comment">//5</span></div><div class="line"><span class="built_in">console</span>.log(baz2.a) <span class="comment">//undefined</span></div></pre></td></tr></table></figure></p>
-<p>new绑定优先级低于构造函数bind()的硬绑定硬绑定</p>
-<hr>
-<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>绑定顺序：</p>
-<ol>
-<li>new绑定 <code>new foo()</code></li>
-<li>显式绑定 <code>foo.call(obj)</code>，<code>foo.apply(obj)</code></li>
-<li>隐式绑定 <code>obj.foo()</code></li>
-<li>默认绑定 <code>foo()</code></li>
-</ol>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/3/" itemprop="url">
-                  Bootstrap的sass源码学习笔记（二）：排版篇（上）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T20:31:04+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Bootstrap/" itemprop="url" rel="index">
-                    <span itemprop="name">Bootstrap</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/3/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>可以结合官网起步<a href="http://v3.bootcss.com/css/#type" target="_blank" rel="external">排版</a>一起学习<br>其中排版在<code>bootstrap/type</code>中，变量在<code>bootstrap/variables</code>中，（变量以//注释的方式显示）</p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span>, <span class="selector-tag">h4</span>, <span class="selector-tag">h5</span>, <span class="selector-tag">h6</span>,</div><div class="line"><span class="selector-class">.h1</span>, <span class="selector-class">.h2</span>, <span class="selector-class">.h3</span>, <span class="selector-class">.h4</span>, <span class="selector-class">.h5</span>, <span class="selector-class">.h6</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: <span class="variable">$headings-font-family</span>;<span class="comment">//inherit</span></div><div class="line">  <span class="attribute">font-weight</span>: <span class="variable">$headings-font-weight</span>;<span class="comment">//500</span></div><div class="line">  <span class="attribute">line-height</span>: <span class="variable">$headings-line-height</span>;<span class="comment">//1.1</span></div><div class="line">  <span class="attribute">color</span>: <span class="variable">$headings-color</span>;<span class="comment">//inherit</span></div><div class="line"></div><div class="line">  <span class="selector-tag">small</span>,</div><div class="line">  <span class="selector-class">.small</span> &#123;</div><div class="line">    <span class="attribute">font-weight</span>: normal;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="variable">$headings-small-color</span>;<span class="comment">//$gray-light=&gt;#777</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>可以看出<code>&lt;h1&gt;</code>-<code>&lt;h6&gt;</code>与<code>.h1</code>-<code>.h6</code>的共同样式：font-family与color为继承，font-weight为500，line-height为1.1。<br>他们的子元素<code>&lt;small&gt;</code>或<code>.small</code>：font-weight减小为normal(400)，line-height减小为1，颜色变成固定的gray-light(#777)</p>
-<hr>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span>, <span class="selector-class">.h1</span>,</div><div class="line"><span class="selector-tag">h2</span>, <span class="selector-class">.h2</span>,</div><div class="line"><span class="selector-tag">h3</span>, <span class="selector-class">.h3</span> &#123;</div><div class="line">  <span class="attribute">margin-top</span>: <span class="variable">$line-height-computed</span>;<span class="comment">//~20px</span></div><div class="line">  <span class="attribute">margin-bottom</span>: (<span class="variable">$line-height-computed</span> / <span class="number">2</span>);<span class="comment">//~10px</span></div><div class="line"></div><div class="line">  <span class="selector-tag">small</span>,</div><div class="line">  <span class="selector-class">.small</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">65%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">h4</span>, <span class="selector-class">.h4</span>,</div><div class="line"><span class="selector-tag">h5</span>, <span class="selector-class">.h5</span>,</div><div class="line"><span class="selector-tag">h6</span>, <span class="selector-class">.h6</span> &#123;</div><div class="line">  <span class="attribute">margin-top</span>: (<span class="variable">$line-height-computed</span> / <span class="number">2</span>);<span class="comment">//~10px</span></div><div class="line">  <span class="attribute">margin-bottom</span>: (<span class="variable">$line-height-computed</span> / <span class="number">2</span>);<span class="comment">//~10px</span></div><div class="line"></div><div class="line">  <span class="selector-tag">small</span>,</div><div class="line">  <span class="selector-class">.small</span> &#123;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">75%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-tag">small</span>,</div><div class="line"><span class="selector-class">.small</span> &#123;</div><div class="line">  <span class="attribute">font-size</span>: floor((<span class="number">100%</span> * <span class="variable">$font-size-small</span> / <span class="variable">$font-size-base</span>));<span class="comment">//85%</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>其中$line-height-computed // floor(($font-size-base * $line-height-base)) // floor(14px * 1.428571429) // 20px<br>可以看出前3个<code>margin-top</code>为20px，后3个<code>margin-top</code>为10px。而margin-bottom均为10px。<br>前3个的small的<code>font-size</code>为自身的65%, 前3个的small的<code>font-size</code>为自身的75%。<br>不在h下的small的<code>font-size</code>为父级的85%</p>
-<hr>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">h1</span>, <span class="selector-class">.h1</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h1</span>; &#125;<span class="comment">//floor(($font-size-base * 2.6))//36px</span></div><div class="line"><span class="selector-tag">h2</span>, <span class="selector-class">.h2</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h2</span>; &#125;<span class="comment">//floor(($font-size-base * 2.15))//30px</span></div><div class="line"><span class="selector-tag">h3</span>, <span class="selector-class">.h3</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h3</span>; &#125;<span class="comment">//ceil(($font-size-base * 1.7))//24px</span></div><div class="line"><span class="selector-tag">h4</span>, <span class="selector-class">.h4</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h4</span>; &#125;<span class="comment">//ceil(($font-size-base * 1.25))//18px</span></div><div class="line"><span class="selector-tag">h5</span>, <span class="selector-class">.h5</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h5</span>; &#125;<span class="comment">//$font-size-base//14px</span></div><div class="line"><span class="selector-tag">h6</span>, <span class="selector-class">.h6</span> &#123; <span class="attribute">font-size</span>: <span class="variable">$font-size-h6</span>; &#125;<span class="comment">//ceil(($font-size-base * 0.85))//12px</span></div></pre></td></tr></table></figure>
-<p>这是每个h的font-size，其中<code>h5</code>是基础的14px</p>
-<h2 id="页面主体"><a href="#页面主体" class="headerlink" title="页面主体"></a>页面主体</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">0</span> (<span class="variable">$line-height-computed</span> / <span class="number">2</span>);<span class="comment">//~10px</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>&lt;p&gt;</code>的<code>margin-bottom</code>设为10px，而<code>font-family;font-size;line-height;color;</code>均继承于<a href="/blog/2">body</a>。</p>
-<h3 id="中心内容"><a href="#中心内容" class="headerlink" title="中心内容"></a>中心内容</h3><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.lead</span> &#123;</div><div class="line">  <span class="attribute">margin-bottom</span>: <span class="variable">$line-height-computed</span>;<span class="comment">//20px</span></div><div class="line">  <span class="attribute">font-size</span>: floor((<span class="variable">$font-size-base</span> * <span class="number">1.15</span>));<span class="comment">//16px</span></div><div class="line">  <span class="attribute">font-weight</span>: <span class="number">300</span>;</div><div class="line">  <span class="attribute">line-height</span>: <span class="number">1.4</span>;</div><div class="line"></div><div class="line">  @<span class="keyword">media</span> (min-width: <span class="variable">$screen-sm-min</span>) &#123;<span class="comment">//768px</span></div><div class="line">    <span class="attribute">font-size</span>: (<span class="variable">$font-size-base</span> * <span class="number">1.5</span>);<span class="comment">//21px</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><code>.lead</code>, 值得注意的是这里出现的<code>@media</code>。<code>font-size</code>在大于768px时为21px, 小于768px为16px</p>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/2/" itemprop="url">
-                  Bootstrap的sass源码学习笔记（一）：body篇
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-17T14:19:09+08:00" content="2016-09-17">
-              2016-09-17
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Bootstrap/" itemprop="url" rel="index">
-                    <span itemprop="name">Bootstrap</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/blog/2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="blog/2/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<h3 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a><a href="http://v3.bootcss.com/" target="_blank" rel="external">Bootstrap</a></h3><p>  Bootstrap是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。<br>  为所有开发者、所有应用场景而设计。<br>  Bootstrap 让前端开发更快速、简单。所有开发者都能快速上手、所有设备都可以适配、所有项目都适用。</p>
-<h4 id="预处理脚本"><a href="#预处理脚本" class="headerlink" title="预处理脚本"></a>预处理脚本</h4><p>  虽然可以直接使用 Bootstrap 提供的 CSS 样式表，不要忘记 Bootstrap 的源码是基于最流行的 CSS 预处理脚本 - Less 和 Sass 开发的。你可以采用预编译的 CSS 文件快速开发，也可以从源码定制自己需要的样式。</p>
-<h4 id="一个框架、多种设备"><a href="#一个框架、多种设备" class="headerlink" title="一个框架、多种设备"></a>一个框架、多种设备</h4><p>  你的网站和应用能在 Bootstrap 的帮助下通过同一份代码快速、有效适配手机、平板、PC 设备，这一切都是 CSS 媒体查询（Media Query）的功劳。</p>
-<h4 id="特性齐全"><a href="#特性齐全" class="headerlink" title="特性齐全"></a>特性齐全</h4><p>  Bootstrap 提供了全面、美观的文档。你能在这里找到关于 HTML 元素、HTML 和 CSS 组件、jQuery 插件方面的所有详细文档。</p>
-</blockquote>
-<p>本系列我个人对Bootstrap的sass源码学习笔记，sass源码地址在Bootstrap的<a href="http://v3.bootcss.com/getting-started/" target="_blank" rel="external">起步</a>页面下sass中<code>下载 Sass 项目</code><br>下载完成后进入<code>bootstrap-sass-3.3.5\assets\stylesheets</code>打开<code>_bootstrap.scss</code>。<br>里面是几十行<code>@import &quot;bootstrap/...&quot;;</code>,这构成了整个完整的Bootstrap。</p>
-<hr>
-<h3 id="body篇"><a href="#body篇" class="headerlink" title="body篇"></a>body篇</h3><p>首先建立一个新的HTML页面，引入Bootstrap，打开chrome的开发者工具，可以发现body的css是这样的<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">    <span class="attribute">font-family</span>: <span class="string">"Helvetica Neue"</span>, Helvetica, Arial, sans-serif;</div><div class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;</div><div class="line">    <span class="attribute">line-height</span>: <span class="number">1.42857143</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#333</span>;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#fff</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这在Bootstrap的sass源码中是怎样的呢？<br>在<code>bootstrap/scaffolding</code>下。打开后找到第27行<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">body</span> &#123;</div><div class="line">  <span class="attribute">font-family</span>: $font-family-base;</div><div class="line">  <span class="attribute">font-size</span>: $font-size-base;</div><div class="line">  <span class="attribute">line-height</span>: $line-height-base;</div><div class="line">  <span class="attribute">color</span>: $text-color;</div><div class="line">  <span class="attribute">background-color</span>: $body-bg;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>发现其中每个属性值都是变量，其中变量的文件又在<code>bootstrap/variables</code>下，打开它。</p>
-<ul>
-<li>$font-family-base<br>50行 <code>$font-family-base:        $font-family-sans-serif !default;</code><br>46行 <code>$font-family-sans-serif:  &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif !default;</code></li>
-<li>$font-size-base<br>52行 <code>$font-size-base:          14px !default;</code></li>
-<li>$line-height-base<br>64行 <code>$line-height-base:        1.428571429 !default; // 20/14</code></li>
-<li>$text-color<br>32行 <code>$text-color:            $gray-dark !default;</code><br>13行 <code>$gray-dark:              lighten($gray-base, 20%) !default;   // #333</code><br>11行 <code>$gray-base:              #000 !default;</code></li>
-<li>$body-bg<br>30行 <code>$body-bg:               #fff !default;</code></li>
-</ul>
-<p>当然这很简单很基础，我们通过简单的方式大致了解的bootstrap的sass源码基本的引用流程，将来在自定义的时候可以很轻松的修改variables。</p>
-<hr>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/4/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1235,7 +927,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
+               src="/img/avatar.jpg"
                alt="Haizai" />
           <p class="site-author-name" itemprop="name">Haizai</p>
           <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
@@ -1243,7 +935,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1251,7 +943,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1260,7 +952,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -1271,6 +963,17 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/haizai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -1305,11 +1008,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
 </div>
 
 <div class="theme-info">
-  主题 -
+  theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

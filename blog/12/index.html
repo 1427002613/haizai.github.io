@@ -84,19 +84,22 @@
 
 
 
-<meta name="description" content="代理模式 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
-12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.appendChild(img)  return &amp;">
+<meta name="description" content="「javascript设计模式与开发实践」
+代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
+12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.app">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript设计模式学习笔记——代理模式">
 <meta property="og:url" content="http://yoursite.com/blog/12/index.html">
-<meta property="og:site_name" content="Haizai">
-<meta property="og:description" content="代理模式 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
-12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.appendChild(img)  return &amp;">
-<meta property="og:updated_time" content="2016-10-01T06:24:35.838Z">
+<meta property="og:site_name" content="Haizai Console">
+<meta property="og:description" content="「javascript设计模式与开发实践」
+代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
+12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.app">
+<meta property="og:updated_time" content="2016-10-02T04:59:38.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript设计模式学习笔记——代理模式">
-<meta name="twitter:description" content="代理模式 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
-12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.appendChild(img)  return &amp;">
+<meta name="twitter:description" content="「javascript设计模式与开发实践」
+代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问虚拟代理实现图片预加载
+12345678910111213141516171819202122232425var myImage = (function () &amp;#123;  var img = document.createElement(&apos;img&apos;)  document.body.app">
 
 
 
@@ -119,7 +122,7 @@
 
   <link rel="canonical" href="http://yoursite.com/blog/12/"/>
 
-  <title> javascript设计模式学习笔记——代理模式 | Haizai </title>
+  <title> javascript设计模式学习笔记——代理模式 | Haizai Console </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -150,7 +153,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Haizai</span>
+      <span class="site-title">Haizai Console</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -182,12 +185,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+        <li class="menu-item menu-item-demo">
+          <a href="/categories/demo/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
             
-            分类
+            demo
           </a>
         </li>
       
@@ -202,12 +205,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -315,8 +338,10 @@
       
 
       
-        <h4 id="代理模式-为一个对象提供一个代用品或占位符，以便控制对它的访问"><a href="#代理模式-为一个对象提供一个代用品或占位符，以便控制对它的访问" class="headerlink" title="代理模式 为一个对象提供一个代用品或占位符，以便控制对它的访问"></a>代理模式 为一个对象提供一个代用品或占位符，以便控制对它的访问</h4><p>虚拟代理实现图片预加载</p>
+        <p>「javascript设计模式与开发实践」</p>
+<h4 id="代理模式：-为一个对象提供一个代用品或占位符，以便控制对它的访问"><a href="#代理模式：-为一个对象提供一个代用品或占位符，以便控制对它的访问" class="headerlink" title="代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问"></a>代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问</h4><p>虚拟代理实现图片预加载</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myImage = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>)</div><div class="line">  <span class="built_in">document</span>.body.appendChild(img)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    setSrc: <span class="function"><span class="keyword">function</span> (<span class="params">src</span>) </span>&#123;</div><div class="line">      img.src = src</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="keyword">var</span> proxyImage = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image()</div><div class="line">  img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    myImage.setSrc(<span class="keyword">this</span>.src)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">src</span>) </span>&#123;</div><div class="line">    <span class="comment">//预加载的占位图</span></div><div class="line">    myImage.setSrc(<span class="string">'file:// /E:/computer/image/png/mini-icons/1084294.png'</span>)</div><div class="line">    img.src = src</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line">proxyImage(<span class="string">'http://cdn.duitang.com/uploads/item/201203/10/20120310141838_nZxB5.thumb.600_0.jpeg'</span>)</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <hr>
 <p>代理模式合并请求，缓存代理</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"1"</span>&gt;</span>1</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"2"</span>&gt;</span>2</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"3"</span>&gt;</span>3</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"4"</span>&gt;</span>4</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"5"</span>&gt;</span>5</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"6"</span>&gt;</span>6</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"7"</span>&gt;</span>7</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"8"</span>&gt;</span>8</div><div class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"9"</span>&gt;</span>9</div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'log:'</span>,x);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> proxy = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> cache = [], timer</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">id</span>) </span>&#123;</div><div class="line">    cache.push(id)</div><div class="line">    <span class="keyword">if</span> (timer) <span class="keyword">return</span></div><div class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      log(cache.toString())</div><div class="line">      clearTimeout(timer)</div><div class="line">      timer = <span class="literal">null</span></div><div class="line">      cache = []</div><div class="line">    &#125;, <span class="number">2000</span>)</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="keyword">var</span> checkboxs = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'input'</span>)</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, c; c = checkboxs[i++];) &#123;</div><div class="line">  c.onclick = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.checked) &#123;</div><div class="line">      proxy(<span class="keyword">this</span>.id);</div><div class="line">    &#125; </div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -426,7 +451,7 @@
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
+               src="/img/avatar.jpg"
                alt="Haizai" />
           <p class="site-author-name" itemprop="name">Haizai</p>
           <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
@@ -434,7 +459,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -442,7 +467,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -451,7 +476,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -462,6 +487,17 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/haizai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -480,7 +516,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#代理模式-为一个对象提供一个代用品或占位符，以便控制对它的访问"><span class="nav-number">1.</span> <span class="nav-text">代理模式 为一个对象提供一个代用品或占位符，以便控制对它的访问</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#代理模式：-为一个对象提供一个代用品或占位符，以便控制对它的访问"><span class="nav-number">1.</span> <span class="nav-text">代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问</span></a></li></ol></div>
             
           </div>
         </section>
@@ -507,11 +543,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
 </div>
 
 <div class="theme-info">
-  主题 -
+  theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

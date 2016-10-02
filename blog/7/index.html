@@ -90,11 +90,11 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
 <meta property="og:type" content="article">
 <meta property="og:title" content="读「你不知道的javascript」之构造函数">
 <meta property="og:url" content="http://yoursite.com/blog/7/index.html">
-<meta property="og:site_name" content="Haizai">
+<meta property="og:site_name" content="Haizai Console">
 <meta property="og:description" content="Object.getPrototypeOf(obj)返回指定obj的[[Prototype]]123function Foo() &amp;#123;&amp;#125;var foo = new Foo()Object.getPrototypeOf(foo) === Foo.prototype //true
 
 Object.prototype.constructor 返回一个指向创建了该对象原型的函数引用123">
-<meta property="og:updated_time" content="2016-09-30T08:04:59.655Z">
+<meta property="og:updated_time" content="2016-10-02T05:03:40.177Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读「你不知道的javascript」之构造函数">
 <meta name="twitter:description" content="Object.getPrototypeOf(obj)返回指定obj的[[Prototype]]123function Foo() &amp;#123;&amp;#125;var foo = new Foo()Object.getPrototypeOf(foo) === Foo.prototype //true
@@ -122,7 +122,7 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
 
   <link rel="canonical" href="http://yoursite.com/blog/7/"/>
 
-  <title> 读「你不知道的javascript」之构造函数 | Haizai </title>
+  <title> 读「你不知道的javascript」之构造函数 | Haizai Console </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -153,7 +153,7 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Haizai</span>
+      <span class="site-title">Haizai Console</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -185,12 +185,12 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+        <li class="menu-item menu-item-demo">
+          <a href="/categories/demo/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
             
-            分类
+            demo
           </a>
         </li>
       
@@ -205,12 +205,32 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -322,6 +342,7 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
 <hr>
 <p><code>Object.prototype.constructor</code> 返回一个指向创建了该对象原型的函数引用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> foo1 = <span class="keyword">new</span> Foo()</div><div class="line">foo1.constructor == Foo <span class="comment">//true</span></div><div class="line"></div><div class="line">Foo.prototype = &#123;&#125;</div><div class="line"><span class="keyword">var</span> foo2 = <span class="keyword">new</span> Foo()</div><div class="line">foo2.constructor == Foo <span class="comment">//false</span></div><div class="line">foo2.constructor == <span class="built_in">Object</span> <span class="comment">//true</span></div><div class="line"></div><div class="line">Foo.prototype.constructor = Foo</div><div class="line"><span class="keyword">var</span> foo3 = <span class="keyword">new</span> Foo()</div><div class="line">foo2.constructor == Foo <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
 <p>当Foo.prototype被指定时，Foo.prototype没有.constructor属性，<br>foo.constructor继续委托至Object.prototype.constructor。<br>当然你可以自己指定一个Foo.prototype.constructor，这样foo.constructor就指向这个Foo了</p>
+<a id="more"></a>
 <hr>
 <h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name</div><div class="line">&#125;</div><div class="line">Foo.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="string">'say: '</span> + <span class="keyword">this</span>.name</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo(<span class="string">'foo-name'</span>)</div><div class="line">foo <span class="comment">// Foo &#123;name: "foo-name"&#125;</span></div><div class="line">foo.name <span class="comment">// 'foo-name'</span></div><div class="line">foo.__proto__ <span class="comment">// Object &#123;sayName: function()&#125;</span></div><div class="line">foo.sayName <span class="comment">// "say: foo-name"</span></div><div class="line"></div><div class="line">foo.__proto__ == Foo.prototype <span class="comment">//true</span></div><div class="line">foo.__proto__.__proto__ == <span class="built_in">Object</span>.prototype <span class="comment">//true</span></div></pre></td></tr></table></figure>
 <p>一个new Foo() 的<code>[[Prototype]]</code>即<code>__proto__</code>指向 Foo.prototype !</p>
@@ -433,7 +454,7 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
+               src="/img/avatar.jpg"
                alt="Haizai" />
           <p class="site-author-name" itemprop="name">Haizai</p>
           <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
@@ -441,7 +462,7 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -449,7 +470,7 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -458,7 +479,7 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -469,6 +490,17 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/haizai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -514,11 +546,11 @@ Object.prototype.constructor 返回一个指向创建了该对象原型的函数
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
 </div>
 
 <div class="theme-info">
-  主题 -
+  theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

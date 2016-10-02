@@ -90,11 +90,11 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript设计模式学习笔记——策略模式">
 <meta property="og:url" content="http://yoursite.com/blog/11/index.html">
-<meta property="og:site_name" content="Haizai">
+<meta property="og:site_name" content="Haizai Console">
 <meta property="og:description" content="「javascript设计模式与开发实践」
 策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。简单实例
 123456789101112131415161718192021222324252627282930313233var levelS = function ()&amp;#123;&amp;#125;levelS.prototype.calculate = function(sala">
-<meta property="og:updated_time" content="2016-10-01T06:24:57.331Z">
+<meta property="og:updated_time" content="2016-10-02T04:59:53.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript设计模式学习笔记——策略模式">
 <meta name="twitter:description" content="「javascript设计模式与开发实践」
@@ -122,7 +122,7 @@
 
   <link rel="canonical" href="http://yoursite.com/blog/11/"/>
 
-  <title> javascript设计模式学习笔记——策略模式 | Haizai </title>
+  <title> javascript设计模式学习笔记——策略模式 | Haizai Console </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -153,7 +153,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Haizai</span>
+      <span class="site-title">Haizai Console</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -185,12 +185,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+        <li class="menu-item menu-item-demo">
+          <a href="/categories/demo/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
             
-            分类
+            demo
           </a>
         </li>
       
@@ -205,12 +205,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -321,6 +341,7 @@
         <p>「javascript设计模式与开发实践」</p>
 <h4 id="策略模式：-定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。"><a href="#策略模式：-定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。" class="headerlink" title="策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。"></a>策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。</h4><p>简单实例</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> levelS = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelS.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">4</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> levelA = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelA.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">3</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> levelB = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelB.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">2</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Bonus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.salary = <span class="literal">null</span></div><div class="line">  <span class="keyword">this</span>.strategy = <span class="literal">null</span></div><div class="line">&#125;</div><div class="line">Bonus.prototype = &#123;</div><div class="line">  setSalary: <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.salary = salary</div><div class="line">  &#125;,</div><div class="line">  setStrategy: <span class="function"><span class="keyword">function</span>(<span class="params">strategy</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.strategy = strategy</div><div class="line">  &#125;,</div><div class="line">  getBonus: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.strategy.calculate(<span class="keyword">this</span>.salary)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> bonus = <span class="keyword">new</span> Bonus()</div><div class="line">bonus.setSalary(<span class="number">2000</span>)</div><div class="line">bonus.setStrategy(<span class="keyword">new</span> levelA())</div><div class="line">bonus.getBonus() <span class="comment">//6000</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>javascript简化版</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> strategy = &#123;</div><div class="line">  S: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> salary * <span class="number">4</span></div><div class="line">  &#125;,</div><div class="line">  A: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> salary * <span class="number">3</span></div><div class="line">  &#125;,</div><div class="line">  B: <span class="function"><span class="keyword">function</span> (<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> salary * <span class="number">2</span></div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> calculateBonus = <span class="function"><span class="keyword">function</span>(<span class="params">level, salary</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> strategy[level](salary)</div><div class="line">&#125;</div><div class="line"></div><div class="line">calculateBonus(<span class="string">'A'</span>,<span class="number">2000</span>) <span class="comment">//6000</span></div><div class="line">calculateBonus(<span class="string">'S'</span>,<span class="number">3000</span>) <span class="comment">//12000</span></div></pre></td></tr></table></figure>
 <hr>
@@ -436,7 +457,7 @@
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
+               src="/img/avatar.jpg"
                alt="Haizai" />
           <p class="site-author-name" itemprop="name">Haizai</p>
           <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
@@ -444,7 +465,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -452,7 +473,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -461,7 +482,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -472,6 +493,17 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/haizai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -517,11 +549,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
 </div>
 
 <div class="theme-info">
-  主题 -
+  theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

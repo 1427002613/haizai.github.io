@@ -85,18 +85,21 @@
 
 
 <meta name="description" content="绑定规则默认绑定12345function foo() &amp;#123;  console.log(this.a)&amp;#125;var a = 2foo() //2
-foo( )调用时，应用了this的默认绑定，this指向全局对象。123456&quot;use strict&quot;function foo() &amp;#123;  console.log(this.a)&amp;#125;var a = 2foo() //Typ">
+foo( )调用时，应用了this的默认绑定，this指向全局对象。
+123456&quot;use strict&quot;function foo() &amp;#123;  console.log(this.a)&amp;#125;var a = 2foo() //Ty">
 <meta property="og:type" content="article">
 <meta property="og:title" content="读「你不知道的javascript」之this绑定">
 <meta property="og:url" content="http://yoursite.com/blog/4/index.html">
-<meta property="og:site_name" content="Haizai">
+<meta property="og:site_name" content="Haizai Console">
 <meta property="og:description" content="绑定规则默认绑定12345function foo() &amp;#123;  console.log(this.a)&amp;#125;var a = 2foo() //2
-foo( )调用时，应用了this的默认绑定，this指向全局对象。123456&quot;use strict&quot;function foo() &amp;#123;  console.log(this.a)&amp;#125;var a = 2foo() //Typ">
-<meta property="og:updated_time" content="2016-09-30T08:05:07.113Z">
+foo( )调用时，应用了this的默认绑定，this指向全局对象。
+123456&quot;use strict&quot;function foo() &amp;#123;  console.log(this.a)&amp;#125;var a = 2foo() //Ty">
+<meta property="og:updated_time" content="2016-10-02T05:04:21.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读「你不知道的javascript」之this绑定">
 <meta name="twitter:description" content="绑定规则默认绑定12345function foo() &amp;#123;  console.log(this.a)&amp;#125;var a = 2foo() //2
-foo( )调用时，应用了this的默认绑定，this指向全局对象。123456&quot;use strict&quot;function foo() &amp;#123;  console.log(this.a)&amp;#125;var a = 2foo() //Typ">
+foo( )调用时，应用了this的默认绑定，this指向全局对象。
+123456&quot;use strict&quot;function foo() &amp;#123;  console.log(this.a)&amp;#125;var a = 2foo() //Ty">
 
 
 
@@ -119,7 +122,7 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
 
   <link rel="canonical" href="http://yoursite.com/blog/4/"/>
 
-  <title> 读「你不知道的javascript」之this绑定 | Haizai </title>
+  <title> 读「你不知道的javascript」之this绑定 | Haizai Console </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -150,7 +153,7 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Haizai</span>
+      <span class="site-title">Haizai Console</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -182,12 +185,12 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+        <li class="menu-item menu-item-demo">
+          <a href="/categories/demo/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
             
-            分类
+            demo
           </a>
         </li>
       
@@ -202,12 +205,32 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -316,8 +339,10 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
 
       
         <h2 id="绑定规则"><a href="#绑定规则" class="headerlink" title="绑定规则"></a>绑定规则</h2><h3 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">2</span></div><div class="line">foo() <span class="comment">//2</span></div></pre></td></tr></table></figure>
-<p>foo( )调用时，应用了<code>this</code>的默认绑定，<code>this</code>指向全局对象。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">2</span></div><div class="line">foo() <span class="comment">//TypeError: Cannot read property 'a' of undefined</span></div></pre></td></tr></table></figure></p>
+<p>foo( )调用时，应用了<code>this</code>的默认绑定，<code>this</code>指向全局对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">"use strict"</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="number">2</span></div><div class="line">foo() <span class="comment">//TypeError: Cannot read property 'a' of undefined</span></div></pre></td></tr></table></figure>
 <p>严格模式下，不能将全局对象用于默认绑定。</p>
+<a id="more"></a>
 <hr>
 <h3 id="隐式绑定"><a href="#隐式绑定" class="headerlink" title="隐式绑定"></a>隐式绑定</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.a)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> obj = &#123;</div><div class="line">  a: <span class="number">2</span>,</div><div class="line">  foo: foo</div><div class="line">&#125;</div><div class="line">obj.foo() <span class="comment">//2</span></div></pre></td></tr></table></figure>
 <p>隐式绑定会把函数调用的<code>this</code>绑定到这个上下文对象。这里调用foo( )时<code>this</code>绑定到obj，this.a即obj.a。</p>
@@ -388,8 +413,8 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/3/" rel="next" title="Bootstrap的sass源码学习笔记（二）：排版篇（上）">
-                <i class="fa fa-chevron-left"></i> Bootstrap的sass源码学习笔记（二）：排版篇（上）
+              <a href="/blog/1/" rel="next" title="初识js中var, let, const块作用域">
+                <i class="fa fa-chevron-left"></i> 初识js中var, let, const块作用域
               </a>
             
           </div>
@@ -462,7 +487,7 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
+               src="/img/avatar.jpg"
                alt="Haizai" />
           <p class="site-author-name" itemprop="name">Haizai</p>
           <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
@@ -470,7 +495,7 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -478,7 +503,7 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -487,7 +512,7 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -498,6 +523,17 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/haizai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -543,11 +579,11 @@ foo( )调用时，应用了this的默认绑定，this指向全局对象。123456
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
 </div>
 
 <div class="theme-info">
-  主题 -
+  theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>

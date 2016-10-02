@@ -88,9 +88,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="读「你不知道的javascript」之prototype屏蔽">
 <meta property="og:url" content="http://yoursite.com/blog/6/index.html">
-<meta property="og:site_name" content="Haizai">
+<meta property="og:site_name" content="Haizai Console">
 <meta property="og:description" content="Object.create(proto, [ propertiesObject ])可以创建一个指定原型proto，和新的键和值prototype.isPrototypeOf(obj) 返回prototype是否为obj的原型链上obj.hasOwnProperty(prop) 返回obj是否含有指定的自身属性。123456789var obj1 = &amp;#123;b: &apos;str&apos;&amp;#125;var">
-<meta property="og:updated_time" content="2016-09-30T08:05:02.320Z">
+<meta property="og:updated_time" content="2016-10-02T05:07:20.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="读「你不知道的javascript」之prototype屏蔽">
 <meta name="twitter:description" content="Object.create(proto, [ propertiesObject ])可以创建一个指定原型proto，和新的键和值prototype.isPrototypeOf(obj) 返回prototype是否为obj的原型链上obj.hasOwnProperty(prop) 返回obj是否含有指定的自身属性。123456789var obj1 = &amp;#123;b: &apos;str&apos;&amp;#125;var">
@@ -116,7 +116,7 @@
 
   <link rel="canonical" href="http://yoursite.com/blog/6/"/>
 
-  <title> 读「你不知道的javascript」之prototype屏蔽 | Haizai </title>
+  <title> 读「你不知道的javascript」之prototype屏蔽 | Haizai Console </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +147,7 @@
   <div class="custom-logo-site-title">
     <a href="/"  class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
-      <span class="site-title">Haizai</span>
+      <span class="site-title">Haizai Console</span>
       <span class="logo-line-after"><i></i></span>
     </a>
   </div>
@@ -179,12 +179,12 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
+        <li class="menu-item menu-item-demo">
+          <a href="/categories/demo/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-star"></i> <br />
             
-            分类
+            demo
           </a>
         </li>
       
@@ -199,12 +199,32 @@
         </li>
       
         
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
             标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
           </a>
         </li>
       
@@ -314,9 +334,11 @@
       
         <p><code>Object.create(proto, [ propertiesObject ])</code>可以创建一个指定原型proto，和新的键和值<br><code>prototype.isPrototypeOf(obj)</code> 返回prototype是否为obj的原型链上<br><code>obj.hasOwnProperty(prop)</code> 返回obj是否含有指定的自身属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;b: <span class="string">'str'</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1, &#123;</div><div class="line">  a: &#123;value: <span class="number">10</span>&#125;</div><div class="line">&#125;)</div><div class="line">obj2 <span class="comment">// Object &#123;a: 10&#125;</span></div><div class="line">obj2.__proto__ <span class="comment">// Object &#123;b: "str"&#125;</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'a'</span>) <span class="comment">// true</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'b'</span>) <span class="comment">// false</span></div><div class="line">obj1.isPrototypeOf(obj2) <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
 <h3 id="属性设置和屏蔽"><a href="#属性设置和屏蔽" class="headerlink" title="属性设置和屏蔽"></a>属性设置和屏蔽</h3><ol>
-<li><p>原型链上层的普通属性，屏蔽</p>
+<li>原型链上层的普通属性，屏蔽</li>
+</ol>
+<a id="more"></a>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// 20</span></div><div class="line">obj2.__proto__.a <span class="comment">// 10</span></div></pre></td></tr></table></figure>
-</li>
+<ol>
 <li><p>原型链上层的只读属性，赋值被忽略（严格模式抛出错误），不屏蔽</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj1, <span class="string">'a'</span>, &#123;writable: <span class="literal">false</span>&#125;)</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1)</div><div class="line">obj2.a = <span class="number">20</span></div><div class="line">obj2.a <span class="comment">// 10</span></div></pre></td></tr></table></figure>
 </li>
@@ -432,7 +454,7 @@
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/uploads/avatar.jpg"
+               src="/img/avatar.jpg"
                alt="Haizai" />
           <p class="site-author-name" itemprop="name">Haizai</p>
           <p class="site-description motion-element" itemprop="description">人生五十年、下天のうちを比ぶれば、梦まぼろしのごとくなり</p>
@@ -440,7 +462,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -448,7 +470,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -457,7 +479,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -468,6 +490,17 @@
         
 
         <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/haizai" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
           
         </div>
 
@@ -513,11 +546,11 @@
 </div>
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+   <a class="theme-link" href="https://hexo.io">Hexo</a> 
 </div>
 
 <div class="theme-info">
-  主题 -
+  theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Mist
   </a>
