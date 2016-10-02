@@ -278,6 +278,140 @@
             
               
                 
+                <a class="post-title-link" href="/blog/demo-2/" itemprop="url">
+                  demo——jQuery实现日历UI
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T19:01:19+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/demo/" itemprop="url" rel="index">
+                    <span itemprop="name">demo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><h3 id="demo地址：jQuery实现日历UI"><a href="#demo地址：jQuery实现日历UI" class="headerlink" title="demo地址：jQuery实现日历UI"></a>demo地址：<a href="/demo/ife2016/ife41/ife41.html">jQuery实现日历UI</a></h3></li>
+<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/haizai.github.io/tree/master/demo/ife2016/ife41" target="_blank" rel="external">github源码</a></h4></li>
+<li><h4 id="要求：百度ife2016任务41"><a href="#要求：百度ife2016任务41" class="headerlink" title="要求：百度ife2016任务41"></a>要求：<a href="http://ife.baidu.com/task/detail?taskId=41" target="_blank" rel="external">百度ife2016任务41</a></h4></li>
+<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
+</ul>
+<ol>
+<li>jQuery实现，没有使用现成库或框架。</li>
+<li>使用了javascript的构造函数模式及原型模式，只用了<code>function Calendar()</code>,<code>Calendar.prototype={}</code>,<code>new Calendar()</code>,没有暴露其他变量。</li>
+<li>上个月最后几天和下个月前几天计算得到，所以每月5行或6行不固定。</li>
+<li>点击某天则active某天，上个月最后几天或下个月前几天，则先翻到那个月，再active。</li>
+</ol>
+<ul>
+<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
+</ul>
+<ol>
+<li>第一次用jQuery完整的写一个组件，问题还是很多啦~~</li>
+<li>整个流程：先init(),init最后执行render(),render最后绑定click()事件,click中lastMouth()和nextMouth()时再绑定render()。</li>
+<li>计算日期过程调试非常多才成功，具体实现是这样：根据上个月最后一天的周几确定上个月还有几天，根据这个最后一天确定这个月，根据这个月最后一天的周几确定下个月初有几天，最后把这三部分合在在一起，每次render()时执行。</li>
+<li>循环绑定耦合度高，不易维护。越发感觉到MVVM的好~</li>
+</ol>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/6/" itemprop="url">
                   读「你不知道的javascript」之prototype屏蔽
                 </a>
@@ -910,7 +1044,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
