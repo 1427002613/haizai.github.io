@@ -278,473 +278,6 @@
             
               
                 
-                <a class="post-title-link" href="/blog/13/" itemprop="url">
-                  「javascript设计模式与开发实践」学习笔记——迭代器模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-02T15:37:53+08:00" content="2016-10-02">
-              2016-10-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="迭代器模式：提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。"><a href="#迭代器模式：提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。" class="headerlink" title="迭代器模式：提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。"></a>迭代器模式：提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。</h4><p>简单内部迭代器</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> each = <span class="function"><span class="keyword">function</span> (<span class="params">arr, cb</span>) </span>&#123;</div><div class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++) &#123;</div><div class="line">    cb.call(arr[i], arr[i], i)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">each([<span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>], <span class="function"><span class="keyword">function</span>(<span class="params">val, index</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(index + <span class="string">': '</span> + val);</div><div class="line">&#125;) </div><div class="line"><span class="comment">//  0: 20</span></div><div class="line"><span class="comment">//  1: 30</span></div><div class="line"><span class="comment">//  2: 40</span></div></pre></td></tr></table></figure>
-<hr>
-<p>简单外部迭代器</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Iterator = <span class="function"><span class="keyword">function</span> (<span class="params">obj</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> current = <span class="number">0</span></div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    next: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> obj[++current]</div><div class="line">    &#125;,</div><div class="line">    isDone: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> current &gt;= obj.length</div><div class="line">    &#125;,</div><div class="line">    getCurrItem: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="keyword">return</span> obj[current]</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> iterator = <span class="keyword">new</span> Iterator([<span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>])</div><div class="line">iterator.getCurrItem() <span class="comment">// 20</span></div><div class="line">iterator.next() <span class="comment">// 30</span></div><div class="line">iterator.next() <span class="comment">// 40</span></div><div class="line">iterator.next() <span class="comment">// undefined</span></div><div class="line">iterator.isDone() <span class="comment">// true</span></div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/13/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/12/" itemprop="url">
-                  「javascript设计模式与开发实践」学习笔记——代理模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-01T12:12:41+08:00" content="2016-10-01">
-              2016-10-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="代理模式：-为一个对象提供一个代用品或占位符，以便控制对它的访问"><a href="#代理模式：-为一个对象提供一个代用品或占位符，以便控制对它的访问" class="headerlink" title="代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问"></a>代理模式： 为一个对象提供一个代用品或占位符，以便控制对它的访问</h4><p>虚拟代理实现图片预加载</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> myImage = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="built_in">document</span>.createElement(<span class="string">'img'</span>)</div><div class="line">  <span class="built_in">document</span>.body.appendChild(img)</div><div class="line"></div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    setSrc: <span class="function"><span class="keyword">function</span> (<span class="params">src</span>) </span>&#123;</div><div class="line">      img.src = src</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line"><span class="keyword">var</span> proxyImage = (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> img = <span class="keyword">new</span> Image()</div><div class="line">  img.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    myImage.setSrc(<span class="keyword">this</span>.src)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">src</span>) </span>&#123;</div><div class="line">    <span class="comment">//预加载的占位图</span></div><div class="line">    myImage.setSrc(<span class="string">'file:// /E:/computer/image/png/mini-icons/1084294.png'</span>)</div><div class="line">    img.src = src</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"></div><div class="line">proxyImage(<span class="string">'http://cdn.duitang.com/uploads/item/201203/10/20120310141838_nZxB5.thumb.600_0.jpeg'</span>)</div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/12/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/11/" itemprop="url">
-                  「javascript设计模式与开发实践」学习笔记——策略模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-30T17:52:04+08:00" content="2016-09-30">
-              2016-09-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="策略模式：-定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。"><a href="#策略模式：-定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。" class="headerlink" title="策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。"></a>策略模式： 定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。</h4><p>简单实例</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> levelS = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelS.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">4</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> levelA = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelA.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">3</span></div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> levelB = <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;&#125;</div><div class="line">levelB.prototype.calculate = <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> salary * <span class="number">2</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Bonus = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.salary = <span class="literal">null</span></div><div class="line">  <span class="keyword">this</span>.strategy = <span class="literal">null</span></div><div class="line">&#125;</div><div class="line">Bonus.prototype = &#123;</div><div class="line">  setSalary: <span class="function"><span class="keyword">function</span>(<span class="params">salary</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.salary = salary</div><div class="line">  &#125;,</div><div class="line">  setStrategy: <span class="function"><span class="keyword">function</span>(<span class="params">strategy</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.strategy = strategy</div><div class="line">  &#125;,</div><div class="line">  getBonus: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.strategy.calculate(<span class="keyword">this</span>.salary)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> bonus = <span class="keyword">new</span> Bonus()</div><div class="line">bonus.setSalary(<span class="number">2000</span>)</div><div class="line">bonus.setStrategy(<span class="keyword">new</span> levelA())</div><div class="line">bonus.getBonus() <span class="comment">//6000</span></div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/11/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/10/" itemprop="url">
-                  「javascript设计模式与开发实践」学习笔记——单例模式
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-30T15:19:48+08:00" content="2016-09-30">
-              2016-09-30
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/设计模式/" itemprop="url" rel="index">
-                    <span itemprop="name">设计模式</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h4 id="单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。"><a href="#单例模式：-保证一个类仅有一个实例，并提供一个访问它的全局访问点。" class="headerlink" title="单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。"></a>单例模式： 保证一个类仅有一个实例，并提供一个访问它的全局访问点。</h4><p>简单实现</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Sobj = <span class="function"><span class="keyword">function</span> (<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = name </div><div class="line">&#125;</div><div class="line">Sobj.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</div><div class="line">&#125;;</div><div class="line">Sobj.getInstance = (<span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> instance = <span class="literal">null</span></div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">name</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!instance) &#123;</div><div class="line">      instance = <span class="keyword">new</span> Sobj(name)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> instance</div><div class="line">  &#125;</div><div class="line">&#125;())</div><div class="line"><span class="keyword">var</span> a = Sobj.getInstance(<span class="string">'s1'</span>)</div><div class="line"><span class="keyword">var</span> b = Sobj.getInstance(<span class="string">'s2'</span>)</div><div class="line"></div><div class="line">a === b <span class="comment">// true</span></div></pre></td></tr></table></figure>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/10/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/blog/demo-5/" itemprop="url">
                   demo——vuex简单实践todos
                 </a>
@@ -836,8 +369,28 @@
 <li>Bootstrap限制太多，自己写样式开心多了~~</li>
 </ol>
 <ul>
-<li><h4 id="结构："><a href="#结构：" class="headerlink" title="结构："></a>结构：</h4><img src="/img/demo-5.png" alt="结构"></li>
+<li><h4 id="结构："><a href="#结构：" class="headerlink" title="结构："></a>结构：</h4></li>
 </ul>
+<pre>
+.
+├── webpack.config.js .... webpack配置文件
+├── package.json ......... npm配置文件
+├── index.html ........... html主入口
+├── .babelrc ............. babelrc配置文件
+└── src
+    ├── App.vue .......... vue入口
+    ├── main.js .......... webpack入口
+    ├── components
+    |   ├── foot.vue ..... 尾部组件
+    |   ├── todo.vue ..... 每一个todo的组件
+    |   └── todos.vue .... 全部todo和foot的组件
+    ├── scss
+    |   └── main.scss .... scss样式
+    └── vuex   
+        ├── actions.js ... vuex事件
+        └── store.js ..... vuex仓库
+</pre>
+
 
           
         
@@ -1509,6 +1062,514 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/demo-2/" itemprop="url">
+                  demo——jQuery实现日历UI
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-21T19:01:19+08:00" content="2016-09-21">
+              2016-09-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/demo/" itemprop="url" rel="index">
+                    <span itemprop="name">demo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><h3 id="demo地址：jQuery实现日历UI"><a href="#demo地址：jQuery实现日历UI" class="headerlink" title="demo地址：jQuery实现日历UI"></a>demo地址：<a href="/demo/ife2016/ife41/ife41.html">jQuery实现日历UI</a></h3></li>
+<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/haizai.github.io/tree/master/demo/ife2016/ife41" target="_blank" rel="external">github源码</a></h4></li>
+<li><h4 id="要求：百度ife2016任务41"><a href="#要求：百度ife2016任务41" class="headerlink" title="要求：百度ife2016任务41"></a>要求：<a href="http://ife.baidu.com/task/detail?taskId=41" target="_blank" rel="external">百度ife2016任务41</a></h4></li>
+<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
+</ul>
+<ol>
+<li>jQuery实现，没有使用现成库或框架。</li>
+<li>使用了javascript的构造函数模式及原型模式，只用了<code>function Calendar()</code>,<code>Calendar.prototype={}</code>,<code>new Calendar()</code>,没有暴露其他变量。</li>
+<li>上个月最后几天和下个月前几天计算得到，所以每月5行或6行不固定。</li>
+<li>点击某天则active某天，上个月最后几天或下个月前几天，则先翻到那个月，再active。</li>
+</ol>
+<ul>
+<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
+</ul>
+<ol>
+<li>第一次用jQuery完整的写一个组件，问题还是很多啦~~</li>
+<li>整个流程：先init(),init最后执行render(),render最后绑定click()事件,click中lastMouth()和nextMouth()时再绑定render()。</li>
+<li>计算日期过程调试非常多才成功，具体实现是这样：根据上个月最后一天的周几确定上个月还有几天，根据这个最后一天确定这个月，根据这个月最后一天的周几确定下个月初有几天，最后把这三部分合在在一起，每次render()时执行。</li>
+<li>循环绑定耦合度高，不易维护。越发感觉到MVVM的好~</li>
+</ol>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/6/" itemprop="url">
+                  读「你不知道的javascript」之prototype屏蔽
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-20T12:43:54+08:00" content="2016-09-20">
+              2016-09-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/「你不知道的javascript」/" itemprop="url" rel="index">
+                    <span itemprop="name">「你不知道的javascript」</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><code>Object.create(proto, [ propertiesObject ])</code>可以创建一个指定原型proto，和新的键和值<br><code>prototype.isPrototypeOf(obj)</code> 返回prototype是否为obj的原型链上<br><code>obj.hasOwnProperty(prop)</code> 返回obj是否含有指定的自身属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;b: <span class="string">'str'</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1, &#123;</div><div class="line">  a: &#123;value: <span class="number">10</span>&#125;</div><div class="line">&#125;)</div><div class="line">obj2 <span class="comment">// Object &#123;a: 10&#125;</span></div><div class="line">obj2.__proto__ <span class="comment">// Object &#123;b: "str"&#125;</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'a'</span>) <span class="comment">// true</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'b'</span>) <span class="comment">// false</span></div><div class="line">obj1.isPrototypeOf(obj2) <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<h3 id="属性设置和屏蔽"><a href="#属性设置和屏蔽" class="headerlink" title="属性设置和屏蔽"></a>属性设置和屏蔽</h3><ol>
+<li>原型链上层的普通属性，屏蔽</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/5/" itemprop="url">
+                  读「你不知道的javascript」之object描述符
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-19T20:35:35+08:00" content="2016-09-19">
+              2016-09-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/「你不知道的javascript」/" itemprop="url" rel="index">
+                    <span itemprop="name">「你不知道的javascript」</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="获得属性描述符"><a href="#获得属性描述符" class="headerlink" title="获得属性描述符"></a>获得属性描述符</h3><p><code>Object.getOwnPropertyDescriptor(obj, prop)</code><br>获取某个obj的prop属性的描述符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'a'</span>)</div><div class="line"><span class="comment">//&#123;value: 10, writable: true, enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure></p>
+<p>所以默认下writable,enumerable,configurable均为true</p>
+<hr>
+<h3 id="设置属性描述符"><a href="#设置属性描述符" class="headerlink" title="设置属性描述符"></a>设置属性描述符</h3><p><code>Object.defineProperty(obj, prop, descriptor)</code><br>新建或修改某个obj的propp属性的描述符descriptor<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'b'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">true</span>, </div><div class="line">  enumerable:  <span class="literal">true</span>, </div><div class="line">  configurable:  <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h3><p>writable决定属性值是否可修改</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/5/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/blog/demo-1/" itemprop="url">
+                  demo——原生javascript实现树形组件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-19T13:54:50+08:00" content="2016-09-19">
+              2016-09-19
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/demo/" itemprop="url" rel="index">
+                    <span itemprop="name">demo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><h3 id="demo地址：原生javascript实现树形组件"><a href="#demo地址：原生javascript实现树形组件" class="headerlink" title="demo地址：原生javascript实现树形组件"></a>demo地址：<a href="/demo/ife2016/ife25/ife25.html">原生javascript实现树形组件</a></h3></li>
+<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/haizai.github.io/tree/master/demo/ife2016/ife25" target="_blank" rel="external">github源码</a></h4></li>
+<li><h4 id="要求：百度ife2016任务25"><a href="#要求：百度ife2016任务25" class="headerlink" title="要求：百度ife2016任务25"></a>要求：<a href="http://ife.baidu.com/task/detail?taskId=25" target="_blank" rel="external">百度ife2016任务25</a></h4></li>
+<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
+</ul>
+<ol>
+<li>原生html,css,javascript实现，没有使用其他库或框架。</li>
+<li>使用了javascript的构造函数模式及原型模式，所有的节点都是<code>new Tree(node)</code>。</li>
+<li>搜索时，将搜索到的值加红，如果那个节点是隐藏的，展开直到根。</li>
+<li>用了点简单的css动画。</li>
+</ol>
+<ul>
+<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
+</ul>
+<ol>
+<li>这是我第一次完整的写一个组件，问题很多啦~~</li>
+<li>第一次用prototype，写起来很爽！对js和css的理解更深了。</li>
+<li>click事件的如果放在Tree.prototype里，new Tree时渲染有诡异的问题。</li>
+<li>搜索值时用这种形式：外包裹<code>innerHTML.replace(str,&#39;&lt;span style=&quot;...&quot;&gt;&#39;+str+&#39;&lt;/span&gt;&#39;)</code>，重置时<code>outerHTML=innerHTML</code>，经常会出现bug，而且绑定在上面的click事件会消失/(ㄒoㄒ)/~~</li>
+<li>在如此混杂的js添加css动画很晕，隐藏和删除的动画难以绑定。</li>
+<li>用原生js操纵DOM真的很不方便（自从用了Vue以后），耦合非常高，代码不易维护（现在回头来看都快晕了）。</li>
+</ol>
+<hr>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1554,7 +1615,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1562,7 +1623,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1571,7 +1632,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
