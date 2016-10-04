@@ -278,8 +278,147 @@
             
               
                 
+                <a class="post-title-link" href="/blog/demo-6/" itemprop="url">
+                  demo——jquery简单实现todos
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-04T16:01:57+08:00" content="2016-10-04">
+              2016-10-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/demo/" itemprop="url" rel="index">
+                    <span itemprop="name">demo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><h3 id="demo地址：jquery-todos"><a href="#demo地址：jquery-todos" class="headerlink" title="demo地址：jquery-todos"></a>demo地址：<a href="/demo/jquery/jquery-todos/todos.html">jquery-todos</a></h3></li>
+<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/demo/jquery/jquery-todos" target="_blank" rel="external">github源码</a></h4></li>
+<li><h4 id="依赖：jquery"><a href="#依赖：jquery" class="headerlink" title="依赖：jquery"></a>依赖：jquery</h4></li>
+<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
+</ul>
+<ol>
+<li>纯jquery实现简单的todos，未使用其他框架。</li>
+<li>数据存储在localStorage。</li>
+<li>样式和结构使用之前做的<a href="/blog/demo-5/">vuex-todos</a>。</li>
+</ol>
+<ul>
+<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
+</ul>
+<ol>
+<li>用jquery把之前用vue写的todos重构了一编，感觉jquery也不赖。</li>
+<li>jquery具体思路这样：<ul>
+<li>初始化时init(),初始化数据，绑定事件bindEvents(),运行一次render()。</li>
+<li>bindEvents()中将所有的事件绑定在目标上。</li>
+<li>需要重新渲染的事件，的最后执行render()</li>
+<li>每一次render()，先empty，再根据数据重新渲染。</li>
+</ul>
+</li>
+<li>虽然这样也能较好的实现，但是相对vue耦合度还是太高，很多事件都绑定一个render()</li>
+<li>不过总体来说，jquery比原生js还是方便了许多，兼容性也很强。</li>
+<li>我觉得以后大概每学一门框架都要先写一份todos了（笑~）</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/demo-5/" itemprop="url">
-                  demo——vuex简单实践todos
+                  demo——vuex简单实现todos
                 </a>
               
             
@@ -358,6 +497,7 @@
 <li>webpack打包，ES6用babel转译，vuex来控制数据。</li>
 <li>是之前的<a href="/blog/demo-3/">vue-todo</a>的改进版，不再使用Bootstrap。</li>
 <li>单击todo可以编辑它的内容。</li>
+<li>数据存储在localStorage。</li>
 </ol>
 <ul>
 <li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
@@ -563,7 +703,7 @@
               
                 
                 <a class="post-title-link" href="/blog/demo-4/" itemprop="url">
-                  demo——vue+jQueryAjax实现天气预报
+                  demo——vue+jqueryAjax实现天气预报
                 </a>
               
             
@@ -1084,7 +1224,7 @@
               
                 
                 <a class="post-title-link" href="/blog/demo-2/" itemprop="url">
-                  demo——jQuery实现日历UI
+                  demo——jquery实现日历UI
                 </a>
               
             
@@ -1434,142 +1574,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/demo-1/" itemprop="url">
-                  demo——原生javascript实现树形组件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T13:54:50+08:00" content="2016-09-19">
-              2016-09-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/demo/" itemprop="url" rel="index">
-                    <span itemprop="name">demo</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><h3 id="demo地址：原生javascript实现树形组件"><a href="#demo地址：原生javascript实现树形组件" class="headerlink" title="demo地址：原生javascript实现树形组件"></a>demo地址：<a href="/demo/ife2016/ife25/ife25.html">原生javascript实现树形组件</a></h3></li>
-<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/haizai.github.io/tree/master/demo/ife2016/ife25" target="_blank" rel="external">github源码</a></h4></li>
-<li><h4 id="要求：百度ife2016任务25"><a href="#要求：百度ife2016任务25" class="headerlink" title="要求：百度ife2016任务25"></a>要求：<a href="http://ife.baidu.com/task/detail?taskId=25" target="_blank" rel="external">百度ife2016任务25</a></h4></li>
-<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
-</ul>
-<ol>
-<li>原生html,css,javascript实现，没有使用其他库或框架。</li>
-<li>使用了javascript的构造函数模式及原型模式，所有的节点都是<code>new Tree(node)</code>。</li>
-<li>搜索时，将搜索到的值加红，如果那个节点是隐藏的，展开直到根。</li>
-<li>用了点简单的css动画。</li>
-</ol>
-<ul>
-<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
-</ul>
-<ol>
-<li>这是我第一次完整的写一个组件，问题很多啦~~</li>
-<li>第一次用prototype，写起来很爽！对js和css的理解更深了。</li>
-<li>click事件的如果放在Tree.prototype里，new Tree时渲染有诡异的问题。</li>
-<li>搜索值时用这种形式：外包裹<code>innerHTML.replace(str,&#39;&lt;span style=&quot;...&quot;&gt;&#39;+str+&#39;&lt;/span&gt;&#39;)</code>，重置时<code>outerHTML=innerHTML</code>，经常会出现bug，而且绑定在上面的click事件会消失/(ㄒoㄒ)/~~</li>
-<li>在如此混杂的js添加css动画很晕，隐藏和删除的动画难以绑定。</li>
-<li>用原生js操纵DOM真的很不方便（自从用了Vue以后），耦合非常高，代码不易维护（现在回头来看都快晕了）。</li>
-</ol>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1615,7 +1619,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1632,7 +1636,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
