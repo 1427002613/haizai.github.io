@@ -278,6 +278,195 @@
             
               
                 
+                <a class="post-title-link" href="/blog/demo-questionnaire/" itemprop="url">
+                  demo——vue问卷调查
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-06T17:26:28+08:00" content="2016-10-06">
+              2016-10-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/demo/" itemprop="url" rel="index">
+                    <span itemprop="name">demo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><h3 id="demo地址：vue问卷调查"><a href="#demo地址：vue问卷调查" class="headerlink" title="demo地址：vue问卷调查"></a>demo地址：<a href="/demo/vue/vue-questionnaire/index.html">vue问卷调查</a></h3></li>
+<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/demo/tree/master/vue-questionnaire" target="_blank" rel="external">github源码</a></h4></li>
+<li><h4 id="技术栈："><a href="#技术栈：" class="headerlink" title="技术栈："></a>技术栈：</h4></li>
+</ul>
+<ol>
+<li>框架：vue，vuex, vue-router</li>
+<li>样式：sass</li>
+<li>图表UI：ichart</li>
+<li>ES6：babel</li>
+<li>打包工具：webpack</li>
+</ol>
+<ul>
+<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
+</ul>
+<ol>
+<li>集成现在个人所会的技术栈，具体构造见最后的结构图。</li>
+<li>vue-router控制路由，共有问卷列表，填写问卷，问卷详情，新建问卷，4个路由页面。</li>
+<li>vuex控制数据流向，有两个具体修改数据的事件，创建新建问卷和提交答卷。数据存储在localStorage。</li>
+<li>尝试了sass的<code>$</code>变量，<code>@import</code>引用，和一个简单却高效的<code>mixin</code>。</li>
+</ol>
+<ul>
+<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
+</ul>
+<ol>
+<li>花了一周多时间完成，把现在会的都用上了~</li>
+<li>sass样式分成多个文件，在main.scss，把一个个都@import进来，结构更清晰了。</li>
+<li>组件components 和 路由views分开，便于复用。</li>
+<li>最后踩了个坑，<code>JSON.stringify()</code>会将Date转化为字符串，相当于调用<code>Date.prototype.toISOString()</code>。然而<code>JSON.parse()</code>并不会解码这个字符串，需要单独把每一个字符串调用<code>new Date()</code>。如果直接把Date储存过于复杂，我的解决方法是储存数据前在Date前加<code>+</code>，将其直接变为<code>Number</code>来储存，这样就不会受<code>JSON.stringify()</code>和<code>JSON.parse()</code>影响，需要转化回来时再使用<code>new Date()</code>。</li>
+</ol>
+<ul>
+<li><h4 id="结构图："><a href="#结构图：" class="headerlink" title="结构图："></a>结构图：</h4></li>
+</ul>
+<pre>
+.
+├── assets
+|   └── ichart.1.2.min.js ...... ichart图表UI
+├── public
+|   ├── build.js ............... 压缩后的js
+|   └── build.js.map ........... 压缩后的js.map
+├── src
+|   ├── components  //组件
+|   |   ├── chartCheckbox.vue .. 多选题柱状图
+|   |   ├── chartTextarea.vue .. 文本题环状图
+|   |   ├── chartRadio.vue ..... 单选题饼图
+|   |   ├── modalAns.vue ....... 填写问卷弹出框
+|   |   └── modalNew.vue ....... 新建问卷弹出框
+|   ├── scss  //样式
+|   |   ├── ans.scss ........... 填写问卷
+|   |   ├── common.scss ........ 共有样式
+|   |   ├── detail.scss ........ 问卷详情
+|   |   ├── list.scss .......... 问卷列表
+|   |   ├── main.scss .......... scss样式入口
+|   |   ├── mixin.scss ......... mixin
+|   |   ├── modal.scss ......... 弹出框
+|   |   ├── new.scss ........... 新建问卷
+|   |   ├── transition.scss .... 过渡
+|   |   └── variable.scss ...... 变量
+|   ├── views //路由
+|   |   ├── ans.vue ............ 填写问卷页面
+|   |   ├── detail.vue ......... 问卷详情页面
+|   |   ├── list.vue ........... 问卷列表页面
+|   |   └── new.vue ............ 新建问卷页面
+|   ├── vuex
+|   |   ├── actions.js ......... vuex事件
+|   |   └── store.js ........... vuex仓库
+|   ├── App.vue ................ vue入口
+|   ├── main.js ................ webpack入口
+|   ├── filters.js ............. 过滤器
+|   └── route-config.js ........ vue-route具体路由
+|
+├── .babelrc ................... babelrc配置文件
+├── index.html ................. 主入口
+├── package.json ............... npm文件
+└── webpack.config.js .......... webpack配置文件
+
+</pre>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/demo-6/" itemprop="url">
                   demo——jquery简单实现todos
                 </a>
@@ -483,10 +672,10 @@
             <ul>
 <li><h3 id="demo地址：vuex-todos"><a href="#demo地址：vuex-todos" class="headerlink" title="demo地址：vuex-todos"></a>demo地址：<a href="/demo/vue/vuex-todos/index.html">vuex-todos</a></h3></li>
 <li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/demo/tree/master/vuex-todos" target="_blank" rel="external">github源码</a></h4></li>
-<li><h4 id="依赖："><a href="#依赖：" class="headerlink" title="依赖："></a>依赖：</h4></li>
+<li><h4 id="技术栈："><a href="#技术栈：" class="headerlink" title="技术栈："></a>技术栈：</h4></li>
 </ul>
 <ol>
-<li>框架：vue，数据处理：vuex</li>
+<li>框架：vue，vuex</li>
 <li>ES6: babel</li>
 <li>打包工具：webpack</li>
 </ol>
@@ -1454,126 +1643,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/5/" itemprop="url">
-                  读「你不知道的javascript」之object描述符
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-19T20:35:35+08:00" content="2016-09-19">
-              2016-09-19
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/「你不知道的javascript」/" itemprop="url" rel="index">
-                    <span itemprop="name">「你不知道的javascript」</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="获得属性描述符"><a href="#获得属性描述符" class="headerlink" title="获得属性描述符"></a>获得属性描述符</h3><p><code>Object.getOwnPropertyDescriptor(obj, prop)</code><br>获取某个obj的prop属性的描述符<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;a: <span class="number">10</span>&#125;</div><div class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(obj, <span class="string">'a'</span>)</div><div class="line"><span class="comment">//&#123;value: 10, writable: true, enumerable: true, configurable: true&#125;</span></div></pre></td></tr></table></figure></p>
-<p>所以默认下writable,enumerable,configurable均为true</p>
-<hr>
-<h3 id="设置属性描述符"><a href="#设置属性描述符" class="headerlink" title="设置属性描述符"></a>设置属性描述符</h3><p><code>Object.defineProperty(obj, prop, descriptor)</code><br>新建或修改某个obj的propp属性的描述符descriptor<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;&#125;</div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, <span class="string">'b'</span>, &#123;</div><div class="line">  value: <span class="number">20</span>, </div><div class="line">  writable:  <span class="literal">true</span>, </div><div class="line">  enumerable:  <span class="literal">true</span>, </div><div class="line">  configurable:  <span class="literal">true</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="writable"><a href="#writable" class="headerlink" title="writable"></a>writable</h3><p>writable决定属性值是否可修改</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/5/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1619,7 +1688,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
