@@ -44,10 +44,10 @@ jQuery(function($) {
         }
       })
       this.todos.length == 0 ? $('.foot').hide() : $('.foot').show()
-      $('.foot-info').text(function() {
+      $('.foot-count').text(function() {
         return self.todos.filter(function (todo) { 
           return todo.selected 
-        }).length + ' 项被选中'
+        }).length
       })
     },
     getIndex: function(el) {

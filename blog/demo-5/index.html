@@ -86,18 +86,11 @@
 
 <meta name="description" content="demo地址：vuex-todos
 源码：github源码
-技术栈：
-
-
-框架：vue，vuex
-ES6: babel
-打包工具：webpack
-
-
+技术栈：vue，vuex，babel，webpack
 特点：
 
 
-webpack打包，ES6用babel转译，vuex来控制数据。
+webpack打包，ES6用babel转译ES6，vuex来控制数据。
 是之前的vue-todo的改进版，不再使用Bootstrap。
 单击todo可以编辑它的内容。
 数据存储在localStorage。
@@ -106,25 +99,18 @@ webpack打包，ES6用babel转译，vuex来控制数据。
 感想与总结：
 
 
-配置packa">
+配置package和webpack了很久，终">
 <meta property="og:type" content="article">
-<meta property="og:title" content="demo——vuex简单实现todos">
+<meta property="og:title" content="demo——vuex实现简单todos">
 <meta property="og:url" content="http://yoursite.com/blog/demo-5/index.html">
 <meta property="og:site_name" content="Haizai Naive">
 <meta property="og:description" content="demo地址：vuex-todos
 源码：github源码
-技术栈：
-
-
-框架：vue，vuex
-ES6: babel
-打包工具：webpack
-
-
+技术栈：vue，vuex，babel，webpack
 特点：
 
 
-webpack打包，ES6用babel转译，vuex来控制数据。
+webpack打包，ES6用babel转译ES6，vuex来控制数据。
 是之前的vue-todo的改进版，不再使用Bootstrap。
 单击todo可以编辑它的内容。
 数据存储在localStorage。
@@ -133,24 +119,17 @@ webpack打包，ES6用babel转译，vuex来控制数据。
 感想与总结：
 
 
-配置packa">
-<meta property="og:updated_time" content="2016-10-06T08:33:52.120Z">
+配置package和webpack了很久，终">
+<meta property="og:updated_time" content="2016-10-11T10:16:06.241Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="demo——vuex简单实现todos">
+<meta name="twitter:title" content="demo——vuex实现简单todos">
 <meta name="twitter:description" content="demo地址：vuex-todos
 源码：github源码
-技术栈：
-
-
-框架：vue，vuex
-ES6: babel
-打包工具：webpack
-
-
+技术栈：vue，vuex，babel，webpack
 特点：
 
 
-webpack打包，ES6用babel转译，vuex来控制数据。
+webpack打包，ES6用babel转译ES6，vuex来控制数据。
 是之前的vue-todo的改进版，不再使用Bootstrap。
 单击todo可以编辑它的内容。
 数据存储在localStorage。
@@ -159,7 +138,7 @@ webpack打包，ES6用babel转译，vuex来控制数据。
 感想与总结：
 
 
-配置packa">
+配置package和webpack了很久，终">
 
 
 
@@ -182,7 +161,7 @@ webpack打包，ES6用babel转译，vuex来控制数据。
 
   <link rel="canonical" href="http://yoursite.com/blog/demo-5/"/>
 
-  <title> demo——vuex简单实现todos | Haizai Naive </title>
+  <title> demo——vuex实现简单todos | Haizai Naive </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -342,7 +321,7 @@ webpack打包，ES6用babel转译，vuex来控制数据。
             
             
               
-                demo——vuex简单实现todos
+                demo——vuex实现简单todos
               
             
           </h1>
@@ -404,18 +383,11 @@ webpack打包，ES6用babel转译，vuex来控制数据。
         <ul>
 <li><h3 id="demo地址：vuex-todos"><a href="#demo地址：vuex-todos" class="headerlink" title="demo地址：vuex-todos"></a>demo地址：<a href="/demo/vue/vuex-todos/index.html">vuex-todos</a></h3></li>
 <li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/demo/tree/master/vuex-todos" target="_blank" rel="external">github源码</a></h4></li>
-<li><h4 id="技术栈："><a href="#技术栈：" class="headerlink" title="技术栈："></a>技术栈：</h4></li>
-</ul>
-<ol>
-<li>框架：vue，vuex</li>
-<li>ES6: babel</li>
-<li>打包工具：webpack</li>
-</ol>
-<ul>
+<li><h4 id="技术栈：vue，vuex，babel，webpack"><a href="#技术栈：vue，vuex，babel，webpack" class="headerlink" title="技术栈：vue，vuex，babel，webpack"></a>技术栈：vue，vuex，babel，webpack</h4></li>
 <li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
 </ul>
 <ol>
-<li>webpack打包，ES6用babel转译，vuex来控制数据。</li>
+<li>webpack打包，ES6用babel转译ES6，vuex来控制数据。</li>
 <li>是之前的<a href="/blog/demo-3/">vue-todo</a>的改进版，不再使用Bootstrap。</li>
 <li>单击todo可以编辑它的内容。</li>
 <li>数据存储在localStorage。</li>
@@ -445,8 +417,8 @@ webpack打包，ES6用babel转译，vuex来控制数据。
     |   ├── foot.vue ..... 尾部组件
     |   ├── todo.vue ..... 每一个todo的组件
     |   └── todos.vue .... 全部todo和foot的组件
-    ├── scss
-    |   └── main.scss .... scss样式
+    ├── css
+    |   └── todos.css .... 样式
     └── vuex   
         ├── actions.js ... vuex事件
         └── store.js ..... vuex仓库
@@ -495,8 +467,8 @@ webpack打包，ES6用babel转译，vuex来控制数据。
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/blog/demo-6/" rel="prev" title="demo——jquery简单实现todos">
-                demo——jquery简单实现todos <i class="fa fa-chevron-right"></i>
+              <a href="/blog/demo-6/" rel="prev" title="demo——jquery实现简单todos">
+                demo——jquery实现简单todos <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -565,7 +537,7 @@ webpack打包，ES6用babel转译，vuex来控制数据。
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -582,7 +554,7 @@ webpack打包，ES6用babel转译，vuex来控制数据。
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -622,7 +594,7 @@ webpack打包，ES6用babel转译，vuex来控制数据。
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址：vuex-todos"><span class="nav-number">1.</span> <span class="nav-text">demo地址：vuex-todos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#源码：github源码"><span class="nav-number">1.1.</span> <span class="nav-text">源码：github源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技术栈："><span class="nav-number">1.2.</span> <span class="nav-text">技术栈：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点："><span class="nav-number">1.3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#感想与总结："><span class="nav-number">1.4.</span> <span class="nav-text">感想与总结：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构："><span class="nav-number">1.5.</span> <span class="nav-text">结构：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址：vuex-todos"><span class="nav-number">1.</span> <span class="nav-text">demo地址：vuex-todos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#源码：github源码"><span class="nav-number">1.1.</span> <span class="nav-text">源码：github源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技术栈：vue，vuex，babel，webpack"><span class="nav-number">1.2.</span> <span class="nav-text">技术栈：vue，vuex，babel，webpack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点："><span class="nav-number">1.3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#感想与总结："><span class="nav-number">1.4.</span> <span class="nav-text">感想与总结：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构："><span class="nav-number">1.5.</span> <span class="nav-text">结构：</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

@@ -8,7 +8,12 @@
 </head>
 <body>
   <div class="container">
-    <div class="title">todos</div>
+    <div class="title">
+      <p>JQuery Todos</p>
+      <p class="author">
+        <a href="https://github.com/haizai" target="_black">By Haizai</a>
+      </p>
+    </div>
     <div class="head">
       <i class="round"></i>
       <input type="text" placeholder="请输入新todos，按Enter确认" class="head-input" autofocus> 
@@ -16,7 +21,10 @@
     <div class="body"></div>
     <div class="foot">
       <i class="foot-del">&times;</i>
-      <span class="foot-info"></span>
+      <span class="foot-info">
+        <span class="foot-count"></span>
+        项被选中
+      </span>
       <span class="foot-visibility">
         <span class="foot-visibility-in">全部</span>
         <span>被选中的</span>
@@ -24,7 +32,7 @@
       </span>
     </div>
   </div>
-  <script src="../../js/jquery-1.12.4.min.js"></script>
+  <script src="jquery-1.12.4.min.js"></script>
   <script src="todos.js"></script>
 </body>
 </html>

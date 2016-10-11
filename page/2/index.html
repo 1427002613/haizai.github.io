@@ -278,6 +278,124 @@
             
               
                 
+                <a class="post-title-link" href="/blog/6/" itemprop="url">
+                  读「你不知道的javascript」之prototype屏蔽
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-20T12:43:54+08:00" content="2016-09-20">
+              2016-09-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/「你不知道的javascript」/" itemprop="url" rel="index">
+                    <span itemprop="name">「你不知道的javascript」</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><code>Object.create(proto, [ propertiesObject ])</code>可以创建一个指定原型proto，和新的键和值<br><code>prototype.isPrototypeOf(obj)</code> 返回prototype是否为obj的原型链上<br><code>obj.hasOwnProperty(prop)</code> 返回obj是否含有指定的自身属性。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;b: <span class="string">'str'</span>&#125;</div><div class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(obj1, &#123;</div><div class="line">  a: &#123;value: <span class="number">10</span>&#125;</div><div class="line">&#125;)</div><div class="line">obj2 <span class="comment">// Object &#123;a: 10&#125;</span></div><div class="line">obj2.__proto__ <span class="comment">// Object &#123;b: "str"&#125;</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'a'</span>) <span class="comment">// true</span></div><div class="line">obj2.hasOwnProperty(<span class="string">'b'</span>) <span class="comment">// false</span></div><div class="line">obj1.isPrototypeOf(obj2) <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<h3 id="属性设置和屏蔽"><a href="#属性设置和屏蔽" class="headerlink" title="属性设置和屏蔽"></a>属性设置和屏蔽</h3><ol>
+<li>原型链上层的普通属性，屏蔽</li>
+</ol>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/6/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/5/" itemprop="url">
                   读「你不知道的javascript」之object描述符
                 </a>
@@ -792,7 +910,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -809,7 +927,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
