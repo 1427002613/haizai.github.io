@@ -278,6 +278,142 @@
             
               
                 
+                <a class="post-title-link" href="/blog/crawler-1/" itemprop="url">
+                  node爬虫--豆瓣最热门的500部日本动画
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-20T22:30:41+08:00" content="2016-10-20">
+              2016-10-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/爬虫/" itemprop="url" rel="index">
+                    <span itemprop="name">爬虫</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><h4 id="数据及源码：具体数据，封面图片，源码"><a href="#数据及源码：具体数据，封面图片，源码" class="headerlink" title="数据及源码：具体数据，封面图片，源码"></a>数据及源码：<a href="https://github.com/haizai/crawler/tree/master/douban-anime/_data/id" target="_blank" rel="external">具体数据</a>，<a href="https://github.com/haizai/crawler/tree/master/douban-anime/_images/id" target="_blank" rel="external">封面图片</a>，<a href="https://github.com/haizai/crawler/tree/master/douban-anime" target="_blank" rel="external">源码</a></h4></li>
+<li><h4 id="技术栈及库："><a href="#技术栈及库：" class="headerlink" title="技术栈及库："></a>技术栈及库：</h4></li>
+<li>node</li>
+<li>superagent，发送GET请求</li>
+<li>cheerio，类jQuery，分析页面</li>
+<li>async库，并发控制（不限制并发数量，立马被403，别问我为什么知道）</li>
+<li><p>co，拒绝回调函数，yield控制流程</p>
+</li>
+<li><h4 id="过程："><a href="#过程：" class="headerlink" title="过程："></a>过程：</h4></li>
+</ul>
+<ol>
+<li>获得动画网址的列表<code>animelist.js</code>。 分析豆瓣热门动画页，分析Network发现某个个GET请求，改变最后的数字直到500，可以获得这个数据<code>_data/id-list-json</code>。</li>
+<li>获得具体动画数据<code>app.js</code>，先根据id-list-json发送superagent请求，用cheerio分析页面获得数据，其中图片pipe一个新的图片网址，具体在<code>_images/id</code>中，几个影评的网址发送几个新的superagent请求获得具体的影评，最后将数据存放在<code>_data/id</code>中，所有流程用co控制。</li>
+<li>分析改造数据<code>change-data.js</code>到<code>data/id</code>，合并简要数据<code>data-all.js</code>到<code>data/moives.json</code>。</li>
+</ol>
+<ul>
+<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
+</ul>
+<ol>
+<li>本爬虫时间2016-10-20，以后可以url和dom结构变动导致无法复用。</li>
+<li>多分析Network，多node app 分析数据，问题总会解决。</li>
+<li>第一次用10个并发+0.1秒延迟，途中就被403了，后来改用3个并发+5秒延迟，大概20分钟爬完。</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/demo-8/" itemprop="url">
                   demo——redux实现简单todos
                 </a>
@@ -1562,140 +1698,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/demo-3/" itemprop="url">
-                  demo——vue入门todos
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-21T23:56:24+08:00" content="2016-09-21">
-              2016-09-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/demo/" itemprop="url" rel="index">
-                    <span itemprop="name">demo</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><h3 id="demo地址：vue入门todos"><a href="#demo地址：vue入门todos" class="headerlink" title="demo地址：vue入门todos"></a>demo地址：<a href="/demo/vue/vue-todos/todos.html">vue入门todos</a></h3></li>
-<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/haizai.github.io/tree/master/demo/vue/vue-todos" target="_blank" rel="external">github源码</a></h4></li>
-<li><h4 id="依赖：vue，Bootstrap"><a href="#依赖：vue，Bootstrap" class="headerlink" title="依赖：vue，Bootstrap"></a>依赖：vue，Bootstrap</h4></li>
-<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
-</ul>
-<ol>
-<li>简单的入门todos，vue + Bootstrap实现。</li>
-<li>点击输入框左侧图标可以全选，点击左下侧×可以删除被选择的，点击右下侧课切换filter。</li>
-<li><code>localStorage</code>中读取和存放数据，刷新后数据仍然存在。</li>
-<li>vue实现简单的过渡动画。</li>
-<li><a href="/blog/demo-5/">vuex-todos</a>后来用vuex写的改进版。</li>
-</ol>
-<ul>
-<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
-</ul>
-<ol>
-<li>第一次用vue，熟悉了vue的各种选项。如（watch，computed，filters，methods，transition）</li>
-<li>localStorage储存时需要<code>JSON.stringify()</code>，localStorage读取时需要<code>JSON.parse()</code>。</li>
-<li>vue用起来真心好顺畅，再也不用操纵DOM，MVVM时代~~</li>
-</ol>
-<hr>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1741,7 +1743,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1749,7 +1751,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1758,7 +1760,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
