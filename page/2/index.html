@@ -278,6 +278,124 @@
             
               
                 
+                <a class="post-title-link" href="/blog/7/" itemprop="url">
+                  读「你不知道的javascript」之构造函数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-22T11:14:00+08:00" content="2016-09-22">
+              2016-09-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/「你不知道的javascript」/" itemprop="url" rel="index">
+                    <span itemprop="name">「你不知道的javascript」</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><code>Object.getPrototypeOf(obj)</code>返回指定obj的[[Prototype]]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo()</div><div class="line"><span class="built_in">Object</span>.getPrototypeOf(foo) === Foo.prototype <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<hr>
+<p><code>Object.prototype.constructor</code> 返回一个指向创建了该对象原型的函数引用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> foo1 = <span class="keyword">new</span> Foo()</div><div class="line">foo1.constructor == Foo <span class="comment">//true</span></div><div class="line"></div><div class="line">Foo.prototype = &#123;&#125;</div><div class="line"><span class="keyword">var</span> foo2 = <span class="keyword">new</span> Foo()</div><div class="line">foo2.constructor == Foo <span class="comment">//false</span></div><div class="line">foo2.constructor == <span class="built_in">Object</span> <span class="comment">//true</span></div><div class="line"></div><div class="line">Foo.prototype.constructor = Foo</div><div class="line"><span class="keyword">var</span> foo3 = <span class="keyword">new</span> Foo()</div><div class="line">foo2.constructor == Foo <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>当Foo.prototype被指定时，Foo.prototype没有.constructor属性，<br>foo.constructor继续委托至Object.prototype.constructor。<br>当然你可以自己指定一个Foo.prototype.constructor，这样foo.constructor就指向这个Foo了</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/blog/7/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/demo-3/" itemprop="url">
                   demo——vue入门todos
                 </a>
@@ -1178,7 +1296,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

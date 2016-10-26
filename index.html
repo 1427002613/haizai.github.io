@@ -278,6 +278,164 @@
             
               
                 
+                <a class="post-title-link" href="/blog/demo-9/" itemprop="url">
+                  demo——豆瓣最热门的500部日本动画
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-26T20:23:28+08:00" content="2016-10-26">
+              2016-10-26
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/demo/" itemprop="url" rel="index">
+                    <span itemprop="name">demo</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><h3 id="demo地址：豆瓣最热门的500部日本动画"><a href="#demo地址：豆瓣最热门的500部日本动画" class="headerlink" title="demo地址：豆瓣最热门的500部日本动画"></a>demo地址：<a href="/demo/react/douban-anime/index.html#/anime/2043155">豆瓣最热门的500部日本动画</a></h3></li>
+<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/demo/tree/master/douban-anime" target="_blank" rel="external">github源码</a></h4></li>
+<li><h4 id="技术栈：react，react-router，babel，webpack"><a href="#技术栈：react，react-router，babel，webpack" class="headerlink" title="技术栈：react，react-router，babel，webpack"></a>技术栈：react，react-router，babel，webpack</h4></li>
+<li><h4 id="数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。"><a href="#数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。" class="headerlink" title="数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。"></a>数据来源：<a href="https://www.douban.com/" target="_blank" rel="external">豆瓣</a>，由自己写的<a href="/blog/crawler-1/">「爬虫」</a>获取，仅供个人学习参考。</h4></li>
+<li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
+</ul>
+<ol>
+<li>点击右上角切换，可以随机切换一部动漫。</li>
+<li>react + react-router 实现，ES6用babel转译。</li>
+<li>数据通过发送本地ajax获得。</li>
+<li>做了预加载，在ajax接受和图片加载完成后，才进行展现。</li>
+<li>有回到顶部的按钮。</li>
+</ol>
+<ul>
+<li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
+</ul>
+<ol>
+<li>路由完全由react-router写成。</li>
+<li>第一次这种数据展现形式的项目，UI可能不太好看。</li>
+<li>本地json之后进行查找和过滤比较麻烦，之后考虑学习和使用后台和数据库，自己搭一个服务器来展现。</li>
+</ol>
+<ul>
+<li><h4 id="结构："><a href="#结构：" class="headerlink" title="结构："></a>结构：</h4><pre>
+.
+├── data //具体数据json
+├── images //图片
+├── src
+|   ├── components  //组件
+|   |   ├── App.jsx ....... 组件入口
+|   |   ├── Anime.jsx ..... 动画主体
+|   |   ├── Header.jsx .... 顶部导航栏
+|   |   └── Totop.jsx ..... 回到顶部
+|   ├── css //样式
+|   |   ├── font .......... iconfont字体
+|   |   └── main.css
+|   ├── main.js ........... webpack入口
+|   └── Router.jsx ........ 路由文件
+├── .babelrc
+├── index.html ............ 主入口
+├── package.json
+└── webpack.config.js
+</pre>
+
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/blog/crawler-1/" itemprop="url">
                   node爬虫--豆瓣最热门的500部日本动画
                 </a>
@@ -1580,124 +1738,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/blog/7/" itemprop="url">
-                  读「你不知道的javascript」之构造函数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T11:14:00+08:00" content="2016-09-22">
-              2016-09-22
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/「你不知道的javascript」/" itemprop="url" rel="index">
-                    <span itemprop="name">「你不知道的javascript」</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><code>Object.getPrototypeOf(obj)</code>返回指定obj的[[Prototype]]<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo()</div><div class="line"><span class="built_in">Object</span>.getPrototypeOf(foo) === Foo.prototype <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
-<hr>
-<p><code>Object.prototype.constructor</code> 返回一个指向创建了该对象原型的函数引用<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line"><span class="keyword">var</span> foo1 = <span class="keyword">new</span> Foo()</div><div class="line">foo1.constructor == Foo <span class="comment">//true</span></div><div class="line"></div><div class="line">Foo.prototype = &#123;&#125;</div><div class="line"><span class="keyword">var</span> foo2 = <span class="keyword">new</span> Foo()</div><div class="line">foo2.constructor == Foo <span class="comment">//false</span></div><div class="line">foo2.constructor == <span class="built_in">Object</span> <span class="comment">//true</span></div><div class="line"></div><div class="line">Foo.prototype.constructor = Foo</div><div class="line"><span class="keyword">var</span> foo3 = <span class="keyword">new</span> Foo()</div><div class="line">foo2.constructor == Foo <span class="comment">//true</span></div></pre></td></tr></table></figure></p>
-<p>当Foo.prototype被指定时，Foo.prototype没有.constructor属性，<br>foo.constructor继续委托至Object.prototype.constructor。<br>当然你可以自己指定一个Foo.prototype.constructor，这样foo.constructor就指向这个Foo了</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/blog/7/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1743,7 +1783,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

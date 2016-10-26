@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="demo,vue,Bootstrap,todos," />
+  <meta name="keywords" content="demo,react," />
 
 
 
@@ -84,46 +84,46 @@
 
 
 
-<meta name="description" content="demo地址：vue入门todos
+<meta name="description" content="demo地址：豆瓣最热门的500部日本动画
 源码：github源码
-依赖：vue，Bootstrap
+技术栈：react，react-router，babel，webpack
+数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。
 特点：
 
 
-简单的入门todos，vue + Bootstrap实现。
-点击输入框左侧图标可以全选，点击左下侧×可以删除被选择的，点击右下侧课切换filter。
-localStorage中读取和存放数据，刷新后数据仍然存在。
-vue实现简单的过渡动画。
-vuex-todos后来用vuex写的改进版。">
+点击右上角切换，可以随机切换一部动漫。
+react + react-router 实现，ES6用babel转译。
+数据通过发送本地ajax获得。
+做了预加载，在ajax接受和图片加载完">
 <meta property="og:type" content="article">
-<meta property="og:title" content="demo——vue入门todos">
-<meta property="og:url" content="http://yoursite.com/blog/demo-3/index.html">
+<meta property="og:title" content="demo——豆瓣最热门的500部日本动画">
+<meta property="og:url" content="http://yoursite.com/blog/demo-9/index.html">
 <meta property="og:site_name" content="Haizai Naive">
-<meta property="og:description" content="demo地址：vue入门todos
+<meta property="og:description" content="demo地址：豆瓣最热门的500部日本动画
 源码：github源码
-依赖：vue，Bootstrap
+技术栈：react，react-router，babel，webpack
+数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。
 特点：
 
 
-简单的入门todos，vue + Bootstrap实现。
-点击输入框左侧图标可以全选，点击左下侧×可以删除被选择的，点击右下侧课切换filter。
-localStorage中读取和存放数据，刷新后数据仍然存在。
-vue实现简单的过渡动画。
-vuex-todos后来用vuex写的改进版。">
-<meta property="og:updated_time" content="2016-10-04T07:06:21.613Z">
+点击右上角切换，可以随机切换一部动漫。
+react + react-router 实现，ES6用babel转译。
+数据通过发送本地ajax获得。
+做了预加载，在ajax接受和图片加载完">
+<meta property="og:updated_time" content="2016-10-26T12:06:47.318Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="demo——vue入门todos">
-<meta name="twitter:description" content="demo地址：vue入门todos
+<meta name="twitter:title" content="demo——豆瓣最热门的500部日本动画">
+<meta name="twitter:description" content="demo地址：豆瓣最热门的500部日本动画
 源码：github源码
-依赖：vue，Bootstrap
+技术栈：react，react-router，babel，webpack
+数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。
 特点：
 
 
-简单的入门todos，vue + Bootstrap实现。
-点击输入框左侧图标可以全选，点击左下侧×可以删除被选择的，点击右下侧课切换filter。
-localStorage中读取和存放数据，刷新后数据仍然存在。
-vue实现简单的过渡动画。
-vuex-todos后来用vuex写的改进版。">
+点击右上角切换，可以随机切换一部动漫。
+react + react-router 实现，ES6用babel转译。
+数据通过发送本地ajax获得。
+做了预加载，在ajax接受和图片加载完">
 
 
 
@@ -144,9 +144,9 @@ vuex-todos后来用vuex写的改进版。">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/blog/demo-3/"/>
+  <link rel="canonical" href="http://yoursite.com/blog/demo-9/"/>
 
-  <title> demo——vue入门todos | Haizai Naive </title>
+  <title> demo——豆瓣最热门的500部日本动画 | Haizai Naive </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -306,7 +306,7 @@ vuex-todos后来用vuex写的改进版。">
             
             
               
-                demo——vue入门todos
+                demo——豆瓣最热门的500部日本动画
               
             
           </h1>
@@ -318,8 +318,8 @@ vuex-todos后来用vuex写的改进版。">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-22T00:56:24+09:00" content="2016-09-21">
-              2016-09-21
+            <time itemprop="dateCreated" datetime="2016-10-26T21:23:28+09:00" content="2016-10-26">
+              2016-10-26
             </time>
           </span>
 
@@ -366,27 +366,51 @@ vuex-todos后来用vuex写的改进版。">
 
       
         <ul>
-<li><h3 id="demo地址：vue入门todos"><a href="#demo地址：vue入门todos" class="headerlink" title="demo地址：vue入门todos"></a>demo地址：<a href="/demo/vue/vue-todos/todos.html">vue入门todos</a></h3></li>
-<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/haizai.github.io/tree/master/demo/vue/vue-todos" target="_blank" rel="external">github源码</a></h4></li>
-<li><h4 id="依赖：vue，Bootstrap"><a href="#依赖：vue，Bootstrap" class="headerlink" title="依赖：vue，Bootstrap"></a>依赖：vue，Bootstrap</h4></li>
+<li><h3 id="demo地址：豆瓣最热门的500部日本动画"><a href="#demo地址：豆瓣最热门的500部日本动画" class="headerlink" title="demo地址：豆瓣最热门的500部日本动画"></a>demo地址：<a href="/demo/react/douban-anime/index.html#/anime/2043155">豆瓣最热门的500部日本动画</a></h3></li>
+<li><h4 id="源码：github源码"><a href="#源码：github源码" class="headerlink" title="源码：github源码"></a>源码：<a href="https://github.com/haizai/demo/tree/master/douban-anime" target="_blank" rel="external">github源码</a></h4></li>
+<li><h4 id="技术栈：react，react-router，babel，webpack"><a href="#技术栈：react，react-router，babel，webpack" class="headerlink" title="技术栈：react，react-router，babel，webpack"></a>技术栈：react，react-router，babel，webpack</h4></li>
+<li><h4 id="数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。"><a href="#数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。" class="headerlink" title="数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。"></a>数据来源：<a href="https://www.douban.com/" target="_blank" rel="external">豆瓣</a>，由自己写的<a href="/blog/crawler-1/">「爬虫」</a>获取，仅供个人学习参考。</h4></li>
 <li><h4 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h4></li>
 </ul>
 <ol>
-<li>简单的入门todos，vue + Bootstrap实现。</li>
-<li>点击输入框左侧图标可以全选，点击左下侧×可以删除被选择的，点击右下侧课切换filter。</li>
-<li><code>localStorage</code>中读取和存放数据，刷新后数据仍然存在。</li>
-<li>vue实现简单的过渡动画。</li>
-<li><a href="/blog/demo-5/">vuex-todos</a>后来用vuex写的改进版。</li>
+<li>点击右上角切换，可以随机切换一部动漫。</li>
+<li>react + react-router 实现，ES6用babel转译。</li>
+<li>数据通过发送本地ajax获得。</li>
+<li>做了预加载，在ajax接受和图片加载完成后，才进行展现。</li>
+<li>有回到顶部的按钮。</li>
 </ol>
 <ul>
 <li><h4 id="感想与总结："><a href="#感想与总结：" class="headerlink" title="感想与总结："></a>感想与总结：</h4></li>
 </ul>
 <ol>
-<li>第一次用vue，熟悉了vue的各种选项。如（watch，computed，filters，methods，transition）</li>
-<li>localStorage储存时需要<code>JSON.stringify()</code>，localStorage读取时需要<code>JSON.parse()</code>。</li>
-<li>vue用起来真心好顺畅，再也不用操纵DOM，MVVM时代~~</li>
+<li>路由完全由react-router写成。</li>
+<li>第一次这种数据展现形式的项目，UI可能不太好看。</li>
+<li>本地json之后进行查找和过滤比较麻烦，之后考虑学习和使用后台和数据库，自己搭一个服务器来展现。</li>
 </ol>
-<hr>
+<ul>
+<li><h4 id="结构："><a href="#结构：" class="headerlink" title="结构："></a>结构：</h4><pre>
+.
+├── data //具体数据json
+├── images //图片
+├── src
+|   ├── components  //组件
+|   |   ├── App.jsx ....... 组件入口
+|   |   ├── Anime.jsx ..... 动画主体
+|   |   ├── Header.jsx .... 顶部导航栏
+|   |   └── Totop.jsx ..... 回到顶部
+|   ├── css //样式
+|   |   ├── font .......... iconfont字体
+|   |   └── main.css
+|   ├── main.js ........... webpack入口
+|   └── Router.jsx ........ 路由文件
+├── .babelrc
+├── index.html ............ 主入口
+├── package.json
+└── webpack.config.js
+</pre>
+
+</li>
+</ul>
 
       
     </div>
@@ -411,11 +435,7 @@ vuex-todos后来用vuex写的改进版。">
           
             <a href="/tags/demo/" rel="tag">#demo</a>
           
-            <a href="/tags/vue/" rel="tag">#vue</a>
-          
-            <a href="/tags/Bootstrap/" rel="tag">#Bootstrap</a>
-          
-            <a href="/tags/todos/" rel="tag">#todos</a>
+            <a href="/tags/react/" rel="tag">#react</a>
           
         </div>
       
@@ -424,17 +444,13 @@ vuex-todos后来用vuex写的改进版。">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/blog/demo-2/" rel="next" title="demo——jquery实现日历UI">
-                <i class="fa fa-chevron-left"></i> demo——jquery实现日历UI
+              <a href="/blog/crawler-1/" rel="next" title="node爬虫--豆瓣最热门的500部日本动画">
+                <i class="fa fa-chevron-left"></i> node爬虫--豆瓣最热门的500部日本动画
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/blog/7/" rel="prev" title="读「你不知道的javascript」之构造函数">
-                读「你不知道的javascript」之构造函数 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -559,7 +575,7 @@ vuex-todos后来用vuex写的改进版。">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址：vue入门todos"><span class="nav-number">1.</span> <span class="nav-text">demo地址：vue入门todos</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#源码：github源码"><span class="nav-number">1.1.</span> <span class="nav-text">源码：github源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#依赖：vue，Bootstrap"><span class="nav-number">1.2.</span> <span class="nav-text">依赖：vue，Bootstrap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点："><span class="nav-number">1.3.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#感想与总结："><span class="nav-number">1.4.</span> <span class="nav-text">感想与总结：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo地址：豆瓣最热门的500部日本动画"><span class="nav-number">1.</span> <span class="nav-text">demo地址：豆瓣最热门的500部日本动画</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#源码：github源码"><span class="nav-number">1.1.</span> <span class="nav-text">源码：github源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技术栈：react，react-router，babel，webpack"><span class="nav-number">1.2.</span> <span class="nav-text">技术栈：react，react-router，babel，webpack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。"><span class="nav-number">1.3.</span> <span class="nav-text">数据来源：豆瓣，由自己写的「爬虫」获取，仅供个人学习参考。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#特点："><span class="nav-number">1.4.</span> <span class="nav-text">特点：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#感想与总结："><span class="nav-number">1.5.</span> <span class="nav-text">感想与总结：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结构："><span class="nav-number">1.6.</span> <span class="nav-text">结构：</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
